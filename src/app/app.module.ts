@@ -10,7 +10,7 @@ import { CountriesModule } from './components/countries/countries.module';
 
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent,
   ],
   imports: [
     BrowserModule,

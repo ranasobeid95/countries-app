@@ -1,10 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'countries',
+    pathMatch: 'full',
+  },
+  {
+    path: 'countries',
+    loadChildren: () =>
+      import('./components/countries/countries.module').then(
+        (m) => m.CountriesModule
+      ),
+  },
+  { path: '**', component: PageNotFoundComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

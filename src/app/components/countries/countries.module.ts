@@ -5,20 +5,22 @@ import { CountriesRoutingModule } from './countries-routing.module';
 import { CountriesListComponent } from './countries-list/countries-list.component';
 import { CountryDetailsComponent } from './country-details/country-details.component';
 import { CountryCardComponent } from './country-card/country-card.component';
+import { CountriesComponent } from './countries.component';
 
 @NgModule({
   declarations: [
     CountriesListComponent,
     CountryDetailsComponent,
-    CountryCardComponent, 
+    CountryCardComponent,
+    CountriesComponent,
   ],
-  imports: [
-    CommonModule,
-    CountriesRoutingModule
-  ],
-  exports:[
+  imports: [CommonModule, CountriesRoutingModule],
+
+  exports: [
+    CountriesComponent,
     CountriesListComponent,
-    CountryDetailsComponent, 
-  ]
+    CountryDetailsComponent,
+    CountryCardComponent,
+  ],
 })
-export class CountriesModule { }
+export class CountriesModule {}

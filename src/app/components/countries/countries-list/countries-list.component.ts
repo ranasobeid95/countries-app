@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Country } from '../country';
 
 @Component({
   selector: 'countries-list',
   templateUrl: './countries-list.component.html',
-  styleUrls: ['./countries-list.component.css']
+  styleUrls: ['./countries-list.component.css'],
 })
 export class CountriesListComponent implements OnInit {
+  @Input() listCountries!: Country[];
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

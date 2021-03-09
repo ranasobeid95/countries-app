@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 import { SharedModule } from './components/shared/shared.module';
 import { CountriesModule } from './components/countries/countries.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +17,7 @@ import { CountriesModule } from './components/countries/countries.module';
     HttpClientModule,
     SharedModule,
     CountriesModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

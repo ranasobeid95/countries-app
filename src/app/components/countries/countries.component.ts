@@ -101,16 +101,10 @@ export class CountriesComponent implements OnInit {
   }
 
   getCountriesByRegion(region: string) {
-    if (!this.countryName) {
-      if (region === 'All') {
-        this.getAllCountries();
-      } else {
-        this.countriesService
-          .getCountryByRegion(region)
-          .subscribe((response) => {
-            this.countries = response;
-          });
-      }
+    if (this.countryName && region === 'All') {
+      this.getCountryByName(this.countryName);
+    } else if (!this.countryName && region === 'All') {
+      this.getAllCountries();
     } else {
       this.countriesService.getCountryByRegion(region).subscribe((response) => {
         let filtterResponse = response.filter((element) => {
@@ -121,20 +115,22 @@ export class CountriesComponent implements OnInit {
     }
   }
   updateCountryName(country: string) {
-    this.countriesService.getCountryByName(country).subscribe(
-      (response) => {
-        if (this.selectedRegion === 'All') {
-          this.countries = response;
-        } else {
-          this.countries = response.filter((element) => {
-            return element.region === this.selectedRegion;
-          });
+    if (this.countryName) {
+      this.countriesService.getCountryByName(country).subscribe(
+        (response) => {
+          if (this.selectedRegion === 'All') {
+            this.countries = response;
+          } else {
+            this.countries = response.filter((element) => {
+              return element.region === this.selectedRegion;
+            });
+          }
+        },
+        (err) => {
+          this.countries = [];
+          this.err = 'Enter valid name !!';
         }
-      },
-      (err) => {
-        this.countries = [];
-        this.err = 'Enter valid name !!';
-      }
-    );
+      );
+    }
   }
 }

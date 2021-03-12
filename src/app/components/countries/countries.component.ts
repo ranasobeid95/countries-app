@@ -24,7 +24,7 @@ export class CountriesComponent implements OnInit {
   options: string[] = [];
   filteredOptions?: Observable<string[]>;
   countryName: string = '';
-  selectedRegion?: string = 'All';
+  selectedRegion: string = 'All';
   regions: string[] = REGIONS;
   err?: string;
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
@@ -72,7 +72,7 @@ export class CountriesComponent implements OnInit {
   }
   getCountryByName(countryName: any) {
     this.err = '';
-    if (!this.selectedRegion) {
+    if (this.selectedRegion === 'All') {
       if (countryName.target.value) {
         this.countriesService
           .getCountryByName(countryName.target.value)
@@ -102,7 +102,6 @@ export class CountriesComponent implements OnInit {
 
   getCountriesByRegion(region: string) {
     if (!this.countryName) {
-      console.log(region);
       if (region === 'All') {
         this.getAllCountries();
       } else {
@@ -124,7 +123,13 @@ export class CountriesComponent implements OnInit {
   updateCountryName(country: string) {
     this.countriesService.getCountryByName(country).subscribe(
       (response) => {
-        this.countries = response;
+        if (this.selectedRegion === 'All') {
+          this.countries = response;
+        } else {
+          this.countries = response.filter((element) => {
+            return element.region === this.selectedRegion;
+          });
+        }
       },
       (err) => {
         this.countries = [];

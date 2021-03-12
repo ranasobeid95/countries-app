@@ -1,3 +1,61 @@
 /* You can add global styles to this file, and also import other style files *
 
 /* dark-mode:#2b3945 */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: var(--main-font);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-white: #ffffff;
+  --main-black: #000000;
+  --dark-mode-elements: hsl(209, 23%, 22%);
+  --dark-mode-background: hsl(207, 26%, 17%);
+  --light-mode-text: hsl(200, 15%, 8%);
+  --light-mode-input: hsl(0, 0%, 52%);
+  --light-mode-background: hsl(0, 0%, 98%);
+  --light-mode-elements: hsl(0, 0%, 100%);
+  --content-grey: #636d73;
+  --content-blue-green: #3a5a6e;
+  --border-white: #fafbfd;
+  --main-font: 'Nunito Sans', sans-serif;
+  --box-shadow: 0px 1px 8px #142e6e1a;
+  --card-shadow: 0px 3px 6px #00000014;
+  --input-border: #a2c0d4;
+}
+
+.mat-autocomplete-panel {
+  background: var(--light-mode-background) !important;
+  border: none !important;
+}
+.mat-option span {
+  color: var(--light-mode-text);
+}
+.mat-option span:hover {
+  background: #f3f0f0;
+}
+
+.mat-select-panel {
+  width: 75%;
+  margin-top: 20%;
+  background: var(--light-mode-background) !important;
+}
+
+.mat-select-value {
+  color: var(--light-mode-text);
+}
+
+.mat-select-arrow {
+  color: var(--light-mode-text);
+}

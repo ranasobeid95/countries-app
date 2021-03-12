@@ -1,3 +1,22 @@
-<h1>
-  <a [routerLink]="['/countries', country.name]">{{ country.name }}</a>
-</h1>
+<a [routerLink]="['/countries', country.name.split(' ')[0]]">
+  <mat-card class="card-country">
+    <div class="card-country-img">
+      <img
+        mat-card-md-image
+        class="country-flag"
+        [src]="country.flag"
+        [alt]="country.name"
+      />
+    </div>
+    <mat-card-content>
+      <div class="card-country-info">
+        <h2 class="card-country-name">{{ country.name }}</h2>
+        <ul class="card-country-details">
+          <li><span>Population: </span>{{ country.population }}</li>
+          <li><span>Region: </span> {{ country.region }}</li>
+          <li><span>Capital: </span> {{ country.capital }}</li>
+        </ul>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</a>

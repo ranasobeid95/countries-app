@@ -1,1 +1,59 @@
-<countries-list [listCountries]="countries">List</countries-list>
+<div class="countries-container">
+  <div class="countries-container-filter">
+    <form #f="ngForm" class="filter-form">
+      <div class="filter-form-input">
+        <span class="material-icons"> search </span>
+        <input
+          type="text"
+          [(ngModel)]="countryName"
+          placeholder="Search of a country..."
+          aria-label="Country"
+          (keyup)="getCountryByName($event)"
+          [value]="countryName"
+          matInput
+          [formControl]="myControl"
+          [matAutocomplete]="auto"
+          #inputField
+        />
+
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option
+            (click)="updateCountryName(inputField.value)"
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </div>
+
+      <div class="select">
+        <mat-select
+          class="select-region"
+          (ngModelChange)="getCountriesByRegion($event)"
+          [(ngModel)]="selectedRegion"
+          name="region"
+          [formControl]="regionsControl"
+        >
+          <mat-option
+            class="select-region-option"
+            *ngFor="let region of regions"
+            [value]="region"
+          >
+            {{ region }}
+          </mat-option>
+        </mat-select>
+      </div>
+    </form>
+    <div *ngIf="err" class="err">
+      <span>
+        {{ err }}
+      </span>
+    </div>
+  </div>
+  <div class="countries-container-list">
+    <countries-list class="countries" [listCountries]="countries"
+      >List</countries-list
+    >
+  </div>
+</div>

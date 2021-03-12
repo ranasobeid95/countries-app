@@ -1,1 +1,8 @@
-export const REGIONS = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+export const REGIONS = [
+  'All',
+  'Africa',
+  'Americas',
+  'Asia',
+  'Europe',
+  'Oceania',
+];

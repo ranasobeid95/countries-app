@@ -6,7 +6,12 @@
       </a>
     </div>
     <div class="navbar-dark-mode">
-      <button class="icon" mat-icon-button>
+      <button
+        class="icon"
+        mat-icon-button
+        (click)="toggleDarkMode()"
+        [(ngModel)]="isDarkMode"
+      >
         <mat-icon>bedtime</mat-icon>
         <span> Dark Mode</span>
       </button>

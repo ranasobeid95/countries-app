@@ -1,0 +1,15 @@
+.country-list {
+  width: 100%;
+  background-color: var(--light-mode-background);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.no-data {
+  width: 100%;
+  margin-left: 40%;
+  margin-top: 10%;
+  align-items: center;
+  color: var(--content-grey);
+}

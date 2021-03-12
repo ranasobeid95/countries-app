@@ -1,1 +1,15 @@
-<p>app-header works!</p>
+<header class="header">
+  <mat-toolbar class="header-navbar">
+    <div class="navbar-title">
+      <a [routerLink]="['/countries']">
+        <span>Where in the World?</span>
+      </a>
+    </div>
+    <div class="navbar-dark-mode">
+      <button class="icon" mat-icon-button>
+        <mat-icon>bedtime</mat-icon>
+        <span> Dark Mode</span>
+      </button>
+    </div>
+  </mat-toolbar>
+</header>

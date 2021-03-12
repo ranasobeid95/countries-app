@@ -15,11 +15,11 @@ import { MaterialModule } from './material/material.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
     HttpClientModule,
     SharedModule,
     CountriesModule,
-    BrowserAnimationsModule,
-    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

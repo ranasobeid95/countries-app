@@ -1,0 +1,166 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$mat-primary-scheme: (
+  100: #fafafa,
+  500: #2b3945,
+  700: #2b3945,
+  contrast: (
+    100: #2b3945,
+    500: #ffffff,
+    700: #ffffff,
+  ),
+);
+$mat-accent-scheme: (
+  100: #ffe57f,
+  500: #ffd740,
+  700: #ffc400,
+  contrast: (
+    100: rgba(0, 0, 0, 0.87),
+    500: rgba(0, 0, 0, 0.87),
+    700: #ffffff,
+  ),
+);
+$mat-primary-palette: mat-palette($mat-primary-scheme);
+$mat-accent-palette: mat-palette($mat-accent-scheme);
+
+$app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
+.light-mode {
+  @include angular-material-theme($app-light-theme);
+  font-family: var(--main-font);
+  background-color: var(--light-mode-background);
+  color: var(--light-mode-text);
+  span {
+    color: var(--light-mode-text);
+  }
+  .mat-card {
+    background-color: var(--light-mode-elements);
+  }
+  .filter-form-input {
+    box-shadow: 0 0 6px -3px #858585;
+  }
+
+  .mat-raised-button {
+    background-color: var(--light-mode-elements);
+    box-shadow: 0 0 6px -3px #858585 !important;
+  }
+
+  .header .header-navbar {
+    box-shadow: 0 1px 18px 0 rgb(0 0 0 / 30%);
+  }
+
+  .header span:hover {
+    color: #5a5858;
+  }
+  .mat-card {
+    background-color: var(--light-mode-elements);
+  }
+  div.filter-form-input {
+    background-color: var(--light-mode-elements);
+  }
+  div.filter-form-input span {
+    color: var(--content-grey);
+  }
+}
+
+// following section is for dark mode.
+// use appropriate class name for darkMode
+$app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
+.dark-mode {
+  @include angular-material-theme($app-dark-theme);
+
+  font-family: var(--main-font);
+  background-color: var(--dark-mode-background);
+  color: var(--dark-mode-text);
+  span {
+    color: var(--light-mode-elements);
+    font-weight: 300;
+  }
+  .header span:hover {
+    color: #bbb6b6;
+  }
+  .header {
+    background-color: var(--dark-mode-background);
+  }
+  .filter-form-input {
+    background-color: var(--dark-mode-elements);
+  }
+  .input {
+    background-color: var(--dark-mode-elements);
+  }
+  .mat-card {
+    background-color: var(--dark-mode-elements);
+  }
+  .mat-toolbar {
+    background-color: var(--dark-mode-elements);
+  }
+  .mat-select {
+    background-color: var(--dark-mode-elements);
+  }
+  .mat-option {
+    background-color: var(--dark-mode-elements);
+  }
+  .mat-raised-button {
+    background-color: var(--dark-mode-elements);
+  }
+  .mat-autocomplete-trigger {
+    background-color: var(--dark-mode-elements);
+  }
+  .mat-autocomplete-trigger {
+    color: var(--dark-mode-text);
+  }
+  ::placeholder {
+    color: var(--dark-mode-text);
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-white: #ffffff;
+  --main-black: #000000;
+  --dark-mode-elements: hsl(209, 23%, 22%);
+  --dark-mode-background: hsl(207, 26%, 17%);
+  --dark-mode-text: hsl(0, 0%, 100%);
+  --light-mode-text: hsl(200, 15%, 8%);
+  --light-mode-input: hsl(0, 0%, 52%);
+  --light-mode-background: hsl(0, 0%, 98%);
+  --light-mode-elements: hsl(0, 0%, 100%);
+  --content-grey: #636d73;
+  --content-blue-green: #3a5a6e;
+  --border-white: #fafbfd;
+  --main-font: 'Nunito Sans', sans-serif;
+  --box-shadow: 0px 1px 8px #142e6e1a;
+  --card-shadow: 0px 3px 6px #00000014;
+  --input-border: #a2c0d4;
+}
+
+.mat-autocomplete-panel {
+  border: none !important;
+
+  .mat-select-panel {
+    width: 75%;
+    margin-top: 20%;
+  }
+}
+
+.mat-autocomplete-trigger:focus {
+  outline: 0px;
+}
+
+.no-data {
+  color: var(--content-grey);
+}

@@ -30,8 +30,6 @@ ul {
   padding: 0;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  background-color: var(--light-mode-background);
-  color: var(--dark-mode-elements);
 }
 .card-country .country-flag {
   width: 100%;

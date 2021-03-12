@@ -2,8 +2,6 @@
   width: 100%;
   position: fixed;
   display: flex;
-  color: black;
-  background-color: var(--light-mode-background);
   padding: 25px;
   top: 0;
   left: 0;
@@ -28,16 +26,13 @@
 .navbar-title {
   font-size: 1rem;
   font-weight: bold;
-  color: var(--light-mode-text);
 }
 a {
   text-decoration: none;
-  color: var(--light-mode-text);
 }
 
 a:hover {
   text-decoration: none;
-  color: var(--content-grey);
 }
 
 @media only screen and (max-width: 860px) {

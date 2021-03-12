@@ -8,6 +8,6 @@ export interface Country {
   population: number;
   topLevelDomain: string;
   nativeName: string;
-  currencies: string;
-  languages: string[];
+  currencies: { code?: string }[];
+  languages: { nativeName?: string; name?: string }[];
 }

@@ -37,6 +37,7 @@
         >
           <mat-option
             class="select-region-option"
+            (click)="updateCountryName(inputField.value)"
             *ngFor="let region of regions"
             [value]="region"
           >

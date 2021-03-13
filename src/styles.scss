@@ -112,6 +112,23 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
   ::placeholder {
     color: var(--dark-mode-text);
   }
+
+  .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+    background: var(--dark-mode-background);
+  }
+  .mat-select-panel:hover {
+    background: var(--dark-mode-background);
+  }
+  .mat-option.mat-active {
+    background-color: var(--dark-mode-elements);
+  }
+  .mat-option .mat-selected:hover {
+    background-color: var(--dark-mode-background);
+  }
+
+  .mat-autocomplete-panel:hover {
+    background-color: var(--dark-mode-background);
+  }
 }
 
 html,

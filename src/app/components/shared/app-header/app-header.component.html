@@ -12,8 +12,8 @@
         (click)="toggleDarkMode()"
         [(ngModel)]="isDarkMode"
       >
-        <mat-icon>bedtime</mat-icon>
-        <span> Dark Mode</span>
+        <mat-icon>{{ isDarkMode ? 'light_mode' : 'nights_stay' }}</mat-icon>
+        <span>{{ isDarkMode ? 'Light' : 'Dark' }} Mode</span>
       </button>
     </div>
   </mat-toolbar>

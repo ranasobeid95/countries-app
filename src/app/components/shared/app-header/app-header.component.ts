@@ -13,14 +13,12 @@ export class AppHeaderComponent implements OnInit {
     this.isDarkMode = this.themeService.isDarkMode();
   }
 
-  ngOnInit(): void {
-    console.log(1);
-  }
+  ngOnInit(): void {}
 
   toggleDarkMode() {
-    this.isDarkMode = this.themeService.isDarkMode();
     this.isDarkMode
       ? this.themeService.update('light-mode')
       : this.themeService.update('dark-mode');
+    this.isDarkMode = this.themeService.isDarkMode();
   }
 }

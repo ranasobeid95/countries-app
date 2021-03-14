@@ -21,6 +21,7 @@
   font-size: 1rem;
   font-weight: 300;
   font-family: var(--main-font);
+  margin-left: 20%;
 }
 
 .navbar-title {
@@ -41,6 +42,7 @@ a:hover {
   }
   .navbar-dark-mode span {
     font-size: 0.7rem;
+    margin-left: 5%;
   }
 
   .navbar-dark-mode mat-icon {

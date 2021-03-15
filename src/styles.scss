@@ -33,6 +33,9 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
   span {
     color: var(--light-mode-text);
   }
+  .mat-raised-button:hover {
+    background-color: #f7f1f1;
+  }
   .mat-card {
     background-color: var(--light-mode-elements);
   }
@@ -128,6 +131,10 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
 
   .mat-autocomplete-panel:hover {
     background-color: var(--dark-mode-background);
+  }
+  .mat-snack-bar-container {
+    background-color: rgb(155, 11, 11);
+    color: var(--dark-mode-text);
   }
 }
 

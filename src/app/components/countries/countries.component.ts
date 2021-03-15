@@ -3,8 +3,10 @@ import { CountriesService } from './countries.service';
 import { FormControl } from '@angular/forms';
 
 import { Country } from './country';
-import { Observable, throwError } from 'rxjs';
-import { map, startWith, catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+
 import { REGIONS } from './regions';
 
 @Component({
@@ -22,6 +24,8 @@ export class CountriesComponent implements OnInit {
   selectedRegion: string = 'All';
   regions: string[] = REGIONS;
   err?: string;
+  isLoading: boolean = false;
+  mode: ProgressSpinnerMode = 'indeterminate';
 
   constructor(private countriesService: CountriesService) {}
 
@@ -41,14 +45,24 @@ export class CountriesComponent implements OnInit {
   }
 
   getAllCountries() {
-    this.countriesService.getAllCountries().subscribe((response) => {
-      this.countries = response;
-      response.map((ele: any) => {
-        this.options.push(ele.name);
-      });
-    });
+    this.isLoading = true;
+    this.countriesService.getAllCountries().subscribe(
+      (response) => {
+        this.countries = response;
+        response.map((ele: any) => {
+          this.options.push(ele.name);
+        });
+      },
+      (err) => {
+        this.isLoading = false;
+      },
+      () => {
+        this.isLoading = false;
+      }
+    );
   }
   getCountryByName(countryName: any) {
+    this.isLoading = true;
     this.err = '';
     if (this.selectedRegion === 'All') {
       if (countryName.target.value) {
@@ -60,7 +74,11 @@ export class CountriesComponent implements OnInit {
             },
             (err) => {
               this.countries = [];
+              this.isLoading = false;
               this.err = 'Enter valid name !!';
+            },
+            () => {
+              this.isLoading = false;
             }
           );
       } else {
@@ -84,12 +102,19 @@ export class CountriesComponent implements OnInit {
     } else if (!this.countryName && region === 'All') {
       this.getAllCountries();
     } else {
-      this.countriesService.getCountryByRegion(region).subscribe((response) => {
-        let filtterResponse = response.filter((element) => {
-          return element.name.includes(this.countryName);
-        });
-        this.countries = filtterResponse;
-      });
+      this.isLoading = true;
+      this.countriesService.getCountryByRegion(region).subscribe(
+        (response) => {
+          let filtterResponse = response.filter((element) => {
+            return element.name.includes(this.countryName);
+          });
+          this.countries = filtterResponse;
+        },
+        (err) => console.log(err),
+        () => {
+          this.isLoading = false;
+        }
+      );
     }
   }
   updateCountryName(country: string) {
@@ -105,8 +130,12 @@ export class CountriesComponent implements OnInit {
           }
         },
         (err) => {
+          this.isLoading = false;
           this.countries = [];
           this.err = 'Enter valid name !!';
+        },
+        () => {
+          this.isLoading = false;
         }
       );
     }

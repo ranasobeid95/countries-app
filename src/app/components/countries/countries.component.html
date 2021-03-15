@@ -52,7 +52,9 @@
       </span>
     </div>
   </div>
-  <div class="countries-container-list">
+  <mat-spinner *ngIf="isLoading" [mode]="mode"></mat-spinner>
+
+  <div *ngIf="!isLoading" class="countries-container-list">
     <countries-list class="countries" [listCountries]="countries"
       >List</countries-list
     >

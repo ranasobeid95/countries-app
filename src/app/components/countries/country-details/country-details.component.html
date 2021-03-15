@@ -6,8 +6,11 @@
     </button>
   </div>
   <mat-spinner *ngIf="isLoading" [mode]="mode"></mat-spinner>
+  <div class="no-data" *ngIf="!country.length && !isLoading">
+    <h3>No Countries Found</h3>
+  </div>
   <ng-container *ngIf="country && country.length > 0">
-    <div class="details-container-content">
+    <div *ngIf="!isLoading" class="details-container-content">
       <div class="details-container-left">
         <img [src]="country[0].flag" alt="country[0].name" class="flag" />
       </div>
@@ -36,7 +39,10 @@
               Top Level Domain: <span>{{ country[0].topLevelDomain }}</span>
             </h4>
             <h4>
-              Currencies: <span>{{ country[0].currencies[0].code }}</span>
+              Currencies:
+              <span *ngFor="let currencies of country[0].currencies">{{
+                currencies.code
+              }}</span>
             </h4>
             <h4>
               languages: <span>{{ country[0].languages[0].name }}</span>
@@ -56,7 +62,7 @@
             </a>
           </div>
         </div>
-        <div class="no-data" *ngIf="country[0].borders.length === 0">
+        <div class="no-borders" *ngIf="country[0].borders.length === 0">
           <h3>No Borders Found</h3>
         </div>
       </div>

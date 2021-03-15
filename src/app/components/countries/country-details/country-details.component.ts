@@ -38,6 +38,7 @@ export class CountryDetailsComponent implements OnInit {
         this.country = response;
       },
       (err) => {
+        this.country = [];
         this.isLoading = false;
       },
       () => {

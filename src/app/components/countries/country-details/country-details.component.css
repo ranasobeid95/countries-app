@@ -121,9 +121,16 @@
 a {
   text-decoration: none;
 }
-.no-data {
+.no-borders {
   width: 100%;
   margin-top: 2%;
+  height: 100vh;
+  align-items: center;
+}
+.no-data {
+  width: 100%;
+  margin-left: 40%;
+  margin-top: 10%;
   height: 100vh;
   align-items: center;
 }
@@ -206,7 +213,12 @@ a {
   .border-btns {
     margin-bottom: 5%;
   }
-  .no-data {
+  .no-borders {
     height: 0vh;
+  }
+  .no-data {
+    margin-left: 25%;
+    margin-top: 25%;
+    height: 10vh;
   }
 }

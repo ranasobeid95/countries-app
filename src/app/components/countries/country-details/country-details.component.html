@@ -5,6 +5,7 @@
       <span>Back</span>
     </button>
   </div>
+  <mat-spinner *ngIf="isLoading" [mode]="mode"></mat-spinner>
   <ng-container *ngIf="country && country.length > 0">
     <div class="details-container-content">
       <div class="details-container-left">

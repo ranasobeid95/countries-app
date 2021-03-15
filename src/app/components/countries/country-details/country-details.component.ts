@@ -4,6 +4,7 @@ import { CountriesService } from '../countries.service';
 import { Location } from '@angular/common';
 
 import { Country } from '../country';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'country-details',
@@ -12,6 +13,8 @@ import { Country } from '../country';
 })
 export class CountryDetailsComponent implements OnInit {
   country: Country[] = [];
+  isLoading: boolean = false;
+  mode: ProgressSpinnerMode = 'indeterminate';
 
   constructor(
     private countriesService: CountriesService,
@@ -20,20 +23,31 @@ export class CountryDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(1);
+    this.isLoading = true;
+
     this.route.params.subscribe(({ name }) => {
       this.getDetails(name);
     });
   }
 
   getDetails(name: string) {
-    this.countriesService
-      .getCountryByName(name)
-      .subscribe((response: Country[]) => {
+    this.isLoading = true;
+    this.countriesService.getCountryByName(name).subscribe(
+      (response: Country[]) => {
         this.country = response;
-      });
+      },
+      (err) => {
+        this.isLoading = false;
+      },
+      () => {
+        this.isLoading = false;
+      }
+    );
   }
 
   backToLastPage() {
+    this.isLoading = true;
     this._location.back();
   }
 }

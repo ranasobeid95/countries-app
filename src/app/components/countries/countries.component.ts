@@ -6,11 +6,6 @@ import { Country } from './country';
 import { Observable, throwError } from 'rxjs';
 import { map, startWith, catchError } from 'rxjs/operators';
 import { REGIONS } from './regions';
-import {
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
-  MatSnackBar,
-} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'all-countries',
@@ -27,13 +22,8 @@ export class CountriesComponent implements OnInit {
   selectedRegion: string = 'All';
   regions: string[] = REGIONS;
   err?: string;
-  horizontalPosition: MatSnackBarHorizontalPosition = 'end';
-  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  constructor(
-    private countriesService: CountriesService,
-    private _snackBar: MatSnackBar
-  ) {}
+  constructor(private countriesService: CountriesService) {}
 
   ngOnInit(): void {
     this.getAllCountries();
@@ -51,24 +41,12 @@ export class CountriesComponent implements OnInit {
   }
 
   getAllCountries() {
-    this.countriesService
-      .getAllCountries()
-      .pipe(
-        catchError((err: any) => {
-          this._snackBar.open('Server Error !!', 'End now', {
-            duration: 100000,
-            horizontalPosition: this.horizontalPosition,
-            verticalPosition: this.verticalPosition,
-          });
-          return throwError(err);
-        })
-      )
-      .subscribe((response) => {
-        this.countries = response;
-        response.map((ele: any) => {
-          this.options.push(ele.name);
-        });
+    this.countriesService.getAllCountries().subscribe((response) => {
+      this.countries = response;
+      response.map((ele: any) => {
+        this.options.push(ele.name);
       });
+    });
   }
   getCountryByName(countryName: any) {
     this.err = '';

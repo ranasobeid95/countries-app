@@ -5,58 +5,60 @@
       <span>Back</span>
     </button>
   </div>
-  <div class="details-container-content">
-    <div class="details-container-left">
-      <img [src]="country[0].flag" alt="country[0].name" class="flag" />
+  <ng-container *ngIf="country && country.length > 0">
+    <div class="details-container-content">
+      <div class="details-container-left">
+        <img [src]="country[0].flag" alt="country[0].name" class="flag" />
+      </div>
+      <div class="details-container-right">
+        <h1 class="country-name">{{ country[0].name }}</h1>
+        <div class="more-details">
+          <div class="more-left">
+            <h4>
+              Native Name: <span>{{ country[0].nativeName }}</span>
+            </h4>
+            <h4>
+              Population: <span>{{ country[0].population | number }}</span>
+            </h4>
+            <h4>
+              Region: <span>{{ country[0].region }}</span>
+            </h4>
+            <h4>
+              Sub Region: <span>{{ country[0].subregion }}</span>
+            </h4>
+            <h4>
+              Capital: <span>{{ country[0].capital }}</span>
+            </h4>
+          </div>
+          <div class="more-right">
+            <h4>
+              Top Level Domain: <span>{{ country[0].topLevelDomain }}</span>
+            </h4>
+            <h4>
+              Currencies: <span>{{ country[0].currencies[0].code }}</span>
+            </h4>
+            <h4>
+              languages: <span>{{ country[0].languages[0].name }}</span>
+            </h4>
+          </div>
+        </div>
+        <div *ngIf="country[0].borders.length" class="border-countries">
+          <span>Border Countries:</span>
+          <div class="borders">
+            <a
+              *ngFor="let border of country[0].borders"
+              [routerLink]="['/countries', border]"
+            >
+              <button class="border-btns" mat-raised-button>
+                {{ border }}
+              </button>
+            </a>
+          </div>
+        </div>
+        <div class="no-data" *ngIf="country[0].borders.length === 0">
+          <h3>No Borders Found</h3>
+        </div>
+      </div>
     </div>
-    <div class="details-container-right">
-      <h1 class="country-name">{{ country[0].name }}</h1>
-      <div class="more-details">
-        <div class="more-left">
-          <h4>
-            Native Name: <span>{{ country[0].nativeName }}</span>
-          </h4>
-          <h4>
-            Population: <span>{{ country[0].population | number }}</span>
-          </h4>
-          <h4>
-            Region: <span>{{ country[0].region }}</span>
-          </h4>
-          <h4>
-            Sub Region: <span>{{ country[0].subregion }}</span>
-          </h4>
-          <h4>
-            Capital: <span>{{ country[0].capital }}</span>
-          </h4>
-        </div>
-        <div class="more-right">
-          <h4>
-            Top Level Domain: <span>{{ country[0].topLevelDomain }}</span>
-          </h4>
-          <h4>
-            Currencies: <span>{{ country[0].currencies[0].code }}</span>
-          </h4>
-          <h4>
-            languages: <span>{{ country[0].languages[0].name }}</span>
-          </h4>
-        </div>
-      </div>
-      <div *ngIf="country[0].borders.length" class="border-countries">
-        <span>Border Countries:</span>
-        <div class="borders">
-          <a
-            *ngFor="let border of country[0].borders"
-            [routerLink]="['/countries', border]"
-          >
-            <button class="border-btns" mat-raised-button>
-              {{ border }}
-            </button>
-          </a>
-        </div>
-      </div>
-      <div class="no-data" *ngIf="country[0].borders.length === 0">
-        <h3>No Borders Found</h3>
-      </div>
-    </div>
-  </div>
+  </ng-container>
 </div>

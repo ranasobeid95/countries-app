@@ -64,6 +64,14 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
   div.filter-form-input span {
     color: var(--content-grey);
   }
+  .mat-snack-bar-container {
+    background-color: rgb(155, 11, 11);
+    color: var(--dark-mode-text);
+  }
+  .mat-progress-spinner circle,
+  .mat-spinner circle {
+    stroke: hsl(207, 26%, 17%);
+  }
 }
 
 // following section is for dark mode.
@@ -136,6 +144,10 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
     background-color: rgb(155, 11, 11);
     color: var(--dark-mode-text);
   }
+  .mat-progress-spinner circle,
+  .mat-spinner circle {
+    stroke: hsl(0, 0%, 98%);
+  }
 }
 
 html,
@@ -187,4 +199,8 @@ body {
 
 .no-data {
   color: var(--content-grey);
+}
+.mat-spinner {
+  margin: 0 auto;
+  margin-top: 10%;
 }

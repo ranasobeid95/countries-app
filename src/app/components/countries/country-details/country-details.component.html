@@ -5,7 +5,7 @@
       <span>Back</span>
     </button>
   </div>
-  <div class="details-container-content">
+  <ng-container *ngIf="country.length > 0" class="details-container-content">
     <div class="details-container-left">
       <img [src]="country[0].flag" alt="country[0].name" class="flag" />
     </div>
@@ -58,5 +58,5 @@
         <h3>No Borders Found</h3>
       </div>
     </div>
-  </div>
+  </ng-container>
 </div>

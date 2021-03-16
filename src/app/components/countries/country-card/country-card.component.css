@@ -42,15 +42,9 @@ ul {
 
 @media only screen and (max-width: 860px) {
   .card-country {
-    height: 35vh;
+    height: 60vh;
     margin-bottom: 20px;
     margin-top: 20px;
     margin-left: 10px;
-  }
-}
-
-@media only screen and (max-width: 860px) {
-  .card-country {
-    height: 60vh;
   }
 }

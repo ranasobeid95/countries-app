@@ -8,7 +8,7 @@
           [(ngModel)]="countryName"
           placeholder="Search of a country..."
           aria-label="Country"
-          (keyup)="getCountryByNameAndRegion($event)"
+          (keyup)="onSearch($event)"
           matInput
           [formControl]="myControl"
           [matAutocomplete]="auto"

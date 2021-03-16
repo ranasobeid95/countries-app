@@ -3,8 +3,14 @@ import { CountriesService } from './services/countries.service';
 import { FormControl } from '@angular/forms';
 
 import { Country } from './country';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import {
+  map,
+  startWith,
+  debounceTime,
+  distinctUntilChanged,
+  switchMap,
+} from 'rxjs/operators';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 import { REGIONS } from './regions';
@@ -27,6 +33,8 @@ export class CountriesComponent implements OnInit {
   err?: string;
   isLoading: boolean = false;
   mode: ProgressSpinnerMode = 'indeterminate';
+  search$ = new Subject<string>();
+  results$!: Observable<Country[]>;
 
   constructor(
     private countriesService: CountriesService,
@@ -39,6 +47,20 @@ export class CountriesComponent implements OnInit {
       startWith(''),
       map((value) => this._filter(value))
     );
+  }
+
+  onSearch(event: any) {
+    if (event.target.value) {
+      let searchText: string = event.target.value;
+      this.search$.next(searchText);
+      this.search$.pipe(
+        debounceTime(500),
+        distinctUntilChanged(),
+        switchMap((val) => this.countriesService.getCountryByName(val))
+      );
+    } else {
+      this.getCountryByNameAndRegion(event);
+    }
   }
 
   _filter(value: string): string[] {
@@ -69,7 +91,6 @@ export class CountriesComponent implements OnInit {
   }
 
   getCountryByNameAndRegion(event: any) {
-    console.log(`typeof event `, typeof event);
     this.isLoading = true;
     this.err = '';
     typeof event === 'object'

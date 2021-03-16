@@ -8,8 +8,7 @@
           [(ngModel)]="countryName"
           placeholder="Search of a country..."
           aria-label="Country"
-          (keyup)="getCountryByName($event)"
-          [value]="countryName"
+          (keyup)="getCountryByNameAndRegion($event)"
           matInput
           [formControl]="myControl"
           [matAutocomplete]="auto"
@@ -30,14 +29,13 @@
       <div class="select">
         <mat-select
           class="select-region"
-          (ngModelChange)="getCountriesByRegion($event)"
-          [(ngModel)]="selectedRegion"
+          (ngModelChange)="getCountryByNameAndRegion($event)"
+          placeholder="Filter By Region"
           name="region"
           [formControl]="regionsControl"
         >
           <mat-option
             class="select-region-option"
-            (click)="updateCountryName(inputField.value)"
             *ngFor="let region of regions"
             [value]="region"
           >

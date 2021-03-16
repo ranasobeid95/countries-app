@@ -16,6 +16,8 @@ export class CountryDetailsComponent implements OnInit {
   isLoading: boolean = false;
   countryName!: string;
   mode: ProgressSpinnerMode = 'indeterminate';
+  languages!: string;
+  currencies!: string;
 
   constructor(
     private countriesService: CountriesService,
@@ -43,6 +45,12 @@ export class CountryDetailsComponent implements OnInit {
         Array.isArray(response)
           ? (this.country = response)
           : this.country.push(response);
+        this.languages = this.country[0].languages
+          .map((lang) => lang.name)
+          .join(', ');
+        this.currencies = this.country[0].currencies
+          .map((currency) => currency.code)
+          .join(', ');
       },
       (err) => {
         this.country = [];

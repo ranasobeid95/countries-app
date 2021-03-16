@@ -42,7 +42,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
             verticalPosition: this.verticalPosition,
           });
         }
-        console.log(errorMsg);
         return throwError(errorMsg);
       })
     );

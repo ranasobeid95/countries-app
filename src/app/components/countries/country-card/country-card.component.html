@@ -1,5 +1,5 @@
 <ng-container *ngIf="country">
-  <a [routerLink]="['/countries', country.name.split(' ')[0]]">
+  <a [routerLink]="['/countries', country.name]">
     <mat-card class="card-country">
       <div class="card-country-img">
         <img
@@ -13,7 +13,7 @@
         <div class="card-country-info">
           <h2 class="card-country-name">{{ country.name }}</h2>
           <ul class="card-country-details">
-            <li><span>Population: </span>{{ country.population }}</li>
+            <li><span>Population: </span>{{ country.population | number }}</li>
             <li><span>Region: </span> {{ country.region }}</li>
             <li><span>Capital: </span> {{ country.capital }}</li>
           </ul>

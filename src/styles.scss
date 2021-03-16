@@ -87,6 +87,15 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
     color: var(--light-mode-elements);
     font-weight: 300;
   }
+  ::placeholder {
+    color: hsl(0deg 0% 100% / 50%);
+  }
+  span.material-icons {
+    color: hsl(0deg 0% 100% / 50%);
+  }
+  .mat-select-placeholder {
+    color: hsl(0deg 0% 100% / 50%);
+  }
   .header span:hover {
     color: #bbb6b6;
   }
@@ -118,9 +127,6 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
     background-color: var(--dark-mode-elements);
   }
   .mat-autocomplete-trigger {
-    color: var(--dark-mode-text);
-  }
-  ::placeholder {
     color: var(--dark-mode-text);
   }
 

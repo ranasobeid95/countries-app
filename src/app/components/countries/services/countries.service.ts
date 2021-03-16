@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Country } from './country';
+import { Country } from '../country';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +15,9 @@ export class CountriesService {
   }
 
   getCountryByName(name: string): Observable<Country[]> {
-    return this.http.get<Country[]>(`${this.countryUrl}/name/${name}`);
+    return name.length > 4
+      ? this.http.get<Country[]>(`${this.countryUrl}/name/${name}`)
+      : this.http.get<Country[]>(`${this.countryUrl}/alpha/${name}`);
   }
 
   getCountryByRegion(region: string): Observable<Country[]> {

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CountriesService } from '../countries.service';
+import { CountriesService } from '../services/countries.service';
 import { Location } from '@angular/common';
 
 import { Country } from '../country';
@@ -14,6 +14,7 @@ import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 export class CountryDetailsComponent implements OnInit {
   country: Country[] = [];
   isLoading: boolean = false;
+  countryName!: string;
   mode: ProgressSpinnerMode = 'indeterminate';
 
   constructor(
@@ -23,19 +24,25 @@ export class CountryDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(1);
     this.isLoading = true;
-
-    this.route.params.subscribe(({ name }) => {
-      this.getDetails(name);
-    });
+    this.route.paramMap.subscribe(
+      (params: any) => {
+        this.countryName = params.get('name');
+        this.getDetails(this.countryName);
+      },
+      (err) => (this.isLoading = false),
+      () => (this.isLoading = false)
+    );
   }
 
   getDetails(name: string) {
     this.isLoading = true;
+    this.country = [];
     this.countriesService.getCountryByName(name).subscribe(
       (response: Country[]) => {
-        this.country = response;
+        Array.isArray(response)
+          ? (this.country = response)
+          : this.country.push(response);
       },
       (err) => {
         this.country = [];

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CountriesService } from '../services/countries.service';
 import { Location } from '@angular/common';
 
@@ -21,6 +21,7 @@ export class CountryDetailsComponent implements OnInit {
 
   constructor(
     private countriesService: CountriesService,
+    private router: Router,
     private route: ActivatedRoute,
     private _location: Location
   ) {}
@@ -30,7 +31,9 @@ export class CountryDetailsComponent implements OnInit {
     this.route.paramMap.subscribe(
       (params: any) => {
         this.countryName = params.get('name');
-        this.getDetails(this.countryName);
+        this.countryName.length === 1
+          ? this.router.navigate(['/page-not-found'])
+          : this.getDetails(this.countryName);
       },
       (err) => (this.isLoading = false),
       () => (this.isLoading = false)
@@ -55,6 +58,7 @@ export class CountryDetailsComponent implements OnInit {
       (err) => {
         this.country = [];
         this.isLoading = false;
+        this.router.navigate(['/page-not-found']);
       },
       () => {
         this.isLoading = false;

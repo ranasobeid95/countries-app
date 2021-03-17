@@ -95,5 +95,6 @@
   }
   .mat-select.select-region {
     margin-left: 0;
+    height: 8vh;
   }
 }

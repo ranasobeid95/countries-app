@@ -6,7 +6,7 @@ Build a project, and uses the REST Countries API to get country data and display
 
 ### Solution
 
-- Generated project with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
+- Generated project with Angular version 11.2.1.
 
 - Use the [REST Countries API](https://restcountries.eu/) to get country data and display it
 

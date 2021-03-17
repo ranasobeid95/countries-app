@@ -7,7 +7,7 @@ import { Country } from '../country';
   styleUrls: ['./countries-list.component.css'],
 })
 export class CountriesListComponent implements OnInit {
-  @Input() listCountries!: Country[];
+  @Input() listCountries: Country[] = [];
   constructor() {}
 
   ngOnInit(): void {}

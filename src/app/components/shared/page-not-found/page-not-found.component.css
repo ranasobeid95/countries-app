@@ -1,0 +1,30 @@
+.page-not-found {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20%;
+  align-items: center;
+}
+
+.page404 {
+  font-size: 200px;
+}
+.title {
+  font-size: 20px;
+  margin-top: 10%;
+  margin-left: 4%;
+}
+
+@media only screen and (max-width: 860px) {
+  .page-not-found {
+    margin-top: 40%;
+  }
+
+  .page404 {
+    font-size: 85px;
+  }
+  .title {
+    font-size: 14px;
+  }
+}

@@ -80,30 +80,29 @@
 }
 .border-countries {
   width: 100%;
-  height: 10vh;
+  height: 16vh;
   margin-top: 2%;
   display: flex;
 }
 .borders {
-  width: 84%;
+  width: 80%;
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .border-countries span {
-  width: 16%;
+  width: 20%;
   font-weight: bold;
   margin-top: 1%;
   font-size: 14px;
 }
 
 .border-btns {
-  margin: 0;
-  margin-left: 2%;
   width: 20%;
   height: 6vh;
   font-size: 14px;
   color: #535153;
+  margin-right: 20%;
   box-shadow: 0 0 6px -3px #5f5d5d;
   font-family: var(--main-font);
 }
@@ -120,10 +119,18 @@
 
 a {
   text-decoration: none;
+  width: 15%;
+}
+.no-borders {
+  width: 100%;
+  margin-top: 2%;
+  height: 100vh;
+  align-items: center;
 }
 .no-data {
   width: 100%;
-  margin-top: 2%;
+  margin-left: 40%;
+  margin-top: 10%;
   height: 100vh;
   align-items: center;
 }
@@ -188,7 +195,6 @@ a {
   .borders {
     width: 100%;
     margin-top: 5%;
-    justify-content: space-between;
     flex-wrap: wrap;
   }
   .border-countries {
@@ -206,7 +212,15 @@ a {
   .border-btns {
     margin-bottom: 5%;
   }
-  .no-data {
+  .no-borders {
     height: 0vh;
+  }
+  .no-data {
+    margin-left: 25%;
+    margin-top: 25%;
+    height: 10vh;
+  }
+  a {
+    width: 25%;
   }
 }

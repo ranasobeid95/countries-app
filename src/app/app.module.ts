@@ -15,10 +15,10 @@ import { HttpErrorInterceptor } from './http-interceptors/http-interceptors.inte
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule,
     SharedModule,
     CountriesModule,
   ],

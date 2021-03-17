@@ -1,13 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { CountriesService } from './countries.service';
+import { CountriesService } from './services/countries.service';
 import { FormControl } from '@angular/forms';
 
 import { Country } from './country';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import {
+  map,
+  startWith,
+  debounceTime,
+  distinctUntilChanged,
+  switchMap,
+} from 'rxjs/operators';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 import { REGIONS } from './regions';
+import { FilterService } from './services/filter.service';
 
 @Component({
   selector: 'all-countries',
@@ -26,8 +33,13 @@ export class CountriesComponent implements OnInit {
   err?: string;
   isLoading: boolean = false;
   mode: ProgressSpinnerMode = 'indeterminate';
+  search$ = new Subject<string>();
+  results$!: Observable<Country[]>;
 
-  constructor(private countriesService: CountriesService) {}
+  constructor(
+    private countriesService: CountriesService,
+    private filterService: FilterService
+  ) {}
 
   ngOnInit(): void {
     this.getAllCountries();
@@ -36,7 +48,21 @@ export class CountriesComponent implements OnInit {
       map((value) => this._filter(value))
     );
   }
-  private _filter(value: string): string[] {
+
+  onSearch(event: any) {
+    let searchText: string = event.target.value;
+    if (!searchText || event.key === 'Enter') {
+      this.getCountryByNameAndRegion(event);
+    }
+    this.search$.next(searchText);
+    this.results$ = this.search$.pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      switchMap((val) => this.countriesService.getCountryByName(val))
+    );
+  }
+
+  _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
     return this.options.filter(
@@ -45,6 +71,7 @@ export class CountriesComponent implements OnInit {
   }
 
   getAllCountries() {
+    this.options = [];
     this.isLoading = true;
     this.countriesService.getAllCountries().subscribe(
       (response) => {
@@ -61,14 +88,17 @@ export class CountriesComponent implements OnInit {
       }
     );
   }
-  getCountryByName(countryName: any) {
+
+  getCountryByNameAndRegion(event: any) {
     this.isLoading = true;
     this.err = '';
-    if (this.selectedRegion === 'All') {
-      if (countryName.target.value) {
-        this.countriesService
-          .getCountryByName(countryName.target.value)
-          .subscribe(
+    typeof event === 'object'
+      ? (this.countryName = event.target.value)
+      : (this.selectedRegion = event);
+
+    this.selectedRegion === 'All'
+      ? this.countryName
+        ? this.countriesService.getCountryByName(this.countryName).subscribe(
             (response) => {
               this.countries = response;
             },
@@ -80,44 +110,13 @@ export class CountriesComponent implements OnInit {
             () => {
               this.isLoading = false;
             }
-          );
-      } else {
-        this.getAllCountries();
-      }
-    } else {
-      this.countriesService
-        .getCountryByRegion(this.selectedRegion)
-        .subscribe((response) => {
-          let filtterResponse = response.filter((element) => {
-            return element.name.includes(this.countryName);
-          });
-          this.countries = filtterResponse;
-        });
-    }
+          )
+        : this.getAllCountries()
+      : this._responseFilter(this.countryName, this.selectedRegion);
   }
 
-  getCountriesByRegion(region: string) {
-    if (this.countryName && region === 'All') {
-      this.getCountryByName(this.countryName);
-    } else if (!this.countryName && region === 'All') {
-      this.getAllCountries();
-    } else {
-      this.isLoading = true;
-      this.countriesService.getCountryByRegion(region).subscribe(
-        (response) => {
-          let filtterResponse = response.filter((element) => {
-            return element.name.includes(this.countryName);
-          });
-          this.countries = filtterResponse;
-        },
-        (err) => console.log(err),
-        () => {
-          this.isLoading = false;
-        }
-      );
-    }
-  }
   updateCountryName(country: string) {
+    this.isLoading = true;
     if (this.countryName) {
       this.countriesService.getCountryByName(country).subscribe(
         (response) => {
@@ -139,5 +138,19 @@ export class CountriesComponent implements OnInit {
         }
       );
     }
+  }
+
+  _responseFilter(countryName: string, region: string) {
+    this.filterService.filterByNameAndRegion(countryName, region).subscribe(
+      (response: Country[]) => {
+        this.countries = response;
+      },
+      (err) => {
+        this.isLoading = false;
+      },
+      () => {
+        this.isLoading = false;
+      }
+    );
   }
 }

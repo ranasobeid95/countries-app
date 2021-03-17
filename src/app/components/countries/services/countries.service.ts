@@ -15,7 +15,7 @@ export class CountriesService {
   }
 
   getCountryByName(name: string): Observable<Country[]> {
-    return name.length <= 3
+    return name.length === 3 || name.length === 2
       ? this.http.get<Country[]>(`${this.countryUrl}/alpha/${name}`)
       : this.http.get<Country[]>(`${this.countryUrl}/name/${name}`);
   }

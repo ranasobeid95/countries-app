@@ -50,17 +50,16 @@ export class CountriesComponent implements OnInit {
   }
 
   onSearch(event: any) {
-    if (event.target.value) {
-      let searchText: string = event.target.value;
-      this.search$.next(searchText);
-      this.search$.pipe(
-        debounceTime(500),
-        distinctUntilChanged(),
-        switchMap((val) => this.countriesService.getCountryByName(val))
-      );
-    } else {
+    let searchText: string = event.target.value;
+    if (!searchText || event.key === 'Enter') {
       this.getCountryByNameAndRegion(event);
     }
+    this.search$.next(searchText);
+    this.results$ = this.search$.pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      switchMap((val) => this.countriesService.getCountryByName(val))
+    );
   }
 
   _filter(value: string): string[] {

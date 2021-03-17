@@ -13,12 +13,13 @@ import {
   MatSnackBarVerticalPosition,
   MatSnackBar,
 } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
-  constructor(private _snackBar: MatSnackBar) {}
+  constructor(private _snackBar: MatSnackBar, private router: Router) {}
 
   intercept(
     request: HttpRequest<unknown>,

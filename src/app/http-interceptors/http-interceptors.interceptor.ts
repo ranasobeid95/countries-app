@@ -29,6 +29,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         let errorMsg: string = '';
         if (error.error instanceof ErrorEvent) {
+          console.log(`11111111111`, 11111111111);
+
           errorMsg = `Error: ${error.error.message}`;
           this._snackBar.open('this is client side error', 'End now', {
             duration: 500,
@@ -37,11 +39,17 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           });
         } else {
           errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
-          this._snackBar.open('Server error', 'End now', {
-            duration: 1000,
-            horizontalPosition: this.horizontalPosition,
-            verticalPosition: this.verticalPosition,
-          });
+          this._snackBar.open(
+            error.status === 404
+              ? `Error : ${error.status}`
+              : `Server error  ${error.status} `,
+            'End now',
+            {
+              duration: 700,
+              horizontalPosition: this.horizontalPosition,
+              verticalPosition: this.verticalPosition,
+            }
+          );
         }
         return throwError(errorMsg);
       })

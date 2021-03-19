@@ -7,9 +7,7 @@ describe('CountryDetailsComponent', () => {
   let fixture: ComponentFixture<CountryDetailsComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [CountryDetailsComponent],
-    }).compileComponents();
+    await TestBed.compileComponents();
   });
 
   beforeEach(() => {

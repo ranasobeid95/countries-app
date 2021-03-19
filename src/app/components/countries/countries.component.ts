@@ -33,8 +33,6 @@ export class CountriesComponent implements OnInit {
   err?: string;
   isLoading: boolean = false;
   mode: ProgressSpinnerMode = 'indeterminate';
-  search$ = new Subject<string>();
-  results$!: Observable<Country[]>;
 
   constructor(
     private countriesService: CountriesService,
@@ -54,12 +52,6 @@ export class CountriesComponent implements OnInit {
     if (!searchText || event.key === 'Enter') {
       this.getCountryByNameAndRegion(event);
     }
-    this.search$.next(searchText);
-    this.results$ = this.search$.pipe(
-      debounceTime(500),
-      distinctUntilChanged(),
-      switchMap((val) => this.countriesService.getCountryByName(val))
-    );
   }
 
   _filter(value: string): string[] {

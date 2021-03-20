@@ -99,6 +99,17 @@ describe('Countries Service Test', () => {
     request.flush([dummyCountries[0]]);
   });
 
+  it('Should retreive country by Region from the API via GET getCountryByRegion', () => {
+    countriesService.getCountryByRegion('Asia').subscribe((response) => {
+      expect(response.length).toBe(1);
+      expect(response).toEqual([dummyCountries[0]]);
+    });
+    const request = httpMock.expectOne(
+      `${countriesService.getUrl()}/region/Asia`
+    );
+    request.flush([dummyCountries[0]]);
+  });
+
   afterEach(() => {
     httpMock.verify();
   });

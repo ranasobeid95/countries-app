@@ -1,15 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AppHeaderComponent } from './app-header.component';
+import { ThemeService } from 'src/app/theme.service';
 
 describe('AppHeaderComponent', () => {
   let component: AppHeaderComponent;
   let fixture: ComponentFixture<AppHeaderComponent>;
+  let themeService: ThemeService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppHeaderComponent],
+      providers: [ThemeService],
     }).compileComponents();
+    themeService = TestBed.get(ThemeService);
   });
 
   beforeEach(() => {
@@ -20,5 +24,14 @@ describe('AppHeaderComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('toggleDarkMode should toggle isDarkMode', () => {
+    component = new AppHeaderComponent(themeService);
+    expect(component.isDarkMode).toBe(false, 'Light at first');
+    component.toggleDarkMode();
+    expect(component.isDarkMode).toBe(true, 'Dark after click');
+    component.toggleDarkMode();
+    expect(component.isDarkMode).toBe(false, 'Light after second click');
   });
 });

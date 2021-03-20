@@ -24,4 +24,8 @@ export class CountriesService {
     return this.http.get<Country[]>(`${this.countryUrl}/region/${region}
 `);
   }
+
+  getUrl() {
+    return this.countryUrl;
+  }
 }

@@ -21,8 +21,7 @@ export class CountriesService {
   }
 
   getCountryByRegion(region: string): Observable<Country[]> {
-    return this.http.get<Country[]>(`${this.countryUrl}/region/${region}
-`);
+    return this.http.get<Country[]>(`${this.countryUrl}/region/${region}`);
   }
 
   getUrl() {

@@ -1,40 +1,27 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
-
 import { CountriesComponent } from './countries.component';
-import { CountriesService } from './services/countries.service';
+import { CountriesService } from '../../services/countries.service';
+import { FilterService } from 'src/app/services/filter.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CountriesRoutingModule } from './countries-routing.module';
+import { MaterialModule } from 'src/app/material/material.module';
+import { FormsModule } from '@angular/forms';
 
-describe('CountriesService', () => {
-  let httpTestingController: HttpTestingController;
-  let service: CountriesService;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [CountriesComponent],
-      providers: [CountriesService],
-      imports: [HttpClientTestingModule],
-    });
-  });
-
-  httpTestingController = TestBed.get(HttpTestingController);
-  service = TestBed.get(CountriesService);
-  afterEach(() => {
-    httpTestingController.verify();
-  });
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-});
-
-describe('CountriesComponent', () => {
+describe('Countries Component', () => {
   let component: CountriesComponent;
   let fixture: ComponentFixture<CountriesComponent>;
 
   beforeEach(async () => {
-    await TestBed.compileComponents();
+    await TestBed.configureTestingModule({
+      declarations: [CountriesComponent],
+      providers: [CountriesService, FilterService],
+      imports: [
+        HttpClientTestingModule,
+        CountriesRoutingModule,
+        MaterialModule,
+        FormsModule,
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

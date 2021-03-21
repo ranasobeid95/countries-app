@@ -1,20 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { CountriesService } from './services/countries.service';
+import { CountriesService } from '../../services/countries.service';
 import { FormControl } from '@angular/forms';
 
-import { Country } from './country';
+import { Country } from '../../model/country';
 import { Observable, Subject } from 'rxjs';
-import {
-  map,
-  startWith,
-  debounceTime,
-  distinctUntilChanged,
-  switchMap,
-} from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
-import { REGIONS } from './regions';
-import { FilterService } from './services/filter.service';
+import { REGIONS } from '../../model/regions';
+import { FilterService } from '../../services/filter.service';
 
 @Component({
   selector: 'all-countries',
@@ -33,8 +27,6 @@ export class CountriesComponent implements OnInit {
   err?: string;
   isLoading: boolean = false;
   mode: ProgressSpinnerMode = 'indeterminate';
-  search$ = new Subject<string>();
-  results$!: Observable<Country[]>;
 
   constructor(
     private countriesService: CountriesService,
@@ -54,12 +46,6 @@ export class CountriesComponent implements OnInit {
     if (!searchText || event.key === 'Enter') {
       this.getCountryByNameAndRegion(event);
     }
-    this.search$.next(searchText);
-    this.results$ = this.search$.pipe(
-      debounceTime(500),
-      distinctUntilChanged(),
-      switchMap((val) => this.countriesService.getCountryByName(val))
-    );
   }
 
   _filter(value: string): string[] {

@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CountryCardComponent } from './country-card.component';
 import { dummyCountries } from '../../../model/dummyData';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('CountryCardComponent', () => {
   let component: CountryCardComponent;
@@ -16,6 +18,7 @@ describe('CountryCardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CountryCardComponent);
     component = fixture.componentInstance;
+    component.country = dummyCountries[0];
     fixture.detectChanges();
   });
 
@@ -23,11 +26,22 @@ describe('CountryCardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Setting country to empty object', () => {
-    expect(component.country).toBeUndefined();
+  it('Set country', () => {
+    expect(component.country).toBeDefined();
+  });
 
-    component.country = dummyCountries[0];
-    fixture.detectChanges();
-    expect(component.country).toEqual(dummyCountries[0]);
+  it('h2 element should contain the country name  ', () => {
+    const cardDe: DebugElement = fixture.debugElement;
+    const cardEle: HTMLElement = cardDe.nativeElement;
+
+    const h2 = cardEle.querySelector('.card-country-name');
+    expect(h2?.textContent).toBe(component.country.name);
+  });
+
+  it('should find the <h2> with fixture.debugElement.query(By.css)', () => {
+    const cardDe: DebugElement = fixture.debugElement;
+    const h2De = cardDe.query(By.css('h2'));
+    const h2: HTMLElement = h2De.nativeElement;
+    expect(h2?.textContent).toBe(component.country.name);
   });
 });

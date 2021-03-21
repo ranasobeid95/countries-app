@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AppHeaderComponent } from './app-header.component';
-import { ThemeService } from 'src/app/theme.service';
+import { ThemeService } from 'src/app/services/theme.service';
 
 describe('AppHeaderComponent', () => {
   let component: AppHeaderComponent;

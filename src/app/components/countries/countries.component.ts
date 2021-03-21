@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CountriesService } from './services/countries.service';
+import { CountriesService } from '../../services/countries.service';
 import { FormControl } from '@angular/forms';
 
-import { Country } from './country';
+import { Country } from '../../model/country';
 import { Observable, Subject } from 'rxjs';
 import {
   map,
@@ -13,8 +13,8 @@ import {
 } from 'rxjs/operators';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
-import { REGIONS } from './regions';
-import { FilterService } from './services/filter.service';
+import { REGIONS } from '../../model/regions';
+import { FilterService } from '../../services/filter.service';
 
 @Component({
   selector: 'all-countries',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CountriesService } from './countries.service';
-import { Country } from '../country';
+import { Country } from '../model/country';
 import { map } from 'rxjs/operators';
 
 @Injectable({

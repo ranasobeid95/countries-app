@@ -4,13 +4,7 @@ import { FormControl } from '@angular/forms';
 
 import { Country } from '../../model/country';
 import { Observable, Subject } from 'rxjs';
-import {
-  map,
-  startWith,
-  debounceTime,
-  distinctUntilChanged,
-  switchMap,
-} from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 import { REGIONS } from '../../model/regions';

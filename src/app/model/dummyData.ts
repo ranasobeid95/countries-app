@@ -3,6 +3,7 @@ import { Country } from '../model/country';
 export const dummyCountries: Country[] = [
   {
     name: 'Afghanistan',
+    alpha3Code: 'AFG',
     capital: 'Kabul',
     region: 'Asia',
     subregion: 'Southern Asia',
@@ -34,13 +35,11 @@ export const dummyCountries: Country[] = [
   {
     name: 'Albania',
     topLevelDomain: '.al',
-
+    alpha3Code: 'ALB',
     capital: 'Tirana',
-
     region: 'Europe',
     subregion: 'Southern Europe',
     population: 2886026,
-
     borders: ['MNE', 'GRC', 'MKD', 'KOS'],
     nativeName: 'Shqipëria',
     currencies: [

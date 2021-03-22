@@ -4,9 +4,7 @@ import { ReplaySubject } from 'rxjs';
 export class ActivatedRouteStub {
   private subject = new ReplaySubject<ParamMap>();
 
-  constructor(initialParams: Params) {
-    this.setParamMap(initialParams);
-  }
+  constructor() {}
 
   readonly paramMap = this.subject.asObservable();
 

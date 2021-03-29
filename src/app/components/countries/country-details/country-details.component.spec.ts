@@ -71,12 +71,12 @@ describe('Country Details Component', () => {
   it("should display country's by name", () => {
     const expectedCountry = dummyCountries[0];
     activatedRoute.setParamMap({ name: expectedCountry.name });
-    let expextedParams: string;
+    let expectedParams: string;
     activatedRoute.paramMap.subscribe(
       (params: any) => {
-        expextedParams = params.get('name');
-        component.getDetails(expextedParams);
-        expect(expextedParams).toBe(dummyCountries[0].name);
+        expectedParams = params.get('name');
+        component.getDetails(expectedParams);
+        expect(expectedParams).toBe(dummyCountries[0].name);
         expect(component.country).toEqual([dummyCountries[0]]);
       },
       (err) => {
@@ -88,22 +88,22 @@ describe('Country Details Component', () => {
   it("should display country's by alpha code", () => {
     const expectedCountry = dummyCountries[0];
     activatedRoute.setParamMap({ name: expectedCountry.alpha3Code });
-    let expextedParams: string;
+    let expectedParams: string;
     activatedRoute.paramMap.subscribe((params: any) => {
-      expextedParams = params.get('name');
-      component.getDetails(expextedParams);
-      expect(expextedParams).toBe(dummyCountries[0].alpha3Code);
+      expectedParams = params.get('name');
+      component.getDetails(expectedParams);
+      expect(expectedParams).toBe(dummyCountries[0].alpha3Code);
       expect(component.country).toEqual([dummyCountries[0]]);
     });
   });
 
   it("should not display country's by  invalid name", () => {
     activatedRoute.setParamMap({ name: '123' });
-    let expextedParams: string;
+    let expectedParams: string;
     activatedRoute.paramMap.subscribe(
       (params: any) => {
-        expextedParams = params.get('name');
-        component.getDetails(expextedParams);
+        expectedParams = params.get('name');
+        component.getDetails(expectedParams);
       },
       (err) => {
         expect(component.country).toEqual([]);

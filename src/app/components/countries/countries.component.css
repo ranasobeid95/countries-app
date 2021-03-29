@@ -87,14 +87,50 @@
   }
 
   .filter-form-input {
+    height: 5vh;
     width: 100%;
   }
+  .filter-form-input input {
+    height: 5vh;
+  }
+
   .select {
     width: 50%;
     margin-top: 5%;
   }
   .mat-select.select-region {
     margin-left: 0;
-    height: 8vh;
+    height: 5vh;
+  }
+  .mat-select.select-region span {
+    margin-left: 10%;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  .countries-container-filter {
+    margin-top: 60px;
+    height: 20vh;
+    margin-left: 0;
+  }
+
+  .filter-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .filter-form-input {
+    width: 100%;
+  }
+
+  .select {
+    width: 50%;
+    margin-top: 5%;
+  }
+  .mat-select.select-region {
+    margin-left: 0;
+    height: 6vh;
   }
 }

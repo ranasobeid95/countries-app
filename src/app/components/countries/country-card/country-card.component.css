@@ -5,6 +5,10 @@
   margin-top: 20px;
   margin-left: 10px;
 }
+
+.card-country:hover {
+  transform: translateY(-1%);
+}
 .card-country-img {
   width: 100%;
 }
@@ -40,11 +44,23 @@ ul {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-@media only screen and (max-width: 860px) {
+@media only screen and (min-width: 300px) {
   .card-country {
     height: 60vh;
     margin-bottom: 20px;
     margin-top: 20px;
     margin-left: 10px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .card-country {
+    height: 40vh;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .card-country {
+    height: 60vh;
   }
 }

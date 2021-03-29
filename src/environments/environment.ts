@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  firebaseConfig: {
+  firebase: {
     apiKey: 'AIzaSyBwW77hknVDe5nHfX-Z8DfPxvpwd47zjiI',
+    databaseURL: 'https://where-in-the-world-dee98.firebaseio.com',
     authDomain: 'where-in-the-world-dee98.firebaseapp.com',
     projectId: 'where-in-the-world-dee98',
     storageBucket: 'where-in-the-world-dee98.appspot.com',

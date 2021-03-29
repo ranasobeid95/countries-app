@@ -4,6 +4,9 @@ import { CountryCardComponent } from './country-card.component';
 import { dummyCountries } from '../../../model/dummyData';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from 'src/app/material/material.module';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('CountryCardComponent', () => {
   let component: CountryCardComponent;
@@ -12,6 +15,7 @@ describe('CountryCardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CountryCardComponent],
+      imports: [CommonModule, MaterialModule, RouterTestingModule],
     }).compileComponents();
   });
 

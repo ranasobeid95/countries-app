@@ -9,6 +9,7 @@ import { ActivatedRouteStub } from 'src/app/tests/activated-route-stub';
 import { dummyCountries } from 'src/app/model/dummyData';
 import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
+import { CommonModule } from '@angular/common';
 
 describe('Country Details Component', () => {
   let component: CountryDetailsComponent;
@@ -33,7 +34,12 @@ describe('Country Details Component', () => {
         { provide: CountriesService, useValue: countryServiceSpy },
         Location,
       ],
-      imports: [HttpClientTestingModule, MaterialModule, RouterTestingModule],
+      imports: [
+        HttpClientTestingModule,
+        CommonModule,
+        MaterialModule,
+        RouterTestingModule,
+      ],
     }).compileComponents();
   });
 
@@ -96,23 +102,6 @@ describe('Country Details Component', () => {
       expect(component.country).toEqual([dummyCountries[0]]);
     });
   });
-
-  it("should not display country's by  invalid name", () => {
-    activatedRoute.setParamMap({ name: '123' });
-    let expectedParams: string;
-    activatedRoute.paramMap.subscribe(
-      (params: any) => {
-        expectedParams = params.get('name');
-        component.getDetails(expectedParams);
-      },
-      (err) => {
-        expect(component.country).toEqual([]);
-
-        expect(component.isLoading).toBeFalse();
-      }
-    );
-  });
-
   it('backToLastPage', () => {
     component.backToLastPage();
     expect(component.isLoading).toBeTrue();

@@ -24,7 +24,7 @@ import { HttpErrorInterceptor } from './http-interceptors/http-interceptors.inte
     MaterialModule,
     SharedModule,
     CountriesModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
   ],

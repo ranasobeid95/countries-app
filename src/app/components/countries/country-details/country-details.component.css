@@ -134,7 +134,8 @@ a {
   height: 100vh;
   align-items: center;
 }
-@media only screen and (max-width: 860px) {
+
+@media only screen and (min-width: 300px) {
   .details-container {
     height: 150vh;
   }
@@ -222,5 +223,125 @@ a {
   }
   a {
     width: 25%;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .details-container {
+    height: 125vh;
+  }
+  .details-container-content {
+    width: 100%;
+    padding: 0;
+    height: 115vh;
+    display: flex;
+  }
+
+  .country-name {
+    width: 30%;
+    font-size: 35px;
+    margin-left: 6%;
+  }
+
+  .details-container-right h4 {
+    font-size: 20px;
+  }
+
+  .back-btn {
+    margin-top: 10%;
+    height: 10vh;
+  }
+
+  .mat-raised-button {
+    width: 20%;
+    height: 4vh;
+    margin-left: 6%;
+    font-size: 20px;
+  }
+  .mat-raised-button span {
+    font-size: 20px;
+  }
+  .mat-raised-button .mat-icon {
+    font-size: 18px;
+  }
+
+  .details-container-left {
+    width: 100%;
+    margin-top: 6%;
+    margin-bottom: 6%;
+  }
+  .flag {
+    width: 90%;
+    margin: auto;
+    height: 40vh;
+    padding: 0%;
+    display: block;
+  }
+
+  .details-container-right {
+    width: 100%;
+    height: 75vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  .more-details {
+    width: 100%;
+    margin-bottom: 0px;
+    height: 15vh;
+    flex-direction: row;
+  }
+
+  .more-details h4 {
+    margin-bottom: 6px;
+  }
+
+  .more-right {
+    width: 40%;
+    height: 15vh;
+  }
+  .more-left {
+    width: 60%;
+    height: 15vh;
+    margin-left: 6%;
+  }
+  .borders {
+    width: 100%;
+    margin-top: 5%;
+    margin-left: 6%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .border-countries {
+    width: 100%;
+    height: 10vh;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .border-countries span {
+    margin-top: 3%;
+    width: 100%;
+    font-weight: bold;
+    margin-left: 6%;
+    font-size: 20px;
+  }
+
+  .no-borders {
+    height: 0vh;
+  }
+  .no-data {
+    margin-left: 25%;
+    margin-top: 25%;
+    height: 10vh;
+  }
+  .borders .border-btns {
+    width: 100%;
+    height: 4vh;
+    font-size: 20px;
+  }
+
+  a {
+    width: 20%;
+    margin-right: 2%;
   }
 }

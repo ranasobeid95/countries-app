@@ -13,6 +13,7 @@ import { SharedModule } from './components/shared/shared.module';
 import { CountriesModule } from './components/countries/countries.module';
 import { MaterialModule } from './material/material.module';
 import { HttpErrorInterceptor } from './http-interceptors/http-interceptors.interceptor';
+import { AuthModule } from './components/auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { HttpErrorInterceptor } from './http-interceptors/http-interceptors.inte
     MaterialModule,
     SharedModule,
     CountriesModule,
+    AuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,

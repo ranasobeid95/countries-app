@@ -38,6 +38,25 @@ a:hover {
 
 @media only screen and (max-width: 860px) {
   .navbar-dark-mode {
+    width: 20%;
+  }
+  .navbar-dark-mode span {
+    font-size: 1rem;
+    margin-left: 30%;
+  }
+
+  .navbar-dark-mode mat-icon {
+    font-size: 1.5rem;
+  }
+
+  .navbar-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  .navbar-dark-mode {
     width: 25%;
   }
   .navbar-dark-mode span {

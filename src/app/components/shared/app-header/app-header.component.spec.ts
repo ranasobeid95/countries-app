@@ -2,6 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AppHeaderComponent } from './app-header.component';
 import { ThemeService } from 'src/app/services/theme.service';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from 'src/app/material/material.module';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AppHeaderComponent', () => {
   let component: AppHeaderComponent;
@@ -11,6 +14,7 @@ describe('AppHeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppHeaderComponent],
+      imports: [CommonModule, MaterialModule, RouterTestingModule],
       providers: [ThemeService],
     }).compileComponents();
     themeService = TestBed.get(ThemeService);

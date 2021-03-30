@@ -2,6 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CountriesListComponent } from './countries-list.component';
 import { DebugElement } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from 'src/app/material/material.module';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('CountriesListComponent', () => {
   let component: CountriesListComponent;
@@ -10,6 +13,7 @@ describe('CountriesListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CountriesListComponent],
+      imports: [CommonModule, MaterialModule, RouterTestingModule],
     }).compileComponents();
   });
 

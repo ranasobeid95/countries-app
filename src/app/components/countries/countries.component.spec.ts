@@ -8,6 +8,9 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { FormsModule } from '@angular/forms';
 import { of } from 'rxjs';
 import { dummyCountries } from 'src/app/model/dummyData';
+import { CountryCardComponent } from './country-card/country-card.component';
+import { CountriesListComponent } from './countries-list/countries-list.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('Countries Component', () => {
   let component: CountriesComponent;
@@ -29,7 +32,11 @@ describe('Countries Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CountriesComponent],
+      declarations: [
+        CountriesComponent,
+        CountriesListComponent,
+        CountryCardComponent,
+      ],
       providers: [
         { provide: CountriesService, useValue: countryServiceSpy },
         { provide: FilterService, useValue: filterServiceSpy },
@@ -37,6 +44,7 @@ describe('Countries Component', () => {
       imports: [
         HttpClientTestingModule,
         CountriesRoutingModule,
+        RouterTestingModule,
         MaterialModule,
         FormsModule,
       ],

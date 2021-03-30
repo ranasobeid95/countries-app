@@ -18,7 +18,7 @@ describe('Countries Service Test', () => {
     httpMock = TestBed.get(HttpTestingController);
   });
 
-  it('Should retreive all countries from the API via GET getAllCountries', () => {
+  it('Should retrieve all countries from the API via GET getAllCountries', () => {
     countriesService.getAllCountries().subscribe((response) => {
       expect(response.length).toBe(2);
       expect(response).toEqual(dummyCountries);
@@ -28,7 +28,7 @@ describe('Countries Service Test', () => {
     request.flush(dummyCountries);
   });
 
-  it('Should retreive country by name from the API via GET getCountryByName', () => {
+  it('Should retrieve country by name from the API via GET getCountryByName', () => {
     countriesService.getCountryByName('afghanistan').subscribe((response) => {
       expect(response.length).toBe(1);
       expect(response).toEqual([dummyCountries[0]]);
@@ -40,7 +40,7 @@ describe('Countries Service Test', () => {
     request.flush([dummyCountries[0]]);
   });
 
-  it('Should retreive country by Region from the API via GET getCountryByRegion', () => {
+  it('Should retrieve country by Region from the API via GET getCountryByRegion', () => {
     countriesService.getCountryByRegion('Asia').subscribe((response) => {
       expect(response.length).toBe(1);
       expect(response).toEqual([dummyCountries[0]]);

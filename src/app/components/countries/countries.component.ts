@@ -3,7 +3,7 @@ import { CountriesService } from '../../services/countries.service';
 import { FormControl } from '@angular/forms';
 
 import { Country } from '../../model/country';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 

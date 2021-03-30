@@ -9,6 +9,7 @@ import { ActivatedRouteStub } from 'src/app/tests/activated-route-stub';
 import { dummyCountries } from 'src/app/model/dummyData';
 import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
+import { CommonModule } from '@angular/common';
 
 describe('Country Details Component', () => {
   let component: CountryDetailsComponent;
@@ -33,7 +34,12 @@ describe('Country Details Component', () => {
         { provide: CountriesService, useValue: countryServiceSpy },
         Location,
       ],
-      imports: [HttpClientTestingModule, MaterialModule, RouterTestingModule],
+      imports: [
+        HttpClientTestingModule,
+        CommonModule,
+        MaterialModule,
+        RouterTestingModule,
+      ],
     }).compileComponents();
   });
 
@@ -71,12 +77,12 @@ describe('Country Details Component', () => {
   it("should display country's by name", () => {
     const expectedCountry = dummyCountries[0];
     activatedRoute.setParamMap({ name: expectedCountry.name });
-    let expextedParams: string;
+    let expectedParams: string;
     activatedRoute.paramMap.subscribe(
       (params: any) => {
-        expextedParams = params.get('name');
-        component.getDetails(expextedParams);
-        expect(expextedParams).toBe(dummyCountries[0].name);
+        expectedParams = params.get('name');
+        component.getDetails(expectedParams);
+        expect(expectedParams).toBe(dummyCountries[0].name);
         expect(component.country).toEqual([dummyCountries[0]]);
       },
       (err) => {
@@ -88,31 +94,14 @@ describe('Country Details Component', () => {
   it("should display country's by alpha code", () => {
     const expectedCountry = dummyCountries[0];
     activatedRoute.setParamMap({ name: expectedCountry.alpha3Code });
-    let expextedParams: string;
+    let expectedParams: string;
     activatedRoute.paramMap.subscribe((params: any) => {
-      expextedParams = params.get('name');
-      component.getDetails(expextedParams);
-      expect(expextedParams).toBe(dummyCountries[0].alpha3Code);
+      expectedParams = params.get('name');
+      component.getDetails(expectedParams);
+      expect(expectedParams).toBe(dummyCountries[0].alpha3Code);
       expect(component.country).toEqual([dummyCountries[0]]);
     });
   });
-
-  it("should not display country's by  invalid name", () => {
-    activatedRoute.setParamMap({ name: '123' });
-    let expextedParams: string;
-    activatedRoute.paramMap.subscribe(
-      (params: any) => {
-        expextedParams = params.get('name');
-        component.getDetails(expextedParams);
-      },
-      (err) => {
-        expect(component.country).toEqual([]);
-
-        expect(component.isLoading).toBeFalse();
-      }
-    );
-  });
-
   it('backToLastPage', () => {
     component.backToLastPage();
     expect(component.isLoading).toBeTrue();

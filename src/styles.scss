@@ -154,6 +154,22 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
   .mat-spinner circle {
     stroke: hsl(0, 0%, 98%);
   }
+
+  .auth .auth-btn {
+    background-color: var(--dark-mode-background);
+    box-shadow: 0 0 6px -3px #202c37 !important;
+  }
+  .header .auth a {
+    background-color: var(--dark-mode-background);
+  }
+
+  .navbar-dark-mode button {
+    background-color: var(--dark-mode-background);
+    box-shadow: 0 0 6px -3px #202c37 !important;
+  }
+  .header .navbar-dark-mode a {
+    background-color: var(--dark-mode-background);
+  }
 }
 
 html,

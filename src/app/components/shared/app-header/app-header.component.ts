@@ -8,6 +8,7 @@ import { ThemeService } from 'src/app/services/theme.service';
 })
 export class AppHeaderComponent implements OnInit {
   isDarkMode: boolean;
+  isLogin: boolean = false;
   constructor(private themeService: ThemeService) {
     this.themeService.initTheme();
     this.isDarkMode = this.themeService.isDarkMode();

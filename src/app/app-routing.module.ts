@@ -15,6 +15,11 @@ const routes: Routes = [
         (m) => m.CountriesModule
       ),
   },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./components/auth/auth.module').then((m) => m.AuthModule),
+  },
   { path: '**', component: PageNotFoundComponent },
 ];
 

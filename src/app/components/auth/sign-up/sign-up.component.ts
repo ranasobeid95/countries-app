@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 export class SignUpComponent implements OnInit {
   signUpForm!: FormGroup;
   submitted = false;
+  isExist = false;
   hide = true;
 
   constructor(
@@ -57,14 +58,24 @@ export class SignUpComponent implements OnInit {
   }
 
   submit() {
-    this.submitted = true;
     if (!this.signUpForm.valid) {
       return;
     }
-    this.authService.signUp(this.signUpForm.value).then(() => {
-      this.onReset();
-      this.router.navigate(['/verify-email']);
-    });
+    this.submitted = true;
+    return this.authService
+      .signUp(this.signUpForm.value)
+      .then(() => {
+        this.onReset();
+        this.router.navigate(['/verify-email']);
+      })
+      .catch((err) => {
+        if (
+          err.message ===
+          'The email address is already in use by another account.'
+        ) {
+          this.isExist = true;
+        }
+      });
   }
 
   onReset() {

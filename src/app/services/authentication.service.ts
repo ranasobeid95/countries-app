@@ -20,6 +20,7 @@ import { environment } from 'src/environments/environment';
 export class AuthenticationService {
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
+  userCredential!: firebase.auth.UserCredential;
   userData: any;
   isLogin: boolean = false;
 
@@ -31,12 +32,13 @@ export class AuthenticationService {
     private _snackBar: MatSnackBar
   ) {}
 
-  signUp(email: string, password: string) {
+  signUp(user: User) {
+    const { password, email, fullName } = user;
     return this.afAuth
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(email, password!)
       .then((newUserCredential) => {
-        this.setUserData(newUserCredential.user);
-        this.sendVerificationMail(newUserCredential);
+        this.setUserData({ ...newUserCredential.user, fullName });
+        this.setUserCredential(newUserCredential);
         return newUserCredential;
       })
       .catch((error) => {
@@ -45,10 +47,18 @@ export class AuthenticationService {
       });
   }
 
-  sendVerificationMail(result: firebase.auth.UserCredential) {
-    return result.user?.sendEmailVerification().then(() => {
-      console.log(' navigate to verify email address');
-    });
+  private setUserCredential(userCredential: firebase.auth.UserCredential) {
+    this.userCredential = userCredential;
+  }
+  private getUserCredential() {
+    return this.userCredential;
+  }
+  sendVerificationMail() {
+    return this.getUserCredential()
+      .user?.sendEmailVerification()
+      .then((res) => {
+        this.router.navigate(['/verify-email']);
+      });
   }
 
   deleteUser() {
@@ -60,9 +70,11 @@ export class AuthenticationService {
       });
   }
 
-  signIn(email: string, password: string) {
+  signIn(user: User) {
+    const { password, email } = user;
+
     return this.afAuth
-      .signInWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(email, password!)
       .then((result) => {
         this.isLogin = true;
         this.ngZone.run(() => {
@@ -71,8 +83,7 @@ export class AuthenticationService {
         return email;
       })
       .catch((error) => {
-        this.showError(error);
-        return error.massage;
+        throw Error(error.message);
       });
   }
 
@@ -93,7 +104,7 @@ export class AuthenticationService {
     const userData: User = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
+      fullName: user.fullName,
       emailVerified: user.emailVerified,
     };
     return userRef.set(userData, {
@@ -103,7 +114,7 @@ export class AuthenticationService {
 
   showError(error: { message: string }) {
     this._snackBar.open(error.message, 'End now', {
-      duration: 500,
+      duration: 100000,
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
     });

@@ -291,3 +291,7 @@ body {
 .err span {
   color: rgb(233, 104, 104);
 }
+
+.mat-simple-snackbar span {
+  color: var(--dark-mode-text);
+}

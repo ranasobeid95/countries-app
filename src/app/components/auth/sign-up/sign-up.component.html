@@ -96,6 +96,9 @@
         Create new
       </button>
     </form>
+    <mat-error class="is-not-exist" *ngIf="isExist"
+      >The email address is already used
+    </mat-error>
     <p>
       Already have an account?
       <a [routerLink]="['/sign-in']"><span class="sign-in"> Sign In</span></a>

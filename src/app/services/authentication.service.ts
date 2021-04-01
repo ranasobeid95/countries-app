@@ -42,8 +42,7 @@ export class AuthenticationService {
         return newUserCredential;
       })
       .catch((error) => {
-        this.showError(error);
-        return error.massage;
+        throw Error(error.message);
       });
   }
 
@@ -58,6 +57,9 @@ export class AuthenticationService {
       .user?.sendEmailVerification()
       .then((res) => {
         this.router.navigate(['/verify-email']);
+      })
+      .catch((error) => {
+        throw Error(error.message);
       });
   }
 
@@ -92,9 +94,11 @@ export class AuthenticationService {
       .signOut()
       .then(() => {
         this.isLogin = false;
-        console.log(' navigate to signIn');
+        this.router.navigate(['/sign-in']);
       })
-      .catch((error) => this.showError(error));
+      .catch((error) => {
+        throw Error(error.message);
+      });
   }
 
   setUserData(user: any) {
@@ -118,5 +122,6 @@ export class AuthenticationService {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
     });
+    throw Error(error.message);
   }
 }

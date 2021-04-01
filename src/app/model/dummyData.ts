@@ -1,4 +1,5 @@
 import { Country } from '../model/country';
+import { User } from './user';
 
 export const dummyCountries: Country[] = [
   {
@@ -55,5 +56,22 @@ export const dummyCountries: Country[] = [
     ],
 
     flag: 'https://restcountries.eu/data/alb.svg',
+  },
+];
+
+export const users: User[] = [
+  {
+    uid: '1',
+    fullName: 'user1',
+    email: 'user1@gmail.com',
+    password: '12345678',
+    emailVerified: true,
+  },
+  {
+    uid: '2',
+    fullName: 'user2',
+    email: 'user2@gmail.com',
+    password: '12345678',
+    emailVerified: false,
   },
 ];

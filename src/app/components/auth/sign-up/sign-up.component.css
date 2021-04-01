@@ -63,7 +63,10 @@ p {
 a {
   text-decoration: none;
 }
-
+.is-not-exist {
+  margin-top: 2%;
+  margin-left: 18%;
+}
 @media only screen and (max-width: 860px) {
   .left {
     display: none;
@@ -72,6 +75,9 @@ a {
     width: 100%;
     margin-top: 35%;
     margin-left: 25%;
+  }
+  .is-not-exist {
+    margin-left: 18%;
   }
 }
 
@@ -82,5 +88,9 @@ a {
   .right {
     width: 100%;
     margin-top: 35%;
+    margin-left: 18%;
+  }
+  .is-not-exist {
+    margin-left: 5%;
   }
 }

@@ -5,7 +5,7 @@ import { PageNotFoundComponent } from './components/shared/page-not-found/page-n
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'countries',
+    redirectTo: 'sign-in',
     pathMatch: 'full',
   },
   {

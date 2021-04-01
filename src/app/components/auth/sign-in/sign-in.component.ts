@@ -43,11 +43,11 @@ export class SignInComponent implements OnInit {
   }
 
   submit() {
-    this.submitted = true;
     if (!this.signInForm.valid) {
       return;
     }
-    this.authService
+    this.submitted = true;
+    return this.authService
       .signIn(this.signInForm.value)
       .then((res) => {
         this.onReset();

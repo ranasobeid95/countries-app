@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 
 const MaterialComponents = [
   MatSliderModule,
@@ -23,6 +24,7 @@ const MaterialComponents = [
   MatProgressSpinnerModule,
   MatSnackBarModule,
   MatSelectModule,
+  MatInputModule,
 ];
 @NgModule({
   imports: [MaterialComponents],

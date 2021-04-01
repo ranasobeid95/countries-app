@@ -72,10 +72,52 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
   .mat-spinner circle {
     stroke: hsl(207, 26%, 17%);
   }
+
+  .sign-up-container .submit-btn {
+    background-color: var(--dark-mode-elements);
+    color: var(--dark-mode-text);
+  }
+  .sign-up-container .submit-btn span {
+    color: var(--dark-mode-text);
+  }
+  .sign-up-container .submit-btn:hover {
+    background-color: var(--dark-mode-background);
+  }
+
+  .sign-up-container .sign-in {
+    color: var(--dark-mode-background);
+    font-weight: 600;
+  }
+
+  .sign-in-container .submit-btn {
+    background-color: var(--dark-mode-elements);
+    color: var(--dark-mode-text);
+  }
+  .sign-in-container .submit-btn span {
+    color: var(--dark-mode-text);
+  }
+  .sign-in-container .submit-btn:hover {
+    background-color: var(--dark-mode-background);
+  }
+
+  .sign-in-container .sign-up {
+    color: var(--dark-mode-background);
+    font-weight: 600;
+  }
+  .authBlock {
+    background-color: var(--light-mode-elements);
+  }
+
+  .btn-confirmation span {
+    color: var(--dark-mode-text);
+  }
+  .btn-confirmation:hover {
+    background-color: var(--dark-mode-background);
+  }
 }
 
-// following section is for dark mode.
-// use appropriate class name for darkMode
+// dark mode.
+
 $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
 .dark-mode {
   @include angular-material-theme($app-dark-theme);
@@ -169,6 +211,23 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
   }
   .header .navbar-dark-mode a {
     background-color: var(--dark-mode-background);
+  }
+  .form-title {
+    color: var(--dark-mode-text) !important;
+  }
+
+  .form .mat-form-field .mat-form-field-infix {
+    color: var(--dark-mode-text);
+  }
+
+  .sign-up-container p {
+    color: hsl(0deg 0% 100% / 50%);
+  }
+  .authBlock {
+    background-color: var(--dark-mode-elements);
+  }
+  .btn-confirmation {
+    background-color: var(--dark-mode-background) !important;
   }
 }
 

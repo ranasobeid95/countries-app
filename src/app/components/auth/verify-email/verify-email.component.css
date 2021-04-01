@@ -23,3 +23,43 @@ p {
 .btn-confirmation {
   width: 55%;
 }
+@media only screen and (max-width: 860px) {
+  .authBlock {
+    margin-top: 44%;
+    margin-left: 26%;
+
+    height: 30vh;
+    width: 50%;
+  }
+  h3 {
+    margin-left: 25%;
+  }
+  .confirmation {
+    width: 100%;
+    margin-left: 25%;
+  }
+  .btn-confirmation {
+    width: 50%;
+  }
+  p {
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  .authBlock {
+    height: 40vh;
+    width: 80%;
+    margin-left: 10%;
+  }
+  h3 {
+    margin-left: 15%;
+  }
+  .confirmation {
+    width: 100%;
+    margin-left: 15%;
+  }
+  .btn-confirmation {
+    width: 70%;
+  }
+}

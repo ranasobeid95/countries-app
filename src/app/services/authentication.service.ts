@@ -37,7 +37,7 @@ export class AuthenticationService {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password!)
       .then((newUserCredential) => {
-        this.setUserData({ ...newUserCredential.user, fullName });
+        this.setUserData({ ...newUserCredential.user, displayName: fullName });
         this.setUserCredential(newUserCredential);
         return newUserCredential;
       })
@@ -46,10 +46,10 @@ export class AuthenticationService {
       });
   }
 
-  private setUserCredential(userCredential: firebase.auth.UserCredential) {
+  setUserCredential(userCredential: firebase.auth.UserCredential) {
     this.userCredential = userCredential;
   }
-  private getUserCredential() {
+  getUserCredential() {
     return this.userCredential;
   }
   sendVerificationMail() {
@@ -63,26 +63,17 @@ export class AuthenticationService {
       });
   }
 
-  deleteUser() {
-    this.afAuth
-      .signInWithEmailAndPassword(environment.email, environment.password)
-      .then((info) => {
-        const user = firebase.auth().currentUser;
-        user?.delete();
-      });
-  }
-
   signIn(user: User) {
     const { password, email } = user;
 
     return this.afAuth
       .signInWithEmailAndPassword(email, password!)
-      .then((result) => {
+      .then((userCredential) => {
         this.isLogin = true;
         this.ngZone.run(() => {
           this.router.navigate(['countries']);
         });
-        return email;
+        return userCredential;
       })
       .catch((error) => {
         throw Error(error.message);
@@ -92,7 +83,7 @@ export class AuthenticationService {
   signOut() {
     return this.afAuth
       .signOut()
-      .then(() => {
+      .then((res) => {
         this.isLogin = false;
         this.router.navigate(['/sign-in']);
       })
@@ -108,7 +99,7 @@ export class AuthenticationService {
     const userData: User = {
       uid: user.uid,
       email: user.email,
-      fullName: user.fullName,
+      fullName: user.displayName,
       emailVerified: user.emailVerified,
     };
     return userRef.set(userData, {

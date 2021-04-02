@@ -65,7 +65,7 @@ export const users: User[] = [
     fullName: 'user1',
     email: 'user1@gmail.com',
     password: '12345678',
-    emailVerified: true,
+    emailVerified: false,
   },
   {
     uid: '2',

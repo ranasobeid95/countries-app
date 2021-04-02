@@ -114,6 +114,21 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
   .btn-confirmation:hover {
     background-color: var(--dark-mode-background);
   }
+
+  .sign-in-container span:hover {
+    color: var(--content-grey);
+  }
+
+  .authBlock span:hover {
+    color: var(--content-grey);
+  }
+
+  .sign-up-container span:hover {
+    color: var(--content-grey);
+  }
+  .mat-input-element {
+    caret-color: var(--dark-mode-text);
+  }
 }
 
 // dark mode.
@@ -229,7 +244,31 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
   .btn-confirmation {
     background-color: var(--dark-mode-background) !important;
   }
+
+  .sign-in-container span:hover {
+    color: var(--content-grey);
+  }
+
+  .authBlock span:hover {
+    color: var(--content-grey);
+  }
+
+  .sign-up-container span:hover {
+    color: var(--content-grey);
+  }
+  .mat-input-element {
+    caret-color: var(--dark-mode-text);
+  }
+
+  .mat-form-field.mat-focused .mat-form-field-label {
+    color: var(--dark-mode-text);
+  }
 }
+
+/*
+class="mat-form-field sign-in-form field ng-tns-c97-0 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-has-label ng-pristine ng-invalid mat-form-field-invalid ng-touched mat-form-field-hide-placeholder"
+
+*/
 
 html,
 body {

@@ -20,6 +20,7 @@ import { environment } from 'src/environments/environment';
 export class AuthenticationService {
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
+  userCredential!: firebase.auth.UserCredential;
   userData: any;
   isLogin: boolean = false;
 
@@ -31,59 +32,64 @@ export class AuthenticationService {
     private _snackBar: MatSnackBar
   ) {}
 
-  signUp(email: string, password: string) {
+  signUp(user: User) {
+    const { password, email, fullName } = user;
     return this.afAuth
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(email, password!)
       .then((newUserCredential) => {
-        this.setUserData(newUserCredential.user);
-        this.sendVerificationMail(newUserCredential);
+        this.setUserData({ ...newUserCredential.user, displayName: fullName });
+        this.setUserCredential(newUserCredential);
         return newUserCredential;
       })
       .catch((error) => {
-        this.showError(error);
-        return error.massage;
+        throw Error(error.message);
       });
   }
 
-  sendVerificationMail(result: firebase.auth.UserCredential) {
-    return result.user?.sendEmailVerification().then(() => {
-      console.log(' navigate to verify email address');
-    });
+  setUserCredential(userCredential: firebase.auth.UserCredential) {
+    this.userCredential = userCredential;
   }
-
-  deleteUser() {
-    this.afAuth
-      .signInWithEmailAndPassword(environment.email, environment.password)
-      .then((info) => {
-        const user = firebase.auth().currentUser;
-        user?.delete();
+  getUserCredential() {
+    return this.userCredential;
+  }
+  sendVerificationMail() {
+    return this.getUserCredential()
+      .user?.sendEmailVerification()
+      .then((res) => {
+        this.router.navigate(['/verify-email']);
+      })
+      .catch((error) => {
+        throw Error(error.message);
       });
   }
 
-  signIn(email: string, password: string) {
+  signIn(user: User) {
+    const { password, email } = user;
+
     return this.afAuth
-      .signInWithEmailAndPassword(email, password)
-      .then((result) => {
+      .signInWithEmailAndPassword(email, password!)
+      .then((userCredential) => {
         this.isLogin = true;
         this.ngZone.run(() => {
           this.router.navigate(['countries']);
         });
-        return email;
+        return userCredential;
       })
       .catch((error) => {
-        this.showError(error);
-        return error.massage;
+        throw Error(error.message);
       });
   }
 
   signOut() {
     return this.afAuth
       .signOut()
-      .then(() => {
+      .then((res) => {
         this.isLogin = false;
-        console.log(' navigate to signIn');
+        this.router.navigate(['/sign-in']);
       })
-      .catch((error) => this.showError(error));
+      .catch((error) => {
+        throw Error(error.message);
+      });
   }
 
   setUserData(user: any) {
@@ -93,7 +99,7 @@ export class AuthenticationService {
     const userData: User = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
+      fullName: user.displayName,
       emailVerified: user.emailVerified,
     };
     return userRef.set(userData, {
@@ -103,9 +109,10 @@ export class AuthenticationService {
 
   showError(error: { message: string }) {
     this._snackBar.open(error.message, 'End now', {
-      duration: 500,
+      duration: 100000,
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
     });
+    throw Error(error.message);
   }
 }

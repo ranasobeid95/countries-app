@@ -1,0 +1,73 @@
+<div class="sign-in-container">
+  <div class="sign-in-container left">
+    <img
+      src="../../../../assets/ClipartKey_138958.png"
+      alt="Where in the world"
+      class="world-img"
+    />
+  </div>
+  <div class="sign-in-container right">
+    <h1 class="form-title">Sign In</h1>
+    <form class="sign-in-form" [formGroup]="signInForm" (ngSubmit)="submit()">
+      <mat-form-field class="sign-in-form field">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          placeholder="Ex. pat@example.com"
+          autocomplete="off"
+          formControlName="email"
+        />
+        <mat-error
+          *ngIf="f.email.hasError('email') && !f.email.hasError('required')"
+        >
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="f.email.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="field">
+        <mat-label>Enter your password</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          autocomplete="off"
+          formControlName="password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="f.password.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        class="submit-btn field"
+        color="primary"
+        type="submit"
+      >
+        Sign In
+      </button>
+    </form>
+    <mat-error class="invalid-password" *ngIf="invalidPassword">
+      Enter correct password
+    </mat-error>
+    <mat-error class="is-not-exist" *ngIf="isNotExist"
+      >The email you entered isn’t connected to an account
+    </mat-error>
+
+    <p>
+      Do not have an account?
+      <a [routerLink]="['/sign-up']"><span class="sign-up">Sign up</span></a>
+    </p>
+  </div>
+</div>

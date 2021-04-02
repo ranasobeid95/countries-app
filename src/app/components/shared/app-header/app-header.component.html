@@ -5,6 +5,14 @@
         <span>Where in the World?</span>
       </a>
     </div>
+    <div class="auth">
+      <a [routerLink]="['/sign-in']">
+        <button class="auth-btn" mat-icon-button>
+          <span *ngIf="isLogin">Sign out</span
+          ><span *ngIf="!isLogin">Sign in</span>
+        </button>
+      </a>
+    </div>
     <div class="navbar-dark-mode">
       <button class="icon" mat-icon-button (click)="toggleDarkMode()">
         <mat-icon *ngIf="isDarkMode">light_mode</mat-icon>

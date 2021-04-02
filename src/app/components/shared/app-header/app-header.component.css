@@ -1,5 +1,6 @@
 .header .header-navbar {
   width: 100%;
+  height: 10vh;
   position: fixed;
   display: flex;
   padding: 25px;
@@ -13,15 +14,36 @@
   width: 90%;
   flex: 1;
 }
-
+.auth {
+  width: 10%;
+  margin-right: 2%;
+  font-size: 0.9rem;
+}
+.auth button {
+  width: 100%;
+  border-radius: 5%;
+  box-shadow: 0 0 6px -3px #5f5d5d;
+}
+.auth span {
+  width: 100%;
+}
+.auth a {
+  width: 100%;
+}
 .navbar-dark-mode {
   width: 10%;
+  margin-right: 2%;
+  font-size: 0.9rem;
+}
+
+.navbar-dark-mode button {
+  width: 100%;
+  border-radius: 5%;
+  box-shadow: 0 0 6px -3px #5f5d5d;
 }
 .navbar-dark-mode span {
-  font-size: 1rem;
-  font-weight: 300;
+  width: 100%;
   font-family: var(--main-font);
-  margin-left: 20%;
 }
 
 .navbar-title {
@@ -35,14 +57,27 @@ a {
 a:hover {
   text-decoration: none;
 }
+.mat-icon-button i,
+.mat-icon-button .mat-icon {
+  line-height: 25px;
+  font-size: 19px;
+  margin-right: 2%;
+}
 
 @media only screen and (max-width: 860px) {
+  .header .header-navbar {
+    height: 8vh;
+  }
   .navbar-dark-mode {
     width: 20%;
   }
+
+  .navbar-dark-mode button {
+    height: 5vh;
+  }
   .navbar-dark-mode span {
     font-size: 1rem;
-    margin-left: 30%;
+    margin-left: 0;
   }
 
   .navbar-dark-mode mat-icon {
@@ -53,15 +88,44 @@ a:hover {
     font-size: 1.2rem;
     font-weight: bold;
   }
+
+  .auth {
+    width: 20%;
+  }
+  .auth button {
+    height: 5vh;
+  }
+  .auth span {
+    font-size: 1rem;
+    margin-left: 0;
+  }
+  .mat-icon-button i,
+  .mat-icon-button .mat-icon {
+    line-height: 20px;
+    font-size: 22px;
+    margin-right: 2%;
+  }
 }
 
 @media only screen and (max-width: 440px) {
+  .header .header-navbar {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .navbar-title {
+    width: 25%;
+    margin-left: 5%;
+  }
   .navbar-dark-mode {
     width: 25%;
   }
+
+  .navbar-dark-mode button {
+    height: 6vh;
+  }
   .navbar-dark-mode span {
     font-size: 0.7rem;
-    margin-left: 5%;
   }
 
   .navbar-dark-mode mat-icon {
@@ -71,5 +135,22 @@ a:hover {
   .navbar-title {
     font-size: 0.8rem;
     font-weight: bold;
+  }
+
+  .auth {
+    width: 25%;
+  }
+  .auth button {
+    height: 6vh;
+  }
+  .auth span {
+    font-size: 0.7rem;
+  }
+
+  .mat-icon-button i,
+  .mat-icon-button .mat-icon {
+    line-height: 20px;
+    font-size: 14px;
+    margin-right: 1%;
   }
 }

@@ -7,13 +7,14 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./app-header.component.css'],
 })
 export class AppHeaderComponent implements OnInit {
-  isDarkMode: boolean;
-  constructor(private themeService: ThemeService) {
+  isDarkMode: boolean = false;
+  isLogin: boolean = false;
+  constructor(private themeService: ThemeService) {}
+
+  ngOnInit(): void {
     this.themeService.initTheme();
     this.isDarkMode = this.themeService.isDarkMode();
   }
-
-  ngOnInit(): void {}
 
   toggleDarkMode() {
     this.isDarkMode

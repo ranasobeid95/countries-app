@@ -1,0 +1,107 @@
+<div class="sign-up-container">
+  <div class="sign-up-container left">
+    <img
+      src="../../../../assets/ClipartKey_138958.png"
+      alt="Where in the world"
+      class="world-img"
+    />
+  </div>
+  <div class="sign-up-container right">
+    <h1 class="form-title">Create your account</h1>
+    <form class="sign-up-form" [formGroup]="signUpForm" (ngSubmit)="submit()">
+      <mat-form-field class="sign-up-form field">
+        <mat-label>Full Name</mat-label>
+        <input
+          type="test"
+          matInput
+          autocomplete="off"
+          formControlName="fullName"
+        />
+        <mat-error *ngIf="f.fullName.hasError('required')">
+          Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="sign-up-form field">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          placeholder="Ex. pat@example.com"
+          autocomplete="off"
+          formControlName="email"
+        />
+        <mat-error
+          *ngIf="f.email.hasError('email') && !f.email.hasError('required')"
+        >
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="f.email.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="field">
+        <mat-label>Enter your password</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          autocomplete="off"
+          formControlName="password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error
+          *ngIf="
+            f.password.hasError('minlength') && !f.password.hasError('required')
+          "
+        >
+          Password must be at least 8 characters, Please try again
+        </mat-error>
+        <mat-error *ngIf="f.password.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="sign-up-form field">
+        <mat-label>Confirm password</mat-label>
+        <input
+          type="password"
+          matInput
+          autocomplete="off"
+          formControlName="confirmPassword"
+        />
+        <mat-error
+          *ngIf="
+            f.confirmPassword.hasError('mustMatch') &&
+            !f.confirmPassword.hasError('required')
+          "
+        >
+          Your passwords do not match, Please try again
+        </mat-error>
+        <mat-error *ngIf="f.confirmPassword.hasError('required')">
+          Confirm password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <button
+        mat-raised-button
+        class="submit-btn field"
+        color="primary"
+        type="submit"
+      >
+        Create new
+      </button>
+    </form>
+    <mat-error class="is-not-exist" *ngIf="isExist"
+      >The email address is already used
+    </mat-error>
+    <p>
+      Already have an account?
+      <a [routerLink]="['/sign-in']"><span class="sign-in"> Sign In</span></a>
+    </p>
+  </div>
+</div>

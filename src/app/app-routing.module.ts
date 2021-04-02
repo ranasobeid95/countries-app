@@ -5,7 +5,7 @@ import { PageNotFoundComponent } from './components/shared/page-not-found/page-n
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'countries',
+    redirectTo: 'sign-in',
     pathMatch: 'full',
   },
   {
@@ -14,6 +14,11 @@ const routes: Routes = [
       import('./components/countries/countries.module').then(
         (m) => m.CountriesModule
       ),
+  },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./components/auth/auth.module').then((m) => m.AuthModule),
   },
   { path: '**', component: PageNotFoundComponent },
 ];

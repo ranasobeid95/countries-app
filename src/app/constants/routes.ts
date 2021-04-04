@@ -5,4 +5,5 @@ export const ROUTES = {
   VERIFY_EMAIL: 'verify-email',
   COUNTRIES: 'countries',
   PAGE_NOT_FOUND: 'page-not-found',
+  AUTH: 'auth',
 };

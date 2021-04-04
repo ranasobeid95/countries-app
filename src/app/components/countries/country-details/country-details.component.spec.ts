@@ -6,7 +6,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MaterialModule } from 'src/app/material/material.module';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ActivatedRouteStub } from 'src/app/tests/activated-route-stub';
-import { dummyCountries } from 'src/app/model/dummyData';
+import { dummyCountries } from 'src/app/constants/dummyData';
 import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CommonModule } from '@angular/common';

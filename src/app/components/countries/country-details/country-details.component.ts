@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 
 import { Country } from '../../../model/country';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { ROUTES } from 'src/app/constants/routes';
 
 @Component({
   selector: 'country-details',
@@ -32,7 +33,7 @@ export class CountryDetailsComponent implements OnInit {
       (params: any) => {
         this.countryName = params.get('name');
         this.countryName.length === 1
-          ? this.router.navigate(['/page-not-found'])
+          ? this.router.navigate([`/${ROUTES.PAGE_NOT_FOUND}`])
           : this.getDetails(this.countryName);
       },
       (err) => (this.isLoading = false),
@@ -58,7 +59,7 @@ export class CountryDetailsComponent implements OnInit {
       (err) => {
         this.country = [];
         this.isLoading = false;
-        this.router.navigate(['/page-not-found']);
+        this.router.navigate([`/${ROUTES.PAGE_NOT_FOUND}`]);
       },
       () => {
         this.isLoading = false;

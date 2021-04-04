@@ -4,12 +4,28 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { AuthGuard } from 'src/app/services/auth.guard';
+import { ROUTES } from '../../constants/routes';
 
 const routes: Routes = [
-  { path: 'sign-out', redirectTo: 'sign-in', pathMatch: 'full' },
-  { path: 'sign-in', component: SignInComponent },
-  { path: 'sign-up', component: SignUpComponent },
-  { path: 'verify-email', component: VerifyEmailComponent },
+  {
+    path: ROUTES.SIGN_OUT,
+    redirectTo: `${ROUTES.AUTH}/${ROUTES.SIGN_IN}`,
+    pathMatch: 'full',
+  },
+  {
+    path: ROUTES.SIGN_IN,
+    component: SignInComponent,
+  },
+  {
+    path: ROUTES.SIGN_UP,
+    component: SignUpComponent,
+  },
+  {
+    path: ROUTES.VERIFY_EMAIL,
+    component: VerifyEmailComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

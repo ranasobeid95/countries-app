@@ -5,7 +5,10 @@ import { CountriesComponent } from './countries.component';
 
 const routes: Routes = [
   { path: '', component: CountriesComponent },
-  { path: ':name', component: CountryDetailsComponent },
+  {
+    path: ':name',
+    component: CountryDetailsComponent,
+  },
 ];
 
 @NgModule({

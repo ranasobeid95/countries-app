@@ -1,22 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
+import { AuthGuard } from './services/auth.guard';
+import { ROUTES } from './constants/routes';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'sign-in',
+    redirectTo: `${ROUTES.AUTH}/${ROUTES.SIGN_IN}`,
     pathMatch: 'full',
   },
   {
-    path: 'countries',
+    path: ROUTES.COUNTRIES,
     loadChildren: () =>
       import('./components/countries/countries.module').then(
         (m) => m.CountriesModule
       ),
+    canActivate: [AuthGuard],
   },
   {
-    path: '',
+    path: ROUTES.AUTH,
     loadChildren: () =>
       import('./components/auth/auth.module').then((m) => m.AuthModule),
   },

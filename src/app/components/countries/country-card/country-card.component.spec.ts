@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CountryCardComponent } from './country-card.component';
-import { dummyCountries } from '../../../model/dummyData';
+import { dummyCountries } from '../../../constants/dummyData';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';

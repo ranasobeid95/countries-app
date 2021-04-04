@@ -6,7 +6,7 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MaterialModule } from 'src/app/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { users } from 'src/app/model/dummyData';
+import { users } from 'src/app/constants/dummyData';
 import { User } from 'src/app/model/user';
 import { DebugElement } from '@angular/core';
 import { AuthModule } from '../auth.module';

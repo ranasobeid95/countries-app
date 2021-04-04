@@ -65,8 +65,7 @@ export class SignUpComponent implements OnInit {
     return this.authService
       .signUp(this.signUpForm.value)
       .then(() => {
-        this.onReset();
-        this.router.navigate(['/verify-email']);
+        this.authService.sendVerificationMail();
       })
       .catch((err) => {
         if (

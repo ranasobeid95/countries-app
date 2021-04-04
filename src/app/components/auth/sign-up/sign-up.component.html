@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="sign-up-container">
   <div class="sign-up-container left">
     <img
@@ -101,7 +102,9 @@
     </mat-error>
     <p>
       Already have an account?
-      <a [routerLink]="['/sign-in']"><span class="sign-in"> Sign In</span></a>
+      <a [routerLink]="['/auth/sign-in']"
+        ><span class="sign-in"> Sign In</span></a
+      >
     </p>
   </div>
 </div>

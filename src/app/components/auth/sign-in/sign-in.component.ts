@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
+import { ROUTES } from 'src/app/constants/routes';
 @Component({
   selector: 'sign-in',
   templateUrl: './sign-in.component.html',
@@ -50,7 +51,7 @@ export class SignInComponent implements OnInit {
     return this.authService
       .signIn(this.signInForm.value)
       .then((res) => {
-        this.onReset();
+        this.router.navigate([`/${ROUTES.COUNTRIES}`]);
       })
       .catch((err) => {
         if (err.message.includes('no user record')) {

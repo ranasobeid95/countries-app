@@ -4,7 +4,7 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { dummyCountries } from '../model/dummyData';
+import { dummyCountries } from '../constants/dummyData';
 
 describe('Countries Service Test', () => {
   let countriesService: CountriesService;

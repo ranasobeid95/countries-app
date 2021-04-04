@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="sign-in-container">
   <div class="sign-in-container left">
     <img
@@ -67,7 +68,9 @@
 
     <p>
       Do not have an account?
-      <a [routerLink]="['/sign-up']"><span class="sign-up">Sign up</span></a>
+      <a [routerLink]="['/auth/sign-up']"
+        ><span class="sign-up">Sign up</span></a
+      >
     </p>
   </div>
 </div>

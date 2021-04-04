@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
-import { REGIONS } from '../../model/regions';
+import { REGIONS } from '../../constants/regions';
 import { FilterService } from '../../services/filter.service';
 
 @Component({

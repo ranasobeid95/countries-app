@@ -23,6 +23,8 @@ export class AuthenticationService {
   userCredential!: firebase.auth.UserCredential;
   userData: any;
   isLogin: boolean = false;
+  authState: any = null;
+  setEmail!: string;
 
   constructor(
     public afAuth: AngularFireAuth,
@@ -30,10 +32,24 @@ export class AuthenticationService {
     public router: Router,
     public ngZone: NgZone,
     private _snackBar: MatSnackBar
-  ) {}
+  ) {
+    this.setAuthState();
+  }
+
+  get authenticated(): boolean {
+    return this.authState !== null;
+  }
+
+  setAuthState() {
+    this.afAuth.authState.subscribe((auth) => {
+      this.authState = auth;
+      this.isLogin = this.authenticated;
+    });
+  }
 
   signUp(user: User) {
     const { password, email, fullName } = user;
+    this.setEmail = email;
     return this.afAuth
       .createUserWithEmailAndPassword(email, password!)
       .then((newUserCredential) => {
@@ -53,8 +69,12 @@ export class AuthenticationService {
     return this.userCredential;
   }
   sendVerificationMail() {
-    return this.getUserCredential()
-      .user?.sendEmailVerification()
+    const actionCodeSettings = {
+      url: 'https://where-in-the-world-dee98.web.app/sign-in',
+      handleCodeInApp: true,
+    };
+    return this.afAuth
+      .sendSignInLinkToEmail(this.setEmail, actionCodeSettings)
       .then((res) => {
         this.router.navigate(['/verify-email']);
       })
@@ -66,13 +86,13 @@ export class AuthenticationService {
   signIn(user: User) {
     const { password, email } = user;
 
-    return this.afAuth
-      .signInWithEmailAndPassword(email, password!)
+    return firebase
+      .auth()
+      .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      .then(() => {
+        return this.afAuth.signInWithEmailAndPassword(email, password!);
+      })
       .then((userCredential) => {
-        this.isLogin = true;
-        this.ngZone.run(() => {
-          this.router.navigate(['countries']);
-        });
         return userCredential;
       })
       .catch((error) => {
@@ -84,7 +104,8 @@ export class AuthenticationService {
     return this.afAuth
       .signOut()
       .then((res) => {
-        this.isLogin = false;
+        this.authState = null;
+        this.isLogin = this.authenticated;
         this.router.navigate(['/sign-in']);
       })
       .catch((error) => {
@@ -109,7 +130,7 @@ export class AuthenticationService {
 
   showError(error: { message: string }) {
     this._snackBar.open(error.message, 'End now', {
-      duration: 100000,
+      duration: 5000,
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
     });

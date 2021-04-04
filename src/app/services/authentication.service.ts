@@ -13,6 +13,7 @@ import {
 } from '@angular/material/snack-bar';
 import firebase from 'firebase';
 import { environment } from 'src/environments/environment';
+import { ROUTES } from '../constants/routes';
 
 @Injectable({
   providedIn: 'root',
@@ -76,7 +77,7 @@ export class AuthenticationService {
     return this.afAuth
       .sendSignInLinkToEmail(this.setEmail, actionCodeSettings)
       .then((res) => {
-        this.router.navigate(['/verify-email']);
+        this.router.navigate([`/${ROUTES.VERIFY_EMAIL}`]);
       })
       .catch((error) => {
         throw Error(error.message);
@@ -106,7 +107,7 @@ export class AuthenticationService {
       .then((res) => {
         this.authState = null;
         this.isLogin = this.authenticated;
-        this.router.navigate(['/sign-in']);
+        this.router.navigate([`/${ROUTES.SIGN_IN}`]);
       })
       .catch((error) => {
         throw Error(error.message);

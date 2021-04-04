@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'sign-in',
+    redirectTo: 'countries',
     pathMatch: 'full',
   },
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
       import('./components/countries/countries.module').then(
         (m) => m.CountriesModule
       ),
+    canActivate: [AuthGuard],
   },
   {
     path: '',

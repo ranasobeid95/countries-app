@@ -7,7 +7,7 @@ import { ROUTES } from './constants/routes';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: ROUTES.SIGN_IN,
+    redirectTo: `${ROUTES.AUTH}/${ROUTES.SIGN_IN}`,
     pathMatch: 'full',
   },
   {
@@ -19,7 +19,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: '',
+    path: ROUTES.AUTH,
     loadChildren: () =>
       import('./components/auth/auth.module').then((m) => m.AuthModule),
   },

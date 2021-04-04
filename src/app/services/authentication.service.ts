@@ -56,6 +56,8 @@ export class AuthenticationService {
       .then((newUserCredential) => {
         this.setUserData({ ...newUserCredential.user, displayName: fullName });
         this.setUserCredential(newUserCredential);
+        this.authState = newUserCredential.user;
+        this.isLogin = this.authenticated;
         return newUserCredential;
       })
       .catch((error) => {
@@ -94,6 +96,8 @@ export class AuthenticationService {
         return this.afAuth.signInWithEmailAndPassword(email, password!);
       })
       .then((userCredential) => {
+        this.authState = userCredential.user;
+        this.isLogin = this.authenticated;
         return userCredential;
       })
       .catch((error) => {
@@ -107,7 +111,7 @@ export class AuthenticationService {
       .then((res) => {
         this.authState = null;
         this.isLogin = this.authenticated;
-        this.router.navigate([`/${ROUTES.SIGN_IN}`]);
+        this.router.navigate([`/${ROUTES.AUTH}/${ROUTES.SIGN_IN}`]);
       })
       .catch((error) => {
         throw Error(error.message);

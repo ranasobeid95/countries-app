@@ -50,7 +50,7 @@ export class SignInComponent implements OnInit {
     return this.authService
       .signIn(this.signInForm.value)
       .then((res) => {
-        this.onReset();
+        this.router.navigate(['/countries']);
       })
       .catch((err) => {
         if (err.message.includes('no user record')) {

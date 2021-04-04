@@ -79,7 +79,7 @@ export class AuthenticationService {
     return this.afAuth
       .sendSignInLinkToEmail(this.setEmail, actionCodeSettings)
       .then((res) => {
-        this.router.navigate([`/${ROUTES.VERIFY_EMAIL}`]);
+        this.router.navigate([`/${ROUTES.AUTH}/${ROUTES.VERIFY_EMAIL}`]);
       })
       .catch((error) => {
         throw Error(error.message);

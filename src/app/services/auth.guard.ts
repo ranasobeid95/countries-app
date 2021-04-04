@@ -34,8 +34,8 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
+    console.log(`this.auth.authenticated`, this.auth.authenticated);
     if (this.auth.authenticated) {
-      this.auth.isLogin = this.auth.authenticated;
       return true;
     }
     this._snackBar.open(
@@ -47,7 +47,7 @@ export class AuthGuard implements CanActivate {
         verticalPosition: this.verticalPosition,
       }
     );
-    this.router.navigate([`/${ROUTES.SIGN_IN}`]);
+    this.router.navigate([`/${ROUTES.AUTH}/${ROUTES.SIGN_IN}`]);
 
     return false;
   }

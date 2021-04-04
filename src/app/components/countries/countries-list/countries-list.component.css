@@ -1,12 +1,22 @@
 .country-list {
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
+  border: 2px solid purple;
+}
+
+.country-card-container {
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  max-width: 21%;
+  overflow: hidden;
+  margin-bottom: 40px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px rgba(247, 245, 245, 0);
 }
 
 .no-data {
-  width: 100%;
   margin-left: 40%;
   margin-top: 10%;
   height: 100vh;
@@ -14,9 +24,6 @@
 }
 
 @media only screen and (max-width: 860px) {
-  .country-list {
-    margin-top: 5%;
-  }
   .no-data {
     margin-left: 25%;
     margin-top: 25%;

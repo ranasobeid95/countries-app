@@ -1,25 +1,53 @@
-<header class="header">
-  <mat-toolbar class="header-navbar">
+<!-- <mat-toolbar class="main-header">
+  <div class="container m-t m-l m-r">
     <div class="navbar-title">
       <a [routerLink]="['/countries']">
-        <span>Where in the World?</span>
+    Where in the World?
       </a>
     </div>
-    <div class="auth">
-      <a [routerLink]="['/sign-in']">
-        <button class="auth-btn" mat-icon-button>
-          <span *ngIf="isLogin">Sign out</span
-          ><span *ngIf="!isLogin">Sign in</span>
+    <div class="nav">
+      <div class="auth">
+        <a [routerLink]="['/sign-in']">
+          <button class="auth-btn" mat-icon-button>
+            <span *ngIf="isLogin">Sign out</span
+            ><span *ngIf="!isLogin">Sign in</span>
+          </button>
+        </a>
+      </div>
+      <div class="navbar-dark-mode m-l">
+        <button class="icon" mat-icon-button (click)="toggleDarkMode()">
+          <mat-icon *ngIf="isDarkMode">light_mode</mat-icon>
+          <span *ngIf="isDarkMode">Light Mode</span>
+          <mat-icon *ngIf="!isDarkMode">nights_stay</mat-icon>
+          <span *ngIf="!isDarkMode">Dark Mode</span>
         </button>
-      </a>
+      </div>
     </div>
-    <div class="navbar-dark-mode">
-      <button class="icon" mat-icon-button (click)="toggleDarkMode()">
-        <mat-icon *ngIf="isDarkMode">light_mode</mat-icon>
-        <span *ngIf="isDarkMode">Light Mode</span>
-        <mat-icon *ngIf="!isDarkMode">nights_stay</mat-icon>
-        <span *ngIf="!isDarkMode">Dark Mode</span>
+  </div>
+</mat-toolbar> -->
+
+<header class="main-header-container padding-container">
+  <a class="main-header-logo" [routerLink]="['/countries']">
+    <p>Where in the World?</p>
+  </a>
+
+  <div class="main-header-btns">
+    <a class="header-auth-btns header-btns" [routerLink]="['/sign-in']">
+      <button mat-icon-button>
+        <span *ngIf="isLogin">Sign out</span
+        ><span *ngIf="!isLogin">Sign in</span>
       </button>
-    </div>
-  </mat-toolbar>
+    </a>
+
+    <button
+      class="header-btns-mode header-btns"
+      mat-icon-button
+      (click)="toggleDarkMode()"
+    >
+      <mat-icon *ngIf="isDarkMode">light_mode</mat-icon>
+      <span *ngIf="isDarkMode">Light Mode</span>
+      <mat-icon *ngIf="!isDarkMode">nights_stay</mat-icon>
+      <span *ngIf="!isDarkMode">Dark Mode</span>
+    </button>
+  </div>
 </header>

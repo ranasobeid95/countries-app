@@ -33,8 +33,14 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
   span {
     color: var(--light-mode-text);
   }
-  .mat-raised-button:hover {
-    background-color: #f7f1f1;
+  button:hover {
+    background-color: #f8f4f4;
+  }
+  .main-header-container {
+    background-color: var(--light-mode-elements);
+  }
+  a p {
+    color: var(--light-mode-text) !important;
   }
   .mat-card {
     background-color: var(--light-mode-elements);
@@ -263,6 +269,10 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
   .mat-form-field.mat-focused .mat-form-field-label {
     color: var(--dark-mode-text);
   }
+
+  .main-header-container {
+    background-color: var(--dark-mode-elements);
+  }
 }
 
 /*
@@ -333,4 +343,29 @@ body {
 
 .mat-simple-snackbar span {
   color: var(--dark-mode-text);
+}
+
+.m-l {
+  margin-left: 5%;
+}
+.m-t {
+  margin-top: 1%;
+}
+
+.m-r {
+  margin-right: 5%;
+}
+
+.m-b {
+  margin-bottom: 2%;
+}
+
+.padding-container {
+  padding-left: 5.5rem;
+  padding-right: 5.5rem;
+}
+
+.mat-select-value {
+  border: 2px solid springgreen !important;
+  max-width: none !important;
 }

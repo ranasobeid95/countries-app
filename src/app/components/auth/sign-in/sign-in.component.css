@@ -1,7 +1,7 @@
 .sign-in-container {
   display: flex;
   box-sizing: border-box;
-  padding: 2%;
+  min-height: 85vh;
 }
 
 .left {
@@ -10,6 +10,7 @@
   background-repeat: no-repeat;
   flex: 1;
   box-sizing: border-box;
+  background-position: center center;
 }
 
 h1 {
@@ -21,7 +22,9 @@ h1 {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  margin-right: 40px;
+  margin-left: 40px;
 }
 
 .form-title {

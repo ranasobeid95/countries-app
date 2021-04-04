@@ -1,105 +1,90 @@
 .details-container {
-  width: 100%;
   display: flex;
-  height: 100vh;
   flex-direction: column;
+  margin-top: 4%;
 }
 
 .back-btn {
-  width: 100%;
-  height: 30vh;
+  flex: 1;
+  display: flex;
+}
+
+.back-btn .mat-raised-button {
+  display: flex;
+}
+.back-btn .mat-raised-button .mat-icon {
+  flex: 1;
+  font-size: 16px;
+  line-height: 22px;
+  margin-left: 40%;
+}
+.back-btn .mat-raised-button span {
+  flex: 1;
+  font-size: 14px;
 }
 
 .mat-raised-button {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 8%;
-  margin-left: 4%;
-  width: 10%;
-  height: 6vh;
-  font-size: 14px;
-  font-size: 16px;
+  border-radius: 5%;
   box-shadow: 0 0 6px -3px #5f5d5d;
+  min-width: 120px;
+  padding: 0;
+}
+img {
+  max-width: 80%;
 }
 
 .mat-raised-button span {
-  margin-left: 10%;
   font-weight: 100;
   font-size: 14px;
 }
 
-.mat-raised-button .mat-icon {
-  font-size: 16px;
-}
-.mat-icon {
-  height: 16px;
-  width: 20px;
-  margin-left: 25%;
-}
-
 .details-container-content {
-  width: 100%;
-  height: 70vh;
+  flex: 3;
+  margin-top: 2%;
   display: flex;
 }
-
 .details-container-left {
-  width: 40%;
+  flex: 1;
 }
-
-.flag {
-  width: 70%;
-  height: 50vh;
-  margin-left: 9%;
-}
-
 .details-container-right {
+  flex: 1;
   padding: 1%;
-  width: 60%;
   display: flex;
   flex-direction: column;
 }
 .country-name {
-  height: 5vh;
-  width: 100%;
+  flex: 1;
   font-weight: bold;
   font-family: var(--main-font);
 }
 .more-details {
-  width: 100%;
-  height: 30vh;
+  flex: 3;
   display: flex;
 }
-.more-left {
-  width: 50%;
-  height: 30vh;
-}
-.more-right {
-  width: 50%;
-  height: 30vh;
-}
+
 .border-countries {
-  width: 100%;
-  height: 16vh;
-  margin-top: 2%;
-  display: flex;
-}
-.borders {
-  width: 80%;
+  flex: 1;
   display: flex;
   flex-wrap: wrap;
 }
+.more-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.more-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 
 .border-countries span {
-  width: 20%;
+  flex: 1;
   font-weight: bold;
-  margin-top: 1%;
   font-size: 14px;
 }
 
 .border-btns {
-  width: 20%;
-  height: 6vh;
   font-size: 14px;
   color: #535153;
   margin-right: 20%;
@@ -108,6 +93,7 @@
 }
 
 .more-details h4 {
+  flex: 1;
   font-weight: 600;
   font-family: var(--main-font);
 }
@@ -119,53 +105,39 @@
 
 a {
   text-decoration: none;
-  width: 15%;
+  margin-left: 2%;
+  margin-bottom: 2%;
 }
+.borders {
+  flex: 3;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .no-borders {
-  width: 100%;
   margin-top: 2%;
-  height: 100vh;
   align-items: center;
 }
 .no-data {
-  width: 100%;
-  margin-left: 40%;
-  margin-top: 10%;
-  height: 100vh;
   align-items: center;
 }
 
 @media only screen and (max-width: 770px) {
-  .details-container {
-    height: 125vh;
-  }
   .details-container-content {
-    width: 100%;
     padding: 0;
-    height: 115vh;
     display: flex;
     flex-direction: column;
   }
 
   .country-name {
-    width: 100%;
     font-size: 35px;
-    margin-left: 6%;
   }
 
   .details-container-right h4 {
     font-size: 20px;
   }
 
-  .back-btn {
-    margin-top: 10%;
-    height: 10vh;
-  }
-
   .mat-raised-button {
-    width: 20%;
-    height: 4vh;
-    margin-left: 6%;
     font-size: 20px;
   }
   .mat-raised-button span {
@@ -175,30 +147,11 @@ a {
     font-size: 18px;
   }
 
-  .details-container-left {
-    width: 100%;
-    margin-top: 6%;
-    margin-bottom: 6%;
-  }
   .flag {
-    width: 90%;
-    margin: auto;
-    height: 40vh;
-    padding: 0%;
     display: block;
   }
 
-  .details-container-right {
-    width: 100%;
-    height: 75vh;
-    margin: 0;
-    padding: 0;
-  }
-
   .more-details {
-    width: 100%;
-    margin-bottom: 0px;
-    height: 15vh;
     flex-direction: row;
   }
 
@@ -206,79 +159,44 @@ a {
     margin-bottom: 6px;
   }
 
-  .more-right {
-    width: 40%;
-    height: 15vh;
-  }
-  .more-left {
-    width: 60%;
-    height: 15vh;
-    margin-left: 6%;
-  }
   .borders {
-    width: 100%;
-    margin-top: 5%;
-    margin-left: 6%;
     display: flex;
     flex-wrap: wrap;
   }
   .border-countries {
-    width: 100%;
-    height: 10vh;
     flex-direction: column;
     justify-content: space-between;
   }
   .border-countries span {
     margin-top: 3%;
-    width: 100%;
     font-weight: bold;
-    margin-left: 6%;
     font-size: 20px;
   }
 
-  .no-borders {
-    height: 0vh;
-  }
   .no-data {
     margin-left: 25%;
     margin-top: 25%;
-    height: 10vh;
   }
   .borders .border-btns {
-    width: 100%;
-    height: 4vh;
     font-size: 14px;
   }
 
   a {
-    width: 20%;
     margin-right: 2%;
   }
 }
 
 @media only screen and (max-width: 500px) {
-  .details-container {
-    height: 150vh;
-  }
   .details-container-content {
     display: flex;
     flex-direction: column;
   }
 
-  .back-btn {
-    margin-top: 19%;
-    height: 6vh;
-  }
   .country-name {
-    width: 100%;
     font-size: 20px;
-    margin-left: 6%;
   }
   .mat-raised-button {
-    width: 27%;
-    height: 5vh;
     font-size: 13px;
-    margin-left: 8%;
   }
 
   .mat-raised-button span {
@@ -289,27 +207,14 @@ a {
     margin-left: 0;
   }
 
-  .details-container-left {
-    width: 100%;
-  }
-  .flag {
-    width: 100%;
-    height: 40vh;
-    margin-left: 0;
-    padding: 8%;
-  }
-
   .details-container-right {
     padding: 9%;
-    width: 100%;
     display: flex;
     flex-direction: column;
   }
 
   .more-details {
-    width: 100%;
     margin-bottom: 0px;
-    height: 45vh;
     display: flex;
     flex-direction: column;
     margin-left: 0;
@@ -319,51 +224,35 @@ a {
     margin-bottom: 6px;
   }
   .more-left {
-    width: 100%;
     flex-direction: column;
-    height: 40vh;
     margin-bottom: 6%;
   }
   .more-right {
-    width: 100%;
     flex-direction: column;
-    height: 30vh;
-    margin-left: 6%;
   }
 
   .details-container-right h4 {
     font-size: 14px;
   }
   .borders {
-    width: 100%;
     margin-top: 5%;
     flex-wrap: wrap;
   }
   .border-countries {
-    width: 100%;
-    height: 10vh;
     margin-top: 2%;
     flex-direction: column;
     justify-content: space-between;
   }
   .border-countries span {
     font-size: 14px;
-    margin-top: 0%;
-    width: 100%;
     font-weight: 600;
   }
   .border-btns {
     margin-bottom: 5%;
   }
-  .no-borders {
-    height: 0vh;
-  }
+
   .no-data {
     margin-left: 25%;
     margin-top: 25%;
-    height: 10vh;
-  }
-  a {
-    width: 25%;
   }
 }

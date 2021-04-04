@@ -1,13 +1,14 @@
 .sign-up-container {
   display: flex;
   box-sizing: border-box;
-  padding: 2%;
+  min-height: 85vh;
 }
 .left {
   background-image: url('../../../../assets/ClipartKey_138958.png');
   background-size: contain;
   background-repeat: no-repeat;
   flex: 1;
+  background-position: center center;
 }
 
 h1 {
@@ -23,7 +24,7 @@ h1 {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .form-title {

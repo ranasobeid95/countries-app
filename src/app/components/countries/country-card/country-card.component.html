@@ -1,24 +1,40 @@
 <ng-container *ngIf="country">
-  <a [routerLink]="['/countries', country.name]">
-    <mat-card class="card-country">
-      <div class="card-country-img">
-        <img
-          mat-card-md-image
-          class="country-flag"
-          [src]="country.flag"
-          [alt]="country.name"
-        />
-      </div>
+  <a [routerLink]="['/countries', country.name]" class="country-card-container">
+    <div class="country-card-head">
+      <img
+        mat-card-md-image
+        class="country-card-head__img"
+        [src]="country.flag"
+        [alt]="country.name"
+      />
+    </div>
+
+    <div class="country-card-body">
       <mat-card-content>
-        <div class="card-country-info">
-          <h2 class="card-country-name">{{ country.name }}</h2>
-          <ul class="card-country-details">
-            <li><span>Population: </span>{{ country.population | number }}</li>
-            <li><span>Region: </span> {{ country.region }}</li>
-            <li><span>Capital: </span> {{ country.capital }}</li>
-          </ul>
-        </div>
+        <h2 class="country-card-name">{{ country.name }}</h2>
+        <ul class="country-card-details">
+          <li class="country-card-details-items">
+            <span>Population: </span>{{ country.population | number }}
+          </li>
+          <li class="country-card-details-items">
+            <span>Region: </span> {{ country.region }}
+          </li>
+          <li class="country-card-details-items">
+            <span>Capital: </span> {{ country.capital }}
+          </li>
+        </ul>
       </mat-card-content>
-    </mat-card>
+    </div>
   </a>
 </ng-container>
+
+<!-- <>
+
+  a
+  <mat-card class="card-country">
+    <div class="card-country-img">
+     
+    </div>
+   
+  </mat-card>
+</a> -->

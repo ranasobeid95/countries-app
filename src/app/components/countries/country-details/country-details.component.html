@@ -56,7 +56,7 @@
           <div class="borders">
             <a
               *ngFor="let border of country[0].borders"
-              [routerLink]="['/countries', border]"
+              [routerLink]="['/', routes.COUNTRIES, border]"
             >
               <button class="border-btns" mat-raised-button>
                 {{ border }}

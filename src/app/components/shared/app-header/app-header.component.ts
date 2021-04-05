@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ThemeService } from 'src/app/services/theme.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ROUTES } from '../../../constants/routes';
+import { IsAuthService } from 'src/app/services/is-auth.service';
 
 @Component({
   selector: 'app-header',
@@ -15,15 +16,14 @@ export class AppHeaderComponent implements OnInit {
 
   constructor(
     private themeService: ThemeService,
-    private auth: AuthenticationService
-  ) {
-    console.log();
-  }
+    private auth: AuthenticationService,
+    private isLogged: IsAuthService
+  ) {}
 
   ngOnInit(): void {
     this.themeService.initTheme();
     this.isDarkMode = this.themeService.isDarkMode();
-    this.isLogin = this.auth.authenticated;
+    this.isLogin = this.isLogged.isAuth() ? true : false;
   }
 
   toggleDarkMode() {

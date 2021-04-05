@@ -7,7 +7,7 @@ import { ROUTES } from './constants/routes';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: `${ROUTES.AUTH}/${ROUTES.SIGN_IN}`,
+    redirectTo: `${ROUTES.AUTH}/${ROUTES.COUNTRIES}`,
     pathMatch: 'full',
   },
   {
@@ -16,7 +16,6 @@ const routes: Routes = [
       import('./components/countries/countries.module').then(
         (m) => m.CountriesModule
       ),
-    canActivate: [AuthGuard],
   },
   {
     path: ROUTES.AUTH,

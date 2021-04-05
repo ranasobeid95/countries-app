@@ -17,7 +17,6 @@ describe('AppHeaderComponent', () => {
       imports: [CommonModule, MaterialModule, RouterTestingModule],
       providers: [ThemeService],
     }).compileComponents();
-    themeService = TestBed.get(ThemeService);
   });
 
   beforeEach(() => {
@@ -31,7 +30,6 @@ describe('AppHeaderComponent', () => {
   });
 
   it('toggleDarkMode should toggle isDarkMode', () => {
-    component = new AppHeaderComponent(themeService);
     expect(component.isDarkMode).toBe(false, 'Light at first');
     component.toggleDarkMode();
     expect(component.isDarkMode).toBe(true, 'Dark after click');

@@ -10,6 +10,7 @@ import { users } from 'src/app/constants/dummyData';
 import { User } from 'src/app/model/user';
 import { DebugElement } from '@angular/core';
 import { AuthModule } from '../auth.module';
+import { SharedModule } from '../../shared/shared.module';
 
 describe('SignUpComponent', () => {
   let component: SignUpComponent;
@@ -51,6 +52,7 @@ describe('SignUpComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         AuthModule,
+        SharedModule,
       ],
     }).compileComponents();
   });

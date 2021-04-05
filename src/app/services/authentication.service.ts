@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   AngularFirestore,
@@ -29,12 +29,10 @@ export class AuthenticationService {
     public afAuth: AngularFireAuth,
     public afStore: AngularFirestore,
     public router: Router,
-    public ngZone: NgZone,
     private _snackBar: MatSnackBar
   ) {
     this.setAuthState();
   }
-
   get authenticated(): boolean {
     return this.authState !== null;
   }

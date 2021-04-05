@@ -11,6 +11,7 @@ import { dummyCountries } from 'src/app/constants/dummyData';
 import { CountryCardComponent } from './country-card/country-card.component';
 import { CountriesListComponent } from './countries-list/countries-list.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { SharedModule } from '../shared/shared.module';
 
 describe('Countries Component', () => {
   let component: CountriesComponent;
@@ -47,6 +48,7 @@ describe('Countries Component', () => {
         RouterTestingModule,
         MaterialModule,
         FormsModule,
+        SharedModule,
       ],
     }).compileComponents();
   });

@@ -10,6 +10,7 @@ import { dummyCountries } from 'src/app/constants/dummyData';
 import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from '../../shared/shared.module';
 
 describe('Country Details Component', () => {
   let component: CountryDetailsComponent;
@@ -39,6 +40,7 @@ describe('Country Details Component', () => {
         CommonModule,
         MaterialModule,
         RouterTestingModule,
+        SharedModule,
       ],
     }).compileComponents();
   });
@@ -101,9 +103,5 @@ describe('Country Details Component', () => {
       expect(expectedParams).toBe(dummyCountries[0].alpha3Code);
       expect(component.country).toEqual([dummyCountries[0]]);
     });
-  });
-  it('backToLastPage', () => {
-    component.backToLastPage();
-    expect(component.isLoading).toBeTrue();
   });
 });

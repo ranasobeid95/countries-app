@@ -5,6 +5,7 @@ import { ThemeService } from 'src/app/services/theme.service';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from 'src/app/material/material.module';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 describe('AppHeaderComponent', () => {
   let component: AppHeaderComponent;
@@ -15,7 +16,7 @@ describe('AppHeaderComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [AppHeaderComponent],
       imports: [CommonModule, MaterialModule, RouterTestingModule],
-      providers: [ThemeService],
+      providers: [ThemeService, AuthenticationService],
     }).compileComponents();
   });
 

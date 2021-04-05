@@ -12,7 +12,6 @@ import {
   MatSnackBar,
 } from '@angular/material/snack-bar';
 import firebase from 'firebase';
-import { environment } from 'src/environments/environment';
 import { ROUTES } from '../constants/routes';
 
 @Injectable({
@@ -23,7 +22,6 @@ export class AuthenticationService {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   userCredential!: firebase.auth.UserCredential;
   userData: any;
-  isLogin: boolean = false;
   authState: any = null;
   setEmail!: string;
 
@@ -34,7 +32,7 @@ export class AuthenticationService {
     public ngZone: NgZone,
     private _snackBar: MatSnackBar
   ) {
-    this.setAuthState();
+    // this.setAuthState();
   }
 
   get authenticated(): boolean {
@@ -42,9 +40,8 @@ export class AuthenticationService {
   }
 
   setAuthState() {
-    this.afAuth.authState.subscribe((auth) => {
+    return this.afAuth.authState.subscribe((auth) => {
       this.authState = auth;
-      this.isLogin = this.authenticated;
     });
   }
 
@@ -55,9 +52,6 @@ export class AuthenticationService {
       .createUserWithEmailAndPassword(email, password!)
       .then((newUserCredential) => {
         this.setUserData({ ...newUserCredential.user, displayName: fullName });
-        this.setUserCredential(newUserCredential);
-        this.authState = newUserCredential.user;
-        this.isLogin = this.authenticated;
         return newUserCredential;
       })
       .catch((error) => {
@@ -65,12 +59,6 @@ export class AuthenticationService {
       });
   }
 
-  setUserCredential(userCredential: firebase.auth.UserCredential) {
-    this.userCredential = userCredential;
-  }
-  getUserCredential() {
-    return this.userCredential;
-  }
   sendVerificationMail() {
     const actionCodeSettings = {
       url: 'https://where-in-the-world-dee98.web.app/sign-in',
@@ -97,7 +85,6 @@ export class AuthenticationService {
       })
       .then((userCredential) => {
         this.authState = userCredential.user;
-        this.isLogin = this.authenticated;
         return userCredential;
       })
       .catch((error) => {
@@ -110,7 +97,6 @@ export class AuthenticationService {
       .signOut()
       .then((res) => {
         this.authState = null;
-        this.isLogin = this.authenticated;
         this.router.navigate([`/${ROUTES.AUTH}/${ROUTES.SIGN_IN}`]);
       })
       .catch((error) => {

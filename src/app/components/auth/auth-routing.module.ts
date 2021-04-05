@@ -9,6 +9,11 @@ import { ROUTES } from '../../constants/routes';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: `/${ROUTES.AUTH}/${ROUTES.SIGN_IN}`,
+    pathMatch: 'full',
+  },
+  {
     path: ROUTES.SIGN_OUT,
     redirectTo: `${ROUTES.AUTH}/${ROUTES.SIGN_IN}`,
     pathMatch: 'full',

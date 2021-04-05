@@ -19,7 +19,7 @@ export class CountryDetailsComponent implements OnInit {
   mode: ProgressSpinnerMode = 'indeterminate';
   languages!: string;
   currencies!: string;
-
+  routes = ROUTES;
   constructor(
     private countriesService: CountriesService,
     private router: Router,

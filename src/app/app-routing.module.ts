@@ -7,7 +7,7 @@ import { ROUTES } from './constants/routes';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: `${ROUTES.AUTH}/${ROUTES.COUNTRIES}`,
+    redirectTo: `/${ROUTES.COUNTRIES}`,
     pathMatch: 'full',
   },
   {

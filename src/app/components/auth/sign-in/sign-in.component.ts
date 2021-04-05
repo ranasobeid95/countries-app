@@ -19,6 +19,7 @@ export class SignInComponent implements OnInit {
   isNotExist = false;
   invalidPassword = false;
   hide = true;
+  routes = ROUTES;
 
   constructor(
     private formBuilder: FormBuilder,

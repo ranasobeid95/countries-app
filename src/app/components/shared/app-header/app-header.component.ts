@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from 'src/app/services/theme.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ROUTES } from '../../../constants/routes';
 
 @Component({
   selector: 'app-header',
@@ -10,10 +11,14 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 export class AppHeaderComponent implements OnInit {
   isDarkMode: boolean = false;
   isLogin: boolean = false;
+  routes = ROUTES;
+
   constructor(
     private themeService: ThemeService,
     private auth: AuthenticationService
-  ) {}
+  ) {
+    console.log();
+  }
 
   ngOnInit(): void {
     this.themeService.initTheme();

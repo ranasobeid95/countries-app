@@ -1,7 +1,7 @@
 <header class="header">
   <mat-toolbar class="header-navbar">
     <div class="navbar-title">
-      <a [routerLink]="['/countries']">
+      <a [routerLink]="['/', routes.COUNTRIES]">
         <span>Where in the World?</span>
       </a>
     </div>
@@ -11,7 +11,7 @@
           <span>Sign out</span>
         </button>
       </a>
-      <a *ngIf="!isLogin" [routerLink]="['/auth/sign-in']">
+      <a *ngIf="!isLogin" [routerLink]="['/', routes.AUTH, routes.SIGN_IN]">
         <button class="auth-btn" mat-icon-button>
           <span *ngIf="!isLogin">Sign in</span>
         </button>

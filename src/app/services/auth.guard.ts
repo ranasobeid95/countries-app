@@ -14,6 +14,7 @@ import {
   MatSnackBar,
 } from '@angular/material/snack-bar';
 import { ROUTES } from '../constants/routes';
+import { IsAuthService } from './is-auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +23,7 @@ export class AuthGuard implements CanActivate {
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   constructor(
-    private auth: AuthenticationService,
+    private auth: IsAuthService,
     private router: Router,
     private _snackBar: MatSnackBar
   ) {}
@@ -34,8 +35,7 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    console.log(`this.auth.authenticated`, this.auth.authenticated);
-    if (this.auth.authenticated) {
+    if (this.auth.isAuth()) {
       return true;
     }
     this._snackBar.open(
@@ -47,7 +47,7 @@ export class AuthGuard implements CanActivate {
         verticalPosition: this.verticalPosition,
       }
     );
-    this.router.navigate([`/${ROUTES.AUTH}/${ROUTES.SIGN_IN}`]);
+    this.router.navigate([`${ROUTES.AUTH}/${ROUTES.SIGN_IN}`]);
 
     return false;
   }

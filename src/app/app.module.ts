@@ -21,15 +21,15 @@ import { AuthGuard } from './services/auth.guard';
   imports: [
     BrowserModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     SharedModule,
     CountriesModule,
     AuthModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
-    AngularFirestoreModule,
   ],
   providers: [
     AuthGuard,

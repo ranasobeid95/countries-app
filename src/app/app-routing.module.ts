@@ -7,7 +7,7 @@ import { ROUTES } from './constants/routes';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: `${ROUTES.AUTH}/${ROUTES.SIGN_IN}`,
+    redirectTo: `/${ROUTES.COUNTRIES}`,
     pathMatch: 'full',
   },
   {
@@ -16,14 +16,14 @@ const routes: Routes = [
       import('./components/countries/countries.module').then(
         (m) => m.CountriesModule
       ),
-    canActivate: [AuthGuard],
   },
   {
     path: ROUTES.AUTH,
     loadChildren: () =>
       import('./components/auth/auth.module').then((m) => m.AuthModule),
   },
-  { path: '**', component: PageNotFoundComponent },
+  { path: ROUTES.PAGE_NOT_FOUND, component: PageNotFoundComponent },
+  { path: '**', redirectTo: `/${ROUTES.PAGE_NOT_FOUND}` },
 ];
 
 @NgModule({

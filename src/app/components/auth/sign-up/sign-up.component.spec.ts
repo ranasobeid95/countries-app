@@ -10,6 +10,12 @@ import { users } from 'src/app/constants/dummyData';
 import { User } from 'src/app/model/user';
 import { DebugElement } from '@angular/core';
 import { AuthModule } from '../auth.module';
+import { SharedModule } from '../../shared/shared.module';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('SignUpComponent', () => {
   let component: SignUpComponent;
@@ -46,11 +52,16 @@ describe('SignUpComponent', () => {
       ],
       imports: [
         RouterTestingModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule,
+        AngularFirestoreModule,
+        HttpClientTestingModule,
         BrowserAnimationsModule,
         MaterialModule,
         FormsModule,
         ReactiveFormsModule,
         AuthModule,
+        SharedModule,
       ],
     }).compileComponents();
   });

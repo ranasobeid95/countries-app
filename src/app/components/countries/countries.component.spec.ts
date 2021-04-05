@@ -11,6 +11,11 @@ import { dummyCountries } from 'src/app/constants/dummyData';
 import { CountryCardComponent } from './country-card/country-card.component';
 import { CountriesListComponent } from './countries-list/countries-list.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { SharedModule } from '../shared/shared.module';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 describe('Countries Component', () => {
   let component: CountriesComponent;
@@ -42,11 +47,15 @@ describe('Countries Component', () => {
         { provide: FilterService, useValue: filterServiceSpy },
       ],
       imports: [
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule,
+        AngularFirestoreModule,
         HttpClientTestingModule,
         CountriesRoutingModule,
         RouterTestingModule,
         MaterialModule,
         FormsModule,
+        SharedModule,
       ],
     }).compileComponents();
   });

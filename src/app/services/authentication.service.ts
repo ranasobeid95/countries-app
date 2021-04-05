@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   AngularFirestore,
@@ -12,7 +12,6 @@ import {
   MatSnackBar,
 } from '@angular/material/snack-bar';
 import firebase from 'firebase';
-import { environment } from 'src/environments/environment';
 import { ROUTES } from '../constants/routes';
 
 @Injectable({
@@ -23,7 +22,6 @@ export class AuthenticationService {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   userCredential!: firebase.auth.UserCredential;
   userData: any;
-  isLogin: boolean = false;
   authState: any = null;
   setEmail!: string;
 
@@ -31,20 +29,17 @@ export class AuthenticationService {
     public afAuth: AngularFireAuth,
     public afStore: AngularFirestore,
     public router: Router,
-    public ngZone: NgZone,
     private _snackBar: MatSnackBar
   ) {
     this.setAuthState();
   }
-
   get authenticated(): boolean {
     return this.authState !== null;
   }
 
   setAuthState() {
-    this.afAuth.authState.subscribe((auth) => {
+    return this.afAuth.authState.subscribe((auth) => {
       this.authState = auth;
-      this.isLogin = this.authenticated;
     });
   }
 
@@ -55,9 +50,6 @@ export class AuthenticationService {
       .createUserWithEmailAndPassword(email, password!)
       .then((newUserCredential) => {
         this.setUserData({ ...newUserCredential.user, displayName: fullName });
-        this.setUserCredential(newUserCredential);
-        this.authState = newUserCredential.user;
-        this.isLogin = this.authenticated;
         return newUserCredential;
       })
       .catch((error) => {
@@ -65,12 +57,6 @@ export class AuthenticationService {
       });
   }
 
-  setUserCredential(userCredential: firebase.auth.UserCredential) {
-    this.userCredential = userCredential;
-  }
-  getUserCredential() {
-    return this.userCredential;
-  }
   sendVerificationMail() {
     const actionCodeSettings = {
       url: 'https://where-in-the-world-dee98.web.app/sign-in',
@@ -79,7 +65,7 @@ export class AuthenticationService {
     return this.afAuth
       .sendSignInLinkToEmail(this.setEmail, actionCodeSettings)
       .then((res) => {
-        this.router.navigate([`/${ROUTES.AUTH}/${ROUTES.VERIFY_EMAIL}`]);
+        this.router.navigate([`${ROUTES.AUTH}/${ROUTES.VERIFY_EMAIL}`]);
       })
       .catch((error) => {
         throw Error(error.message);
@@ -97,7 +83,6 @@ export class AuthenticationService {
       })
       .then((userCredential) => {
         this.authState = userCredential.user;
-        this.isLogin = this.authenticated;
         return userCredential;
       })
       .catch((error) => {
@@ -110,8 +95,7 @@ export class AuthenticationService {
       .signOut()
       .then((res) => {
         this.authState = null;
-        this.isLogin = this.authenticated;
-        this.router.navigate([`/${ROUTES.AUTH}/${ROUTES.SIGN_IN}`]);
+        this.router.navigate([`${ROUTES.AUTH}/${ROUTES.SIGN_IN}`]);
       })
       .catch((error) => {
         throw Error(error.message);

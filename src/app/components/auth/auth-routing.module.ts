@@ -6,8 +6,14 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { AuthGuard } from 'src/app/services/auth.guard';
 import { ROUTES } from '../../constants/routes';
+import { NegateUserLoggedInGuard } from 'src/app/services/negate-user-logged-in.guard';
 
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: `/${ROUTES.AUTH}/${ROUTES.SIGN_IN}`,
+    pathMatch: 'full',
+  },
   {
     path: ROUTES.SIGN_OUT,
     redirectTo: `${ROUTES.AUTH}/${ROUTES.SIGN_IN}`,
@@ -16,10 +22,12 @@ const routes: Routes = [
   {
     path: ROUTES.SIGN_IN,
     component: SignInComponent,
+    canActivate: [NegateUserLoggedInGuard],
   },
   {
     path: ROUTES.SIGN_UP,
     component: SignUpComponent,
+    canActivate: [NegateUserLoggedInGuard],
   },
   {
     path: ROUTES.VERIFY_EMAIL,

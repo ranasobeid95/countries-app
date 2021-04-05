@@ -19,6 +19,7 @@ export class SignInComponent implements OnInit {
   isNotExist = false;
   invalidPassword = false;
   hide = true;
+  routes = ROUTES;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -51,7 +52,7 @@ export class SignInComponent implements OnInit {
     return this.authService
       .signIn(this.signInForm.value)
       .then((res) => {
-        this.router.navigate([`/${ROUTES.COUNTRIES}`]);
+        this.router.navigate([`${ROUTES.COUNTRIES}`]);
       })
       .catch((err) => {
         if (err.message.includes('no user record')) {

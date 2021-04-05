@@ -32,7 +32,7 @@ export class AuthenticationService {
     public ngZone: NgZone,
     private _snackBar: MatSnackBar
   ) {
-    // this.setAuthState();
+    this.setAuthState();
   }
 
   get authenticated(): boolean {

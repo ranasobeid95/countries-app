@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Country } from '../../../model/country';
+import { ROUTES } from 'src/app/constants/routes';
 
 @Component({
   selector: 'country-card',
@@ -9,6 +10,7 @@ import { Country } from '../../../model/country';
 export class CountryCardComponent implements OnInit {
   @Input()
   country!: Country;
+  routes = ROUTES;
   constructor() {}
 
   ngOnInit(): void {}

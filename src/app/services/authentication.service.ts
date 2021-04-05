@@ -65,7 +65,7 @@ export class AuthenticationService {
     return this.afAuth
       .sendSignInLinkToEmail(this.setEmail, actionCodeSettings)
       .then((res) => {
-        this.router.navigate([`/${ROUTES.AUTH}/${ROUTES.VERIFY_EMAIL}`]);
+        this.router.navigate([`${ROUTES.AUTH}/${ROUTES.VERIFY_EMAIL}`]);
       })
       .catch((error) => {
         throw Error(error.message);
@@ -95,7 +95,7 @@ export class AuthenticationService {
       .signOut()
       .then((res) => {
         this.authState = null;
-        this.router.navigate([`/${ROUTES.AUTH}/${ROUTES.SIGN_IN}`]);
+        this.router.navigate([`${ROUTES.AUTH}/${ROUTES.SIGN_IN}`]);
       })
       .catch((error) => {
         throw Error(error.message);

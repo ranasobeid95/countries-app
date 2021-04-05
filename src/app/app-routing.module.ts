@@ -22,7 +22,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./components/auth/auth.module').then((m) => m.AuthModule),
   },
-  { path: '**', component: PageNotFoundComponent },
+  { path: ROUTES.PAGE_NOT_FOUND, component: PageNotFoundComponent },
+  { path: '**', redirectTo: `/${ROUTES.PAGE_NOT_FOUND}` },
 ];
 
 @NgModule({

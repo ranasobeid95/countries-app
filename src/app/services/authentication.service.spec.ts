@@ -169,8 +169,7 @@ describe('AuthenticationService', () => {
         emailVerified: newUserCredential.user?.emailVerified,
       };
 
-      const credential = service.getUserCredential();
-      expect(service.userCredential).toEqual(credential);
+      expect(service.authState.uid).toEqual(newUserCredential.user?.uid);
       expect(actualUser).toEqual({
         uid: allUser[0].uid,
         email: allUser[0].email,
@@ -198,7 +197,7 @@ describe('AuthenticationService', () => {
 
   it('User logged out', async () => {
     mockSignOut(allUser[0].email);
-    const result = await service.signOut();
-    expect(service.isLogin).toBeFalsy();
+    await service.signOut();
+    expect(service.authenticated).toBeFalsy();
   });
 });

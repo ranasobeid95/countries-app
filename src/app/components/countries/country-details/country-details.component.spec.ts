@@ -11,6 +11,10 @@ import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 describe('Country Details Component', () => {
   let component: CountryDetailsComponent;
@@ -22,21 +26,22 @@ describe('Country Details Component', () => {
     'getCountryByName',
   ]);
 
-  beforeEach(() => {
-    activatedRoute = new ActivatedRouteStub();
-  });
+  activatedRoute = new ActivatedRouteStub();
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CountryDetailsComponent],
       providers: [
         CountriesService,
         { provide: ActivatedRoute, useValue: activatedRoute },
-        { provide: Router, useValue: routerSpy },
         { provide: CountriesService, useValue: countryServiceSpy },
         Location,
       ],
       imports: [
         HttpClientTestingModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule,
+        AngularFirestoreModule,
         CommonModule,
         MaterialModule,
         RouterTestingModule,

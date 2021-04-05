@@ -4,6 +4,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { dummyCountries } from '../constants/dummyData';
 import { of } from 'rxjs';
 import { FilterService } from './filter.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('Countries Service Test', () => {
   let filterService: FilterService;
@@ -14,7 +15,7 @@ describe('Countries Service Test', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
       providers: [
         FilterService,
         { provide: CountriesService, useValue: countryServiceSpy },

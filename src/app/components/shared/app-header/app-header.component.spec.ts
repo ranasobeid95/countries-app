@@ -6,6 +6,11 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from 'src/app/material/material.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { IsAuthService } from 'src/app/services/is-auth.service';
 
 describe('AppHeaderComponent', () => {
   let component: AppHeaderComponent;
@@ -15,8 +20,15 @@ describe('AppHeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppHeaderComponent],
-      imports: [CommonModule, MaterialModule, RouterTestingModule],
-      providers: [ThemeService, AuthenticationService],
+      imports: [
+        CommonModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule,
+        AngularFirestoreModule,
+        MaterialModule,
+        RouterTestingModule,
+      ],
+      providers: [ThemeService, AuthenticationService, IsAuthService],
     }).compileComponents();
   });
 

@@ -58,13 +58,10 @@ p {
 a {
   text-decoration: none;
 }
-.is-not-exist {
+
+.invalid-data {
   margin-top: 2%;
-  margin-left: 6%;
-}
-.invalid-password {
-  margin-top: 2%;
-  margin-left: 22%;
+  align-self: center;
 }
 
 @media (min-width: 1900px) {

@@ -62,7 +62,7 @@ a {
 }
 .is-not-exist {
   margin-top: 2%;
-  margin-left: 18%;
+  align-self: center;
 }
 
 @media (min-width: 1900px) {

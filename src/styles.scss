@@ -142,6 +142,9 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
   .confirmation-container .confirmation-container-body .resend-btn span:hover {
     color: var(--span-hover-dark);
   }
+  .page-not-found-container {
+    color: var(--dark-mode-background);
+  }
 }
 
 // dark mode.
@@ -307,6 +310,10 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
   }
   .confirmation-container .confirmation-container-body .resend-btn span:hover {
     color: var(--span-hover-dark);
+  }
+
+  .page-not-found-container {
+    color: var(--dark-mode-text);
   }
 }
 

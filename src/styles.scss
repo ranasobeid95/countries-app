@@ -39,8 +39,25 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
   .main-header-container {
     background-color: var(--light-mode-elements);
   }
+
+  .main-header-btns .header-btns:hover {
+    background-color: var(--dark-mode-text);
+  }
+  .main-header-btns .header-btns span:hover {
+    background-color: var(--dark-mode-text);
+    color: var(--span-hover-light);
+  }
+  .back-btn span:hover {
+    color: var(--span-hover-light);
+  }
+  .borders .mat-button-base span.mat-button-wrapper:hover {
+    color: var(--span-hover-light);
+  }
   a p {
     color: var(--light-mode-text) !important;
+  }
+  a p:hover {
+    color: var(--span-hover-light) !important;
   }
   .mat-card {
     background-color: var(--light-mode-elements);
@@ -54,13 +71,6 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
     box-shadow: 0 0 6px -3px #858585 !important;
   }
 
-  .header .header-navbar {
-    box-shadow: 0 1px 18px 0 rgb(0 0 0 / 30%);
-  }
-
-  .header span:hover {
-    color: #5a5858;
-  }
   .mat-card {
     background-color: var(--light-mode-elements);
   }
@@ -122,15 +132,15 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
   }
 
   .sign-in-container span:hover {
-    color: var(--content-grey);
+    color: var(--span-hover-light);
   }
 
   .authBlock span:hover {
-    color: var(--content-grey);
+    color: var(--span-hover-light);
   }
 
   .sign-up-container span:hover {
-    color: var(--content-grey);
+    color: var(--span-hover-light);
   }
   .mat-input-element {
     caret-color: var(--dark-mode-text);
@@ -252,15 +262,15 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
   }
 
   .sign-in-container span:hover {
-    color: var(--content-grey);
+    color: var(--span-hover-dark);
   }
 
   .authBlock span:hover {
-    color: var(--content-grey);
+    color: var(--span-hover-dark);
   }
 
   .sign-up-container span:hover {
-    color: var(--content-grey);
+    color: var(--span-hover-dark);
   }
   .mat-input-element {
     caret-color: var(--dark-mode-text);
@@ -272,6 +282,22 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
 
   .main-header-container {
     background-color: var(--dark-mode-elements);
+  }
+  .main-header-btns .header-btns {
+    color: var(--dark-mode-text);
+  }
+  .main-header-btns .header-btns:hover {
+    background-color: var(--dark-mode-elements) !important;
+  }
+  .main-header-btns .header-btns span:hover {
+    background-color: var(--dark-mode-elements) !important;
+    color: var(--span-hover);
+  }
+  .back-btn span:hover {
+    color: var(--span-hover-dark);
+  }
+  .borders span:hover {
+    color: var(--span-hover-dark) !important;
   }
 }
 
@@ -286,7 +312,7 @@ body {
 }
 body {
   margin: 0;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: var(--main-font);
 }
 
 * {
@@ -312,6 +338,8 @@ body {
   --box-shadow: 0px 1px 8px #142e6e1a;
   --card-shadow: 0px 3px 6px #00000014;
   --input-border: #a2c0d4;
+  --span-hover-dark: hsl(211, 40%, 83%);
+  --span-hover-light: hsl(210, 25%, 39%);
 }
 
 .mat-autocomplete-panel {
@@ -368,4 +396,42 @@ body {
 .mat-select-value {
   border: 2px solid springgreen !important;
   max-width: none !important;
+}
+
+.material-icons {
+  font-size: 1rem;
+}
+
+@media (min-width: 1900px) {
+  .material-icons {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 1024px) {
+  .material-icons {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 992px) {
+  .padding-container {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .padding-container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .padding-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .material-icons {
+    font-size: 1.1rem;
+  }
 }

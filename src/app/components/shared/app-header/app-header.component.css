@@ -15,6 +15,7 @@
 
 .main-header-logo {
   text-decoration: none;
+  font-family: var(--main-font);
 }
 .main-header-logo p {
   margin: 0;
@@ -35,7 +36,7 @@
   line-height: inherit;
   border-radius: 0;
   font-family: var(--main-font);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .main-header-btns .header-btns {
@@ -73,8 +74,8 @@
 
 @media (max-width: 1024px) {
   .main-header-container {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
   .main-header-logo p {
     font-size: 1.4rem;
@@ -88,15 +89,15 @@
 @media (max-width: 620px) {
   .main-header-container {
     height: auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
   .main-header-logo p {
-    font-size: 0.7rem;
+    font-size: 1rem;
   }
 
   .main-header-btns .mat-icon-button {
-    font-size: 0.7rem;
+    font-size: 1rem;
   }
 
   .main-header-btns .header-btns {

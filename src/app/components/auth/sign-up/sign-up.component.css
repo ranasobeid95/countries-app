@@ -9,6 +9,7 @@
   background-repeat: no-repeat;
   flex: 1;
   background-position: center center;
+  max-width: 700px;
 }
 
 h1 {
@@ -25,6 +26,8 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 450px;
+  margin-left: 75px;
 }
 
 .form-title {
@@ -61,21 +64,40 @@ a {
   margin-top: 2%;
   margin-left: 18%;
 }
-@media only screen and (max-width: 860px) {
-  .sign-up-container {
-    flex-direction: column;
+
+@media (min-width: 1900px) {
+  .left {
+    min-width: 1024px;
   }
-  .is-not-exist {
-    margin-left: 18%;
+  .right {
+    flex: 1;
+    justify-items: center;
+    margin-left: 4%;
+    max-width: 550px;
   }
 }
 
-@media only screen and (max-width: 440px) {
+@media (max-width: 1024px) {
+  .sign-up-container {
+    flex-direction: column;
+    min-height: 30vh;
+    font-size: 1rem;
+  }
+  .left {
+    margin-top: 50px;
+    min-width: 800px;
+  }
+  .right {
+    flex: 1;
+    justify-items: center;
+    margin-left: 8%;
+    margin-top: 50px;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 620px) {
   .left {
     display: none;
-  }
-
-  .is-not-exist {
-    margin-left: 5%;
   }
 }

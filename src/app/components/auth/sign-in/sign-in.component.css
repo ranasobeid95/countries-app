@@ -11,6 +11,7 @@
   flex: 1;
   box-sizing: border-box;
   background-position: center center;
+  max-width: 700px;
 }
 
 h1 {
@@ -23,8 +24,8 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-right: 40px;
-  margin-left: 40px;
+  max-width: 450px;
+  margin-left: 75px;
 }
 
 .form-title {
@@ -66,20 +67,37 @@ a {
   margin-left: 22%;
 }
 
-@media only screen and (max-width: 860px) {
-  .sign-in-container {
-    flex-direction: column;
+@media (min-width: 1900px) {
+  .left {
+    min-width: 1024px;
+  }
+  .right {
+    flex: 1;
+    justify-items: center;
+    margin-left: 8%;
+    max-width: 550px;
   }
 }
 
-@media only screen and (max-width: 440px) {
+@media (max-width: 1024px) {
+  .sign-in-container {
+    flex-direction: column;
+    min-height: 30vh;
+  }
+  .left {
+    margin-top: 50px;
+    min-width: 800px;
+  }
+  .right {
+    flex: 1;
+    justify-items: center;
+    margin-left: 4%;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 620px) {
   .left {
     display: none;
-  }
-
-  invalid-password {
-    margin-top: 2%;
-    margin-left: 18%;
-    font-size: 12px;
   }
 }

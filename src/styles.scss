@@ -120,22 +120,8 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
     color: var(--dark-mode-background);
     font-weight: 600;
   }
-  .authBlock {
-    background-color: var(--light-mode-elements);
-  }
-
-  .btn-confirmation span {
-    color: var(--dark-mode-text);
-  }
-  .btn-confirmation:hover {
-    background-color: var(--dark-mode-background);
-  }
 
   .sign-in-container span:hover {
-    color: var(--span-hover-light);
-  }
-
-  .authBlock span:hover {
     color: var(--span-hover-light);
   }
 
@@ -144,6 +130,17 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
   }
   .mat-input-element {
     caret-color: var(--dark-mode-text);
+  }
+
+  .confirmation-container {
+    box-shadow: var(--box-shadow-light);
+    background-color: var(--light-mode-background);
+  }
+  .confirmation-container .confirmation-container-body .resend-btn span {
+    color: var(--dark-mode-text);
+  }
+  .confirmation-container .confirmation-container-body .resend-btn span:hover {
+    color: var(--span-hover-dark);
   }
 }
 
@@ -254,18 +251,12 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
   .sign-up-container p {
     color: hsl(0deg 0% 100% / 50%);
   }
-  .authBlock {
-    background-color: var(--dark-mode-elements);
-  }
+
   .btn-confirmation {
     background-color: var(--dark-mode-background) !important;
   }
 
   .sign-in-container span:hover {
-    color: var(--span-hover-dark);
-  }
-
-  .authBlock span:hover {
     color: var(--span-hover-dark);
   }
 
@@ -298,6 +289,23 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
   }
   .borders span:hover {
     color: var(--span-hover-dark) !important;
+  }
+  a p {
+    color: var(--dark-mode-text);
+  }
+  a p:hover {
+    color: var(--span-hover-dark);
+  }
+
+  .confirmation-container {
+    box-shadow: var(--box-shadow-light);
+    background-color: var(--dark-mode-elements);
+  }
+  .confirmation-container .confirmation-container-body .resend-btn {
+    background-color: var(--dark-mode-background);
+  }
+  .confirmation-container .confirmation-container-body .resend-btn span:hover {
+    color: var(--span-hover-dark);
   }
 }
 
@@ -335,7 +343,7 @@ body {
   --content-blue-green: #3a5a6e;
   --border-white: #fafbfd;
   --main-font: 'Nunito Sans', sans-serif;
-  --box-shadow: 0px 1px 8px #142e6e1a;
+  --box-shadow-light: 0 0 6px -3px #858585;
   --card-shadow: 0px 3px 6px #00000014;
   --input-border: #a2c0d4;
   --span-hover-dark: hsl(211, 40%, 83%);

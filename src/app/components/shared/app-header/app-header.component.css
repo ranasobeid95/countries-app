@@ -19,7 +19,6 @@
 .main-header-logo p {
   margin: 0;
   padding: 0;
-  color: white;
   font-weight: bold;
   font-size: 1.2rem;
   line-height: 2px;
@@ -33,18 +32,81 @@
   width: auto;
   height: auto;
   flex-shrink: 0;
-  border-radius: 50%;
   line-height: inherit;
+  border-radius: 0;
+  font-family: var(--main-font);
+  font-size: 0.9rem;
 }
 
 .main-header-btns .header-btns {
   padding: 5px 10px;
   margin-right: 10px;
-  border-radius: 5%;
-  box-shadow: 0 0 6px -3px #5f5d5d;
   line-height: inherit;
 }
 
-.main-header-btns .header-auth-btns {
-  margin-right: 10px;
+@media (min-width: 1900px) {
+  .main-header-container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .main-header-logo p {
+    font-size: 2rem;
+  }
+
+  .main-header-btns .mat-icon-button {
+    font-size: 1.8rem;
+  }
+
+  .main-header-btns .header-btns {
+    padding: 5px 5px;
+  }
+
+  .main-header-btns .header-btns .mat-icon {
+    margin-right: 20px;
+  }
+
+  .main-header-btns .header-auth-btns {
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .main-header-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .main-header-logo p {
+    font-size: 1.4rem;
+  }
+
+  .main-header-btns .mat-icon-button {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .main-header-container {
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .main-header-logo p {
+    font-size: 0.7rem;
+  }
+
+  .main-header-btns .mat-icon-button {
+    font-size: 0.7rem;
+  }
+
+  .main-header-btns .header-btns {
+    padding: 1px 1px;
+  }
+  .main-header-btns .header-btns-mode {
+    margin-right: 0;
+  }
+
+  .main-header-btns .header-auth-btns {
+    margin-right: 10px;
+  }
 }

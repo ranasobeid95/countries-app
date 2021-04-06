@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 
 import { Country } from '../../../model/country';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { ROUTES } from 'src/app/constants/routes';
 
 @Component({
   selector: 'country-details',
@@ -18,7 +19,7 @@ export class CountryDetailsComponent implements OnInit {
   mode: ProgressSpinnerMode = 'indeterminate';
   languages!: string;
   currencies!: string;
-
+  routes = ROUTES;
   constructor(
     private countriesService: CountriesService,
     private router: Router,
@@ -31,8 +32,12 @@ export class CountryDetailsComponent implements OnInit {
     this.route.paramMap.subscribe(
       (params: any) => {
         this.countryName = params.get('name');
+        if (typeof this.countryName !== 'string') {
+          this.isLoading = false;
+          return;
+        }
         this.countryName.length === 1
-          ? this.router.navigate(['/page-not-found'])
+          ? this.router.navigate([`${ROUTES.PAGE_NOT_FOUND}`])
           : this.getDetails(this.countryName);
       },
       (err) => (this.isLoading = false),
@@ -45,6 +50,10 @@ export class CountryDetailsComponent implements OnInit {
     this.country = [];
     this.countriesService.getCountryByName(name).subscribe(
       (response: Country[]) => {
+        if (!response || response.length == 0) {
+          this.isLoading = false;
+          return;
+        }
         Array.isArray(response)
           ? (this.country = response)
           : this.country.push(response);
@@ -58,7 +67,7 @@ export class CountryDetailsComponent implements OnInit {
       (err) => {
         this.country = [];
         this.isLoading = false;
-        this.router.navigate(['/page-not-found']);
+        this.router.navigate([`${ROUTES.PAGE_NOT_FOUND}`]);
       },
       () => {
         this.isLoading = false;

@@ -7,6 +7,7 @@ import { CountryDetailsComponent } from './country-details/country-details.compo
 import { CountryCardComponent } from './country-card/country-card.component';
 import { CountriesComponent } from './countries.component';
 import { MaterialModule } from 'src/app/material/material.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { MaterialModule } from 'src/app/material/material.module';
     CountryCardComponent,
     CountriesComponent,
   ],
-  imports: [CommonModule, CountriesRoutingModule, MaterialModule],
+  imports: [CommonModule, CountriesRoutingModule, MaterialModule, SharedModule],
 
   exports: [
     CountriesComponent,

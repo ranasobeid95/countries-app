@@ -3,14 +3,16 @@ import { TestBed } from '@angular/core/testing';
 import { AuthenticationService } from './authentication.service';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AngularFirestore } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreModule,
+} from '@angular/fire/firestore';
 import { MaterialModule } from '../material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { User } from '../model/user';
-import { users } from '../model/dummyData';
-import { async } from 'rxjs';
+import { users } from '../constants/dummyData';
 
 describe('AuthenticationService', () => {
   let service: AuthenticationService;
@@ -106,6 +108,8 @@ describe('AuthenticationService', () => {
     TestBed.configureTestingModule({
       imports: [
         AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule,
+        AngularFirestoreModule,
         RouterTestingModule,
         BrowserAnimationsModule,
         MaterialModule,
@@ -113,9 +117,13 @@ describe('AuthenticationService', () => {
       providers: [
         { provide: AngularFireAuth, useValue: angularFireAuthSpy },
         AngularFirestore,
-        RouterTestingModule,
       ],
     });
+    let setAuthState_Spy = spyOn(
+      AuthenticationService.prototype,
+      'setAuthState'
+    );
+
     service = TestBed.inject(AuthenticationService);
   });
 
@@ -169,8 +177,7 @@ describe('AuthenticationService', () => {
         emailVerified: newUserCredential.user?.emailVerified,
       };
 
-      const credential = service.getUserCredential();
-      expect(service.userCredential).toEqual(credential);
+      expect(service.authState.uid).toEqual(newUserCredential.user?.uid);
       expect(actualUser).toEqual({
         uid: allUser[0].uid,
         email: allUser[0].email,
@@ -198,7 +205,7 @@ describe('AuthenticationService', () => {
 
   it('User logged out', async () => {
     mockSignOut(allUser[0].email);
-    const result = await service.signOut();
-    expect(service.isLogin).toBeFalsy();
+    await service.signOut();
+    expect(service.authenticated).toBeFalsy();
   });
 });

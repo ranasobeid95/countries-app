@@ -8,6 +8,7 @@ import {
 import { mustMatch } from '../../../helper/must-match.validator';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
+import { ROUTES } from 'src/app/constants/routes';
 
 @Component({
   selector: 'sign-up',
@@ -19,7 +20,7 @@ export class SignUpComponent implements OnInit {
   submitted = false;
   isExist = false;
   hide = true;
-
+  routes = ROUTES;
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthenticationService,
@@ -65,8 +66,7 @@ export class SignUpComponent implements OnInit {
     return this.authService
       .signUp(this.signUpForm.value)
       .then(() => {
-        this.onReset();
-        this.router.navigate(['/verify-email']);
+        this.authService.sendVerificationMail();
       })
       .catch((err) => {
         if (

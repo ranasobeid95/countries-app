@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class AppComponent {
   title = 'Where in the World?';
-  constructor(private titleService: Title) {
+  constructor(private titleService: Title, private themeService: ThemeService) {
+    this.themeService.initTheme();
     this.titleService.setTitle(this.title);
   }
 }

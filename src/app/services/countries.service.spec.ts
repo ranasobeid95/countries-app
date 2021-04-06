@@ -4,14 +4,15 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { dummyCountries } from '../model/dummyData';
+import { dummyCountries } from '../constants/dummyData';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('Countries Service Test', () => {
   let countriesService: CountriesService;
   let httpMock: HttpTestingController;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
       providers: [CountriesService],
     });
     countriesService = TestBed.get(CountriesService);

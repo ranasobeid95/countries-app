@@ -1,5 +1,5 @@
 import { Country } from '../model/country';
-import { User } from './user';
+import { User } from '../model/user';
 
 export const dummyCountries: Country[] = [
   {

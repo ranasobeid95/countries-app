@@ -36,10 +36,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
             verticalPosition: this.verticalPosition,
           });
         } else {
-          errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
+          errorMsg = `Error Code: ${error.status},  Message: ${error.error.message}`;
           this._snackBar.open(
             error.status === 404
-              ? `Error : ${error.status}`
+              ? `${errorMsg}`
               : `Server error  ${error.status} `,
             'End now',
             {

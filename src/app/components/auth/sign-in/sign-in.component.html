@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="sign-in-container padding-container">
   <div class="sign-in-container left"></div>
   <div class="sign-in-container right">
@@ -52,16 +53,18 @@
         Sign In
       </button>
     </form>
-    <mat-error class="invalid-password" *ngIf="invalidPassword">
+    <mat-error class="invalid-data" *ngIf="invalidPassword">
       Enter correct password
     </mat-error>
-    <mat-error class="is-not-exist" *ngIf="isNotExist"
+    <mat-error class="invalid-data" *ngIf="isNotExist"
       >The email you entered isn’t connected to an account
     </mat-error>
 
     <p>
       Do not have an account?
-      <a [routerLink]="['/sign-up']"><span class="sign-up">Sign up</span></a>
+      <a [routerLink]="['/', routes.AUTH, routes.SIGN_UP]"
+        ><span class="sign-up">Sign up</span></a
+      >
     </p>
   </div>
 </div>

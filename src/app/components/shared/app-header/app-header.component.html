@@ -1,11 +1,14 @@
 <header class="main-header-container padding-container">
-  <a class="main-header-logo" [routerLink]="['/countries']">
+  <a class="main-header-logo" [routerLink]="['/', routes.COUNTRIES]">
     <p>Where in the World?</p>
   </a>
 
   <div class="main-header-btns">
-    <a class="header-auth-btns header-btns" [routerLink]="['/sign-in']">
-      <button mat-icon-button>
+    <a
+      class="header-auth-btns header-btns"
+      [routerLink]="['/', routes.AUTH, routes.SIGN_IN]"
+    >
+      <button mat-icon-button (click)="signOut()">
         <span *ngIf="isLogin">Sign out</span
         ><span *ngIf="!isLogin">Sign in</span>
       </button>

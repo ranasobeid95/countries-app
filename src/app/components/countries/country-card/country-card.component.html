@@ -1,5 +1,8 @@
 <ng-container *ngIf="country">
-  <a [routerLink]="['/countries', country.name]" class="country-card-container">
+  <a
+    [routerLink]="['/', routes.COUNTRIES, country.name]"
+    class="country-card-container"
+  >
     <div class="country-card-head">
       <img
         mat-card-md-image

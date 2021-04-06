@@ -14,23 +14,25 @@ import { CountriesModule } from './components/countries/countries.module';
 import { MaterialModule } from './material/material.module';
 import { HttpErrorInterceptor } from './http-interceptors/http-interceptors.interceptor';
 import { AuthModule } from './components/auth/auth.module';
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     SharedModule,
     CountriesModule,
     AuthModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
-    AngularFirestoreModule,
   ],
   providers: [
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,

@@ -229,6 +229,7 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
     background-color: var(--dark-mode-background);
     box-shadow: 0 0 6px -3px #202c37 !important;
   }
+
   .header .auth a {
     background-color: var(--dark-mode-background);
   }

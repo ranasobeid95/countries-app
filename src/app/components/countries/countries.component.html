@@ -1,61 +1,58 @@
 <app-header></app-header>
-<div class="countries-container">
-  <div class="countries-container-filter">
-    <form #f="ngForm" class="filter-form">
-      <div class="filter-form-input">
-        <span class="material-icons"> search </span>
-        <input
-          type="text"
-          [(ngModel)]="countryName"
-          placeholder="Search of a country..."
-          aria-label="Country"
-          (keyup)="onSearch($event)"
-          matInput
-          [formControl]="myControl"
-          [matAutocomplete]="auto"
-          #inputField
-        />
+<div class="countries-container padding-container">
+  <form #f="ngForm" class="countries-container-filter">
+    <div class="filter-search-input">
+      <span class="material-icons filter-search-icons"> search </span>
+      <input
+        type="text"
+        [(ngModel)]="countryName"
+        placeholder="Search of a country..."
+        aria-label="Country"
+        (keyup)="onSearch($event)"
+        matInput
+        [formControl]="myControl"
+        [matAutocomplete]="auto"
+        #inputField
+      />
 
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option
-            (click)="updateCountryName(inputField.value)"
-            *ngFor="let option of filteredOptions | async"
-            [value]="option"
-          >
-            {{ option }}
-          </mat-option>
-        </mat-autocomplete>
-      </div>
-
-      <div class="select">
-        <mat-select
-          class="select-region"
-          (ngModelChange)="getCountryByNameAndRegion($event)"
-          placeholder="Filter By Region"
-          name="region"
-          [formControl]="regionsControl"
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option
+          (click)="updateCountryName(inputField.value)"
+          *ngFor="let option of filteredOptions | async"
+          [value]="option"
         >
-          <mat-option
-            class="select-region-option"
-            *ngFor="let region of regions"
-            [value]="region"
-          >
-            {{ region }}
-          </mat-option>
-        </mat-select>
-      </div>
-    </form>
-    <div *ngIf="err" class="err">
-      <span>
-        {{ err }}
-      </span>
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
     </div>
+
+    <div class="filter-select-container">
+      <mat-select
+        class="select-region"
+        (ngModelChange)="getCountryByNameAndRegion($event)"
+        placeholder="Filter By Region"
+        name="region"
+        [formControl]="regionsControl"
+      >
+        <mat-option
+          class="select-region-option"
+          *ngFor="let region of regions"
+          [value]="region"
+        >
+          {{ region }}
+        </mat-option>
+      </mat-select>
+    </div>
+  </form>
+  <div *ngIf="err" class="err">
+    <span>
+      {{ err }}
+    </span>
   </div>
   <mat-spinner *ngIf="isLoading" [mode]="mode"></mat-spinner>
 
-  <div *ngIf="!isLoading" class="countries-container-list">
-    <countries-list class="countries" [listCountries]="countries"
-      >List</countries-list
-    >
-  </div>
+  <countries-list
+    *ngIf="!isLoading"
+    [listCountries]="countries"
+  ></countries-list>
 </div>

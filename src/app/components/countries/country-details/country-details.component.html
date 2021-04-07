@@ -1,7 +1,7 @@
 <app-header></app-header>
-<div class="details-container">
-  <div class="back-btn">
-    <button mat-raised-button (click)="backToLastPage()">
+<div class="details-container padding-container">
+  <div class="details-container-head">
+    <button mat-raised-button class="back-btn" (click)="backToLastPage()">
       <mat-icon>arrow_back</mat-icon>
       <span>Back</span>
     </button>
@@ -11,14 +11,14 @@
     <h3>No Countries Found</h3>
   </div>
   <ng-container *ngIf="country && country.length > 0">
-    <div *ngIf="!isLoading" class="details-container-content">
-      <div class="details-container-left">
+    <div *ngIf="!isLoading" class="details-container-body">
+      <div class="left-details-content">
         <img [src]="country[0].flag" alt="country[0].name" class="flag" />
       </div>
-      <div class="details-container-right">
+      <div class="right-details-content">
         <h1 class="country-name">{{ country[0].name }}</h1>
-        <div class="more-details">
-          <div class="more-left">
+        <div class="right-details-content__more-details">
+          <div class="more-details-left details-sides">
             <h4>
               Native Name: <span>{{ country[0].nativeName }}</span>
             </h4>
@@ -35,7 +35,7 @@
               Capital: <span>{{ country[0].capital }}</span>
             </h4>
           </div>
-          <div class="more-right">
+          <div class="more-details-right details-sides">
             <h4>
               Top Level Domain: <span>{{ country[0].topLevelDomain }}</span>
             </h4>
@@ -51,14 +51,18 @@
             </h4>
           </div>
         </div>
-        <div *ngIf="country[0].borders.length" class="border-countries">
-          <span>Border Countries:</span>
-          <div class="borders">
+        <div
+          *ngIf="country[0].borders.length"
+          class="right-details-content__border-countries"
+        >
+          <span class="border-countries_head">Border Countries:</span>
+          <div class="border-countries_body">
             <a
+              class="border-countries-btns"
               *ngFor="let border of country[0].borders"
               [routerLink]="['/', routes.COUNTRIES, border]"
             >
-              <button class="border-btns" mat-raised-button>
+              <button mat-raised-button>
                 {{ border }}
               </button>
             </a>

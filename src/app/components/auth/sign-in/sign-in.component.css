@@ -1,59 +1,56 @@
 .sign-in-container {
-  width: 100%;
-  height: 100vh;
   display: flex;
+  box-sizing: border-box;
+  min-height: 85vh;
 }
 
 .left {
-  width: 50%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+  background-image: url('../../../../assets/ClipartKey_138958.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  flex: 1;
+  box-sizing: border-box;
+  background-position: center center;
+  max-width: 700px;
 }
-.world-img {
-  margin-top: 23%;
-  margin-left: 10%;
-  height: 55vh;
-  width: 100%;
+
+h1 {
+  margin: 0;
 }
 
 .right {
-  width: 50%;
-  height: 100vh;
-  margin-top: 12%;
+  flex: 1;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  margin-left: 10%;
+  justify-content: center;
+  max-width: 450px;
+  margin-left: 75px;
 }
 
 .form-title {
   font-family: var(--main-font);
   color: var(--light-mode-text);
-  font-weight: 600;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 2rem;
 }
 
 .sign-in-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .field {
-  margin: 0;
-  margin-top: 1%;
-  width: 80%;
+  margin-bottom: 10px;
 }
 
 .submit-btn {
   margin: 0;
-  width: 80%;
-  margin-top: 5%;
 }
 p {
-  margin-top: 3%;
+  margin-top: 2%;
 }
 
 .sign-up {
@@ -63,39 +60,43 @@ p {
 a {
   text-decoration: none;
 }
-.is-not-exist {
+
+.invalid-data {
   margin-top: 2%;
-  margin-left: 6%;
-}
-.invalid-password {
-  margin-top: 2%;
-  margin-left: 22%;
+  align-self: center;
 }
 
-@media only screen and (max-width: 860px) {
+@media (min-width: 1900px) {
   .left {
-    display: none;
+    min-width: 1024px;
   }
   .right {
-    width: 100%;
-    margin-top: 35%;
-    margin-left: 25%;
+    flex: 1;
+    justify-items: center;
+    margin-left: 8%;
+    max-width: 550px;
   }
 }
 
-@media only screen and (max-width: 440px) {
+@media (max-width: 1024px) {
+  .sign-in-container {
+    flex-direction: column;
+    min-height: 30vh;
+  }
   .left {
-    display: none;
+    margin-top: 50px;
+    min-width: 800px;
   }
   .right {
-    width: 100%;
-    margin-top: 35%;
-    margin-left: 18%;
+    flex: 1;
+    justify-items: center;
+    margin-left: 4%;
+    max-width: 500px;
   }
+}
 
-  invalid-password {
-    margin-top: 2%;
-    margin-left: 18%;
-    font-size: 12px;
+@media (max-width: 620px) {
+  .left {
+    display: none;
   }
 }

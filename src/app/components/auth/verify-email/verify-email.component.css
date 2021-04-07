@@ -1,66 +1,41 @@
-.authBlock {
-  margin: 0 auto;
-  margin-top: 10%;
-  height: 50vh;
-  width: 50%;
+.confirmation-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  box-shadow: 0 0 6px -3px #858585;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin: 0 auto;
+  margin-top: 60px;
+  max-width: 500px;
 }
-h3 {
-  font-weight: 800;
-  margin-left: 35%;
-}
-
-.confirmation {
+.confirmation-container-body {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-p {
-  margin-left: 6%;
-}
-.btn-confirmation {
-  width: 55%;
-}
-@media only screen and (max-width: 860px) {
-  .authBlock {
-    margin-top: 44%;
-    margin-left: 26%;
 
-    height: 30vh;
-    width: 50%;
+@media (min-width: 1900px) {
+  .confirmation-container {
+    padding-top: 90px;
+    padding-bottom: 90px;
+    margin-top: 100px;
+    max-width: 700px;
   }
-  h3 {
-    margin-left: 25%;
+  .confirmation-container-header {
+    font-size: 1.5rem;
   }
-  .confirmation {
-    width: 100%;
-    margin-left: 25%;
+  .confirmation-container-body_msg {
+    font-size: 1.2rem;
   }
-  .btn-confirmation {
-    width: 50%;
-  }
-  p {
-    margin-left: 0;
+  .confirmation-container-body button {
+    font-size: 1rem;
   }
 }
 
-@media only screen and (max-width: 440px) {
-  .authBlock {
-    height: 40vh;
-    width: 80%;
-    margin-left: 10%;
-  }
-  h3 {
-    margin-left: 15%;
-  }
-  .confirmation {
-    width: 100%;
-    margin-left: 15%;
-  }
-  .btn-confirmation {
-    width: 70%;
+@media (max-width: 620px) {
+  .confirmation-container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    max-width: 300px;
   }
 }

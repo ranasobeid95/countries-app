@@ -1,14 +1,13 @@
-<div class="authBlock">
-  <h3>Thank You for Signing up</h3>
-
-  <div class="confirmation">
-    <p class="text-center">
+<div class="confirmation-container padding-container">
+  <h3 class="confirmation-container-header">Thank You for Signing up</h3>
+  <div class="confirmation-container-body">
+    <p class="confirmation-container-body_msg">
       Confirmation mail has been sent, Please check your email to sign in
     </p>
     <button
       mat-raised-button
       color="primary"
-      class="btn-confirmation"
+      class="resend-btn"
       (click)="ngAuthService.sendVerificationMail()"
     >
       Resend Verification Email

@@ -33,7 +33,9 @@ h1 {
 .form-title {
   font-family: var(--main-font);
   color: var(--light-mode-text);
-  font-weight: 600;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 2rem;
 }
 
 .sign-up-form {
@@ -43,7 +45,7 @@ h1 {
 }
 
 .field {
-  margin: 0;
+  margin-bottom: 10px;
 }
 
 .submit-btn {

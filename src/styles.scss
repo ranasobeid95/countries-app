@@ -59,27 +59,17 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
   a p:hover {
     color: var(--span-hover-light) !important;
   }
-  .mat-card {
-    background-color: var(--light-mode-elements);
-  }
-  .filter-form-input {
-    box-shadow: 0 0 6px -3px #858585;
-  }
 
   .mat-raised-button {
     background-color: var(--light-mode-elements);
-    box-shadow: 0 0 6px -3px #858585 !important;
+    box-shadow: var(--box-shadow-light) !important;
   }
 
-  .mat-card {
+  .country-card-container {
     background-color: var(--light-mode-elements);
+    box-shadow: var(--box-shadow-light);
   }
-  div.filter-form-input {
-    background-color: var(--light-mode-elements);
-  }
-  div.filter-form-input span {
-    color: var(--content-grey);
-  }
+
   .mat-snack-bar-container {
     background-color: rgb(155, 11, 11);
     color: var(--dark-mode-text);
@@ -148,6 +138,37 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
   .right-details-content__more-details h4 span {
     color: var(--h4-span-light);
   }
+
+  .country-card-body .mat-card-content h2 {
+    color: var(--light-mode-text);
+  }
+  .country-card-body .mat-card-content .country-card-details h4 {
+    color: var(--light-mode-text);
+  }
+  .country-card-body .mat-card-content .country-card-details h4 span {
+    color: var(--h4-span-light);
+  }
+
+  .filter-search-input {
+    background-color: var(--light-mode-elements);
+    box-shadow: var(--box-shadow-light);
+  }
+
+  .filter-search-icons {
+    background-color: var(--light-mode-elements);
+    color: var(--content-grey);
+  }
+
+  input {
+    caret-color: var(--light-mode-text) !important;
+  }
+  .filter-select-container {
+    background-color: var(--light-mode-elements);
+    box-shadow: var(--box-shadow-light);
+  }
+  .mat-select-arrow-wrapper .mat-select-arrow {
+    color: var(--light-mode-text);
+  }
 }
 
 // dark mode.
@@ -164,28 +185,23 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
     font-weight: 300;
   }
   ::placeholder {
-    color: hsl(0deg 0% 100% / 50%);
+    color: var(--placeholder-dark) !important;
+    font-weight: 400;
   }
-  span.material-icons {
-    color: hsl(0deg 0% 100% / 50%);
-  }
-  .mat-select-placeholder {
-    color: hsl(0deg 0% 100% / 50%);
-  }
+
   .header span:hover {
     color: #bbb6b6;
   }
   .header {
     background-color: var(--dark-mode-background);
   }
-  .filter-form-input {
-    background-color: var(--dark-mode-elements);
-  }
+
   .input {
     background-color: var(--dark-mode-elements);
   }
-  .mat-card {
+  .country-card-container {
     background-color: var(--dark-mode-elements);
+    box-shadow: 2px 2px 2px rgba(247, 245, 245, 0);
   }
   .mat-toolbar {
     background-color: var(--dark-mode-elements);
@@ -321,12 +337,34 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
   .right-details-content__more-details h4 span {
     color: var(--h4-span-dark);
   }
+
+  .country-card-body .mat-card-content h2 {
+    color: var(--dark-mode-text);
+  }
+  .country-card-body .mat-card-content .country-card-details h4 {
+    color: var(--dark-mode-text);
+  }
+  .country-card-body .mat-card-content .country-card-details h4 span {
+    color: var(--h4-span-dark);
+  }
+
+  .filter-search-input {
+    background-color: var(--dark-mode-elements);
+    box-shadow: var(--box-shadow-light);
+  }
+
+  .filter-search-icons span.material-icons {
+    background-color: var(--dark-mode-elements);
+    color: var(--dark-mode-text);
+  }
+  .filter-select-container {
+    background-color: var(--dark-mode-elements);
+    box-shadow: var(--box-shadow-light);
+  }
+  .mat-select-value .mat-select-placeholder {
+    color: var(--placeholder-dark) !important;
+  }
 }
-
-/*
-class="mat-form-field sign-in-form field ng-tns-c97-0 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-has-label ng-pristine ng-invalid mat-form-field-invalid ng-touched mat-form-field-hide-placeholder"
-
-*/
 
 html,
 body {
@@ -358,12 +396,13 @@ body {
   --border-white: #fafbfd;
   --main-font: 'Nunito Sans', sans-serif;
   --box-shadow-light: 0 0 6px -3px #858585;
-  --card-shadow: 0px 3px 6px #00000014;
+  --card-shadow: 2px 2px 2px #00000014;
   --input-border: #a2c0d4;
   --span-hover-dark: hsl(211, 40%, 83%);
   --span-hover-light: hsl(210, 25%, 39%);
   --h4-span-light: #000000c7;
   --h4-span-dark: #ffffffc7;
+  --placeholder-dark: #ebe6e6;
 }
 
 .mat-autocomplete-panel {
@@ -403,12 +442,24 @@ body {
 }
 
 .mat-select-value {
-  border: 2px solid springgreen !important;
+  font-family: var(--main-font);
+  font-size: 0.9rem;
   max-width: none !important;
 }
 
 .material-icons {
   font-size: 1.2rem;
+}
+
+.mat-select-arrow-wrapper {
+  padding-left: 40px !important;
+}
+
+.cdk-overlay-pane {
+  width: 172px !important;
+  min-width: initial !important;
+  top: 177px !important;
+  left: 1078px !important;
 }
 
 @media (min-width: 1900px) {

@@ -51,7 +51,8 @@
   </div>
   <mat-spinner *ngIf="isLoading" [mode]="mode"></mat-spinner>
 
-  <div *ngIf="!isLoading" class="countries-container-list">
-    <countries-list [listCountries]="countries">List</countries-list>
-  </div>
+  <countries-list
+    *ngIf="!isLoading"
+    [listCountries]="countries"
+  ></countries-list>
 </div>

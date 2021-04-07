@@ -1,45 +1,37 @@
 .countries-container {
-  display: flex;
-  flex-direction: column;
+  padding-top: 20px;
 }
+
 .countries-container-filter {
-  border: 2px solid peru;
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
 }
 .filter-search-input {
-  border: 2px solid green;
   display: flex;
   align-items: center;
+  border-radius: 4px;
 }
 
 .filter-search-icons {
-  margin-right: 5px;
+  padding: 10px 15px 10px 20px;
 }
 
 .filter-search-input input {
   outline: none;
   border: none;
-  height: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px 180px 10px 10px;
   font-size: 14px;
 }
 
 .filter-select-container {
-  border: 2px solid red;
-  height: 100%;
+  border-radius: 4px;
 }
-
-/* .mat-select.select-region {
-  border: none;
-  padding: 10px;
-  font-size: 14px;
-  box-shadow: 0 0 6px -3px #5f5d5d;
-  border-radius: 2%;
-} */
+.filter-select-container {
+  width: 200px;
+  padding: 10px 10px 10px 20px;
+}
 
 .err {
   color: #ca3737;
@@ -51,65 +43,15 @@
   color: #ca3737;
 }
 
-@media only screen and (max-width: 860px) {
+@media (min-width: 1900px) {
   .countries-container-filter {
-    margin-top: 60px;
-    height: 20vh;
-    margin-left: 0;
-  }
-
-  .filter-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .filter-form-input {
-    height: 5vh;
-    width: 100%;
-  }
-  .filter-form-input input {
-    height: 5vh;
-  }
-
-  .select {
-    width: 50%;
-    margin-top: 5%;
-  }
-  .mat-select.select-region {
-    margin-left: 0;
-    height: 5vh;
-  }
-  .mat-select.select-region span {
-    margin-left: 10%;
+    margin-top: 70px;
+    margin-bottom: 40px;
   }
 }
 
-@media only screen and (max-width: 440px) {
-  .countries-container-filter {
-    margin-top: 60px;
-    height: 20vh;
-    margin-left: 0;
-  }
+@media (max-width: 1024px) {
+}
 
-  .filter-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .filter-form-input {
-    width: 100%;
-  }
-
-  .select {
-    width: 50%;
-    margin-top: 5%;
-  }
-  .mat-select.select-region {
-    margin-left: 0;
-    height: 6vh;
-  }
+@media (max-width: 620px) {
 }

@@ -465,6 +465,12 @@ body {
   .material-icons {
     font-size: 2rem;
   }
+  .mat-select-value .mat-select-placeholder {
+    font-size: 1.1rem;
+  }
+  .mat-select-arrow-wrapper {
+    padding-left: 10px !important;
+  }
 }
 @media (max-width: 1024px) {
   .material-icons {

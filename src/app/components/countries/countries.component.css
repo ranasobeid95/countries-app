@@ -27,10 +27,16 @@
 
 .filter-select-container {
   border-radius: 4px;
-}
-.filter-select-container {
+
   width: 200px;
-  padding: 10px 10px 10px 20px;
+}
+
+.filter-select-container .mat-select {
+  padding-top: 10px;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .err {

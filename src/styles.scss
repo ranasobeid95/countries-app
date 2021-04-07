@@ -65,11 +65,10 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
     box-shadow: var(--box-shadow-light) !important;
   }
 
-  .country-card-container {
+  .card-style {
     background-color: var(--light-mode-elements);
     box-shadow: var(--box-shadow-light);
   }
-
   .mat-snack-bar-container {
     background-color: rgb(155, 11, 11);
     color: var(--dark-mode-text);
@@ -169,6 +168,9 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
   .mat-select-arrow-wrapper .mat-select-arrow {
     color: var(--light-mode-text);
   }
+  .card-style {
+    background-color: var(--light-mode-background);
+  }
 }
 
 // dark mode.
@@ -199,10 +201,7 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
   .input {
     background-color: var(--dark-mode-elements);
   }
-  .country-card-container {
-    background-color: var(--dark-mode-elements);
-    box-shadow: 2px 2px 2px rgba(247, 245, 245, 0);
-  }
+
   .mat-toolbar {
     background-color: var(--dark-mode-elements);
   }
@@ -364,6 +363,10 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
   .mat-select-value .mat-select-placeholder {
     color: var(--placeholder-dark) !important;
   }
+  .card-style {
+    background-color: var(--dark-mode-elements);
+    box-shadow: 2px 2px 2px rgba(247, 245, 245, 0);
+  }
 }
 
 html,
@@ -455,11 +458,9 @@ body {
   padding-left: 40px !important;
 }
 
-.cdk-overlay-pane {
-  width: 172px !important;
-  min-width: initial !important;
+.mat-autocomplete-panel {
+  overflow: hidden !important;
 }
-
 @media (min-width: 1900px) {
   .material-icons {
     font-size: 2rem;

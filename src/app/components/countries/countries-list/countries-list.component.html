@@ -1,11 +1,11 @@
-<section class="country-list">
+<section class="countries-list-container">
   <country-card
     class="country-card-container"
     *ngFor="let country of listCountries"
     [country]="country"
   >
   </country-card>
-  <div class="no-data" *ngIf="listCountries.length === 0">
+  <div class="no-data" *ngIf="listCountries.length">
     <h3>No Countries Found</h3>
   </div>
 </section>

@@ -17,13 +17,16 @@
         <h2 class="country-card-name">{{ country.name }}</h2>
         <div class="country-card-details">
           <h4 class="country-card-details-items">
-            <span>Population: </span>{{ country.population | number }}
+            Population:
+            <span> {{ country.population | number }} </span>
           </h4>
           <h4 class="country-card-details-items">
-            <span>Region: </span> {{ country.region }}
+            Region:
+            <span>{{ country.region }} </span>
           </h4>
           <h4 class="country-card-details-items">
-            <span>Capital: </span> {{ country.capital }}
+            Capital:
+            <span>{{ country.capital }} </span>
           </h4>
         </div>
       </mat-card-content>

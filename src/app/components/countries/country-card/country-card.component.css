@@ -1,78 +1,42 @@
 .country-card-container {
   text-decoration: none;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.country-card-head {
+  flex: 1;
 }
 .country-card-head img {
   width: 100%;
-  height: auto;
+  height: 160px;
 }
 
 .country-card-body {
+  flex: 1;
   padding: 20px;
 }
 
-.country-card-details {
-}
-/* .card-country {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20%;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
-.card-country:hover {
-  transform: translateY(-1%);
-}
-
-.mat-card {
-  padding: 0;
-}
-
-.card-country-img {
-  flex: 1;
-  display: flex;
-}
-
-.card-country .country-flag {
-  flex: 1;
-  cursor: pointer;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-.mat-card-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 5%;
-}
-.card-country-name {
-  flex: 1;
-  font-weight: bold;
-}
-a {
-  text-decoration: none;
-}
-
-.card-country-details {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-}
-ul {
-  list-style-type: none;
-}
-.card-country-details-items {
-  flex: 1;
-}
-.card-country a {
-  text-decoration: none;
-}
-.card-country-details span {
+.country-card-body .mat-card-content h2 {
+  font-size: 1.3rem;
   font-weight: bold;
 }
 
-.mat-card-md-image {
-  padding: 0;
+.country-card-body .mat-card-content .country-card-details h4 {
+  font-size: 0.9rem;
   margin: 0;
-} */ ;
+  font-weight: 500;
+}
+.country-card-body .mat-card-content .country-card-details h4 span {
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+@media (min-width: 1900px) {
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 620px) {
+}

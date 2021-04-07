@@ -10,7 +10,7 @@
     >
       <button mat-icon-button (click)="signOut()">
         <span *ngIf="isLogin">Sign out</span
-        ><span *ngIf="!isLogin">Sign in</span>
+        ><span *ngIf="!isLogin && !isSignInPage">Sign in</span>
       </button>
     </a>
 

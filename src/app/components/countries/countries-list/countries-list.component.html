@@ -5,7 +5,7 @@
     [country]="country"
   >
   </country-card>
-  <div class="no-data" *ngIf="listCountries.length">
+  <div class="no-data" *ngIf="listCountries.length === 0">
     <h3>No Countries Found</h3>
   </div>
 </section>

@@ -20,6 +20,8 @@
 .country-card-body .mat-card-content h2 {
   font-size: 1.3rem;
   font-weight: bold;
+  max-width: 300px;
+  min-width: 250px;
 }
 
 .country-card-body .mat-card-content .country-card-details h4 {

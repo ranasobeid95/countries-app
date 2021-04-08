@@ -64,6 +64,10 @@ export class SignInComponent implements OnInit {
       });
   }
 
+  SignInWithGoogle() {
+    return this.authService.SignInWithGoogle();
+  }
+
   onReset() {
     this.submitted = false;
     this.signInForm.reset();

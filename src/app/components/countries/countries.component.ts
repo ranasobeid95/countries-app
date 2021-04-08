@@ -72,14 +72,11 @@ export class CountriesComponent implements OnInit {
   }
 
   getAllCountries() {
-    this.options = [];
     this.isLoading = true;
     this.countriesService.getAllCountries().subscribe(
       (response) => {
         this.countries = response;
-        response.map((ele: any) => {
-          this.options.push(ele.name);
-        });
+        this.options = response.map((ele) => ele.name);
       },
       (err) => {
         this.isLoading = false;
@@ -97,12 +94,10 @@ export class CountriesComponent implements OnInit {
     isRegion.length !== 0
       ? (this.selectedRegion = event)
       : (this.countryName = event);
-    console.log(`this.countryName`, this.countryName);
     this.selectedRegion === 'All'
       ? this.countryName
         ? this.countriesService.getCountryByName(this.countryName).subscribe(
             (response) => {
-              console.log(`response`, response);
               this.countries = response;
             },
             (err) => {

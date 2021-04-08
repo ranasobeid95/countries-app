@@ -90,6 +90,19 @@ export class AuthenticationService {
       });
   }
 
+  SignInWithGoogle() {
+    return this.afAuth
+      .signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then((userCredential) => {
+        this.authState = userCredential.user;
+        this.setUserData(userCredential.user);
+        this.router.navigate([ROUTES.COUNTRIES]);
+      })
+      .catch((error) => {
+        throw Error(error.message);
+      });
+  }
+
   signOut() {
     return this.afAuth
       .signOut()

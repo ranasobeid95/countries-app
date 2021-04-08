@@ -4,13 +4,18 @@
   </a>
 
   <div class="main-header-btns">
+    <a class="header-auth-btns header-btns">
+      <button mat-icon-button *ngIf="isLogin" (click)="signOut()">
+        <span>Sign out</span>
+      </button>
+    </a>
     <a
+      *ngIf="!isLogin && !isSignInPage"
       class="header-auth-btns header-btns"
       [routerLink]="['/', routes.AUTH, routes.SIGN_IN]"
     >
-      <button mat-icon-button (click)="signOut()">
-        <span *ngIf="isLogin">Sign out</span
-        ><span *ngIf="!isLogin && !isSignInPage">Sign in</span>
+      <button mat-icon-button>
+        <span>Sign in</span>
       </button>
     </a>
 

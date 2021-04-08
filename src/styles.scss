@@ -460,6 +460,18 @@ body {
 .mat-autocomplete-panel {
   overflow: hidden !important;
 }
+
+.mat-snack-bar-container {
+  background-color: #bd4141 !important;
+}
+
+.mat-simple-snackbar-action button {
+  background-color: #bd4141 !important;
+}
+.mat-focus-indicator .mat-button .mat-button-base .mat-button-wrapper:hover {
+  color: #e76f6f;
+}
+
 @media (min-width: 1900px) {
   .material-icons {
     font-size: 2rem;

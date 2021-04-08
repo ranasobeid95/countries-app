@@ -169,6 +169,19 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
     background-color: var(--light-mode-elements);
     box-shadow: var(--card-shadow) !important;
   }
+  .separator-text {
+    background-color: var(--light-mode-background);
+    color: var(--light-mode-text);
+  }
+  .separator-text:hover {
+    color: var(--light-mode-text) !important;
+  }
+  .google-text {
+    color: var(--dark-mode-text);
+  }
+  .text-container {
+    background-color: var(--dark-mode-background);
+  }
 }
 
 // dark mode.
@@ -365,6 +378,17 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
     background-color: var(--dark-mode-elements);
     box-shadow: 2px 2px 2px rgba(247, 245, 245, 0);
   }
+
+  .separator-text {
+    background-color: var(--dark-mode-background);
+    color: var(--dark-mode-text);
+  }
+  .separator-text:hover {
+    color: var(--dark-mode-text) !important;
+  }
+  .text-container {
+    background-color: var(--dark-mode-elements);
+  }
 }
 
 html,
@@ -408,6 +432,13 @@ body {
 
 .mat-autocomplete-panel {
   border: none !important;
+}
+.sign-in-google-btn {
+  padding: 0 !important;
+}
+.sign-in-google-btn .mat-button-wrapper {
+  display: flex !important;
+  background-color: var(--light-mode-background);
 }
 
 .mat-autocomplete-trigger:focus {

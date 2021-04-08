@@ -53,6 +53,23 @@
         Sign In
       </button>
     </form>
+    <div class="separator">
+      <span class="separator-text">OR</span>
+      <span class="separator-line"></span>
+    </div>
+    <button
+      mat-raised-button
+      class="sign-in-google-btn field"
+      color="primary"
+      (click)="SignInWithGoogle()"
+    >
+      <div class="icon-container">
+        <span class="google-icon"></span>
+      </div>
+      <div class="text-container">
+        <span class="google-text">Sign In With Google</span>
+      </div>
+    </button>
     <mat-error class="invalid-data" *ngIf="invalidPassword">
       Enter correct password
     </mat-error>

@@ -29,7 +29,7 @@
   align-self: center;
 }
 .no-data h3 {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-family: var(--main-font);
 }
 .details-container-body {
@@ -116,7 +116,7 @@
   }
 
   .no-data h3 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   .details-container-body {
     flex-direction: row;

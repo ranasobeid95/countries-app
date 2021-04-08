@@ -27,8 +27,8 @@
 
 .filter-select-container {
   border-radius: 4px;
-
-  width: 200px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .filter-select-container .mat-select {

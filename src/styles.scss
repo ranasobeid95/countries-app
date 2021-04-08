@@ -65,10 +65,6 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
     box-shadow: var(--box-shadow-light) !important;
   }
 
-  .card-style {
-    background-color: var(--light-mode-elements);
-    box-shadow: var(--box-shadow-light);
-  }
   .mat-snack-bar-container {
     background-color: rgb(155, 11, 11);
     color: var(--dark-mode-text);
@@ -168,8 +164,10 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
   .mat-select-arrow-wrapper .mat-select-arrow {
     color: var(--light-mode-text);
   }
+
   .card-style {
-    background-color: var(--light-mode-background);
+    background-color: var(--light-mode-elements);
+    box-shadow: var(--card-shadow) !important;
   }
 }
 
@@ -410,11 +408,6 @@ body {
 
 .mat-autocomplete-panel {
   border: none !important;
-
-  .mat-select-panel {
-    width: 75%;
-    margin-top: 20%;
-  }
 }
 
 .mat-autocomplete-trigger:focus {
@@ -443,6 +436,12 @@ body {
   padding-left: 5.5rem;
   padding-right: 5.5rem;
 }
+#mat-select-0-panel {
+  min-width: calc(100% + 50px) !important;
+  right: -42px;
+  top: 44px;
+  position: absolute;
+}
 
 .mat-select-value {
   font-family: var(--main-font);
@@ -455,12 +454,24 @@ body {
 }
 
 .mat-select-arrow-wrapper {
-  padding-left: 40px !important;
+  padding-left: 15px !important;
 }
 
 .mat-autocomplete-panel {
   overflow: hidden !important;
 }
+
+.mat-snack-bar-container {
+  background-color: #bd4141 !important;
+}
+
+.mat-simple-snackbar-action button {
+  background-color: #bd4141 !important;
+}
+.mat-focus-indicator .mat-button .mat-button-base .mat-button-wrapper:hover {
+  color: #e76f6f;
+}
+
 @media (min-width: 1900px) {
   .material-icons {
     font-size: 2rem;

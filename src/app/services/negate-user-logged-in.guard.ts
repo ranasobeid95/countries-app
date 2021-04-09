@@ -13,7 +13,6 @@ import {
   MatSnackBar,
 } from '@angular/material/snack-bar';
 import { IsAuthService } from './is-auth.service';
-import { ROUTES } from '../constants/routes';
 
 @Injectable({
   providedIn: 'root',
@@ -42,7 +41,7 @@ export class NegateUserLoggedInGuard implements CanActivate {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
     });
-    this.router.navigate([`${ROUTES.COUNTRIES}`]);
+    this.router.navigate(['/countries']);
 
     return false;
   }

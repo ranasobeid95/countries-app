@@ -13,7 +13,6 @@ import {
   MatSnackBarVerticalPosition,
   MatSnackBar,
 } from '@angular/material/snack-bar';
-import { ROUTES } from '../constants/routes';
 import { IsAuthService } from './is-auth.service';
 
 @Injectable({
@@ -47,7 +46,7 @@ export class AuthGuard implements CanActivate {
         verticalPosition: this.verticalPosition,
       }
     );
-    this.router.navigate([`${ROUTES.AUTH}/${ROUTES.SIGN_IN}`]);
+    this.router.navigate(['/auth/sign-in']);
 
     return false;
   }

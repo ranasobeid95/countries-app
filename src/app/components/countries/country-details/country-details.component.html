@@ -60,7 +60,7 @@
             <a
               class="border-countries-btns"
               *ngFor="let border of country[0].borders"
-              [routerLink]="['/', routes.COUNTRIES, border]"
+              [routerLink]="['/countries', border]"
             >
               <button mat-raised-button>
                 {{ border }}

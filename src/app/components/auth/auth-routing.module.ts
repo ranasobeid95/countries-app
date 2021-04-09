@@ -5,32 +5,31 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { AuthGuard } from 'src/app/services/auth.guard';
-import { ROUTES } from '../../constants/routes';
 import { NegateUserLoggedInGuard } from 'src/app/services/negate-user-logged-in.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: `/${ROUTES.AUTH}/${ROUTES.SIGN_IN}`,
+    redirectTo: '/auth/sign-in',
     pathMatch: 'full',
   },
   {
-    path: ROUTES.SIGN_OUT,
-    redirectTo: `${ROUTES.AUTH}/${ROUTES.SIGN_IN}`,
+    path: 'sign-out',
+    redirectTo: '/auth/sign-in',
     pathMatch: 'full',
   },
   {
-    path: ROUTES.SIGN_IN,
+    path: 'sign-in',
     component: SignInComponent,
     canActivate: [NegateUserLoggedInGuard],
   },
   {
-    path: ROUTES.SIGN_UP,
+    path: 'sign-up',
     component: SignUpComponent,
     canActivate: [NegateUserLoggedInGuard],
   },
   {
-    path: ROUTES.VERIFY_EMAIL,
+    path: 'verify-email',
     component: VerifyEmailComponent,
     canActivate: [AuthGuard],
   },

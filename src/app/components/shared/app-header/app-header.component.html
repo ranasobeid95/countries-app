@@ -1,5 +1,5 @@
 <header class="main-header-container padding-container">
-  <a class="main-header-logo" [routerLink]="['/', routes.COUNTRIES]">
+  <a class="main-header-logo" [routerLink]="'/countries'">
     <p>Where in the World?</p>
   </a>
 
@@ -12,7 +12,7 @@
     <a
       *ngIf="!isLogin && !isSignInPage"
       class="header-auth-btns header-btns"
-      [routerLink]="['/', routes.AUTH, routes.SIGN_IN]"
+      [routerLink]="'/auth/sign-in'"
     >
       <button mat-icon-button>
         <span>Sign in</span>

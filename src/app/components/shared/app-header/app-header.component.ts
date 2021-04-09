@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ThemeService } from 'src/app/services/theme.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { ROUTES } from '../../../constants/routes';
 import { IsAuthService } from 'src/app/services/is-auth.service';
 
 @Component({
@@ -13,7 +12,6 @@ export class AppHeaderComponent implements OnInit {
   @Input() isSignInPage: boolean = false;
   isDarkMode: boolean = false;
   isLogin: boolean = false;
-  routes = ROUTES;
 
   constructor(
     private themeService: ThemeService,

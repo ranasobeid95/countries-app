@@ -2,28 +2,27 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 import { AuthGuard } from './services/auth.guard';
-import { ROUTES } from './constants/routes';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: `/${ROUTES.COUNTRIES}`,
+    redirectTo: '/countries',
     pathMatch: 'full',
   },
   {
-    path: ROUTES.COUNTRIES,
+    path: 'countries',
     loadChildren: () =>
       import('./components/countries/countries.module').then(
         (m) => m.CountriesModule
       ),
   },
   {
-    path: ROUTES.AUTH,
+    path: 'auth',
     loadChildren: () =>
       import('./components/auth/auth.module').then((m) => m.AuthModule),
   },
-  { path: ROUTES.PAGE_NOT_FOUND, component: PageNotFoundComponent },
-  { path: '**', redirectTo: `/${ROUTES.PAGE_NOT_FOUND}` },
+  { path: '404', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({

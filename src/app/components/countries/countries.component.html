@@ -26,22 +26,34 @@
       </mat-autocomplete>
     </div>
 
-    <div class="filter-select-container">
-      <mat-select
-        class="select-region"
-        (ngModelChange)="getCountryByNameAndRegion($event)"
-        placeholder="Filter By Region"
-        name="region"
-        [formControl]="regionsControl"
+    <div class="region-select-container">
+      <div (click)="onToggleFilter()" class="region-filter-base">
+        <input
+          readonly
+          [value]="selectedRegion"
+          placeholder="Filter By Region"
+          class="region-filter-input-field"
+        />
+        <img
+          src="../../../assets/arrow-down-sign-to-navigate.svg"
+          class="region-filter-arrow"
+          [ngClass]="{ 'opened-arrow': openedFilter === true }"
+        />
+      </div>
+
+      <div
+        class="region-select-options-container"
+        [ngClass]="{ 'opened-select': openedFilter === true }"
       >
-        <mat-option
-          class="select-region-option"
+        <div
+          (click)="getCountryByNameAndRegion(region)"
           *ngFor="let region of regions"
-          [value]="region"
+          class="region-select-option"
+          [ngClass]="{ active: region === selectedRegion }"
         >
           {{ region }}
-        </mat-option>
-      </mat-select>
+        </div>
+      </div>
     </div>
   </form>
   <div *ngIf="err" class="err">

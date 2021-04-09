@@ -157,13 +157,6 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
   input {
     caret-color: var(--light-mode-text) !important;
   }
-  .filter-select-container {
-    background-color: var(--light-mode-elements);
-    box-shadow: var(--box-shadow-light);
-  }
-  .mat-select-arrow-wrapper .mat-select-arrow {
-    color: var(--light-mode-text);
-  }
 
   .card-style {
     background-color: var(--light-mode-elements);
@@ -181,6 +174,31 @@ $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
   }
   .text-container {
     background-color: var(--dark-mode-background);
+  }
+
+  .region-select-container {
+    background-color: var(--light-mode-elements);
+    color: var(--content-grey);
+    box-shadow: var(--box-shadow-light);
+  }
+
+  .region-select-option:hover,
+  .region-select-option.active {
+    background-color: var(--light-mode-background);
+  }
+
+  .region-select-options-container {
+    box-shadow: var(--box-shadow-light);
+  }
+
+  .mat-autocomplete-panel::-webkit-scrollbar-track {
+    background: #f5f5f5;
+  }
+  .mat-autocomplete-panel::-webkit-scrollbar-thumb {
+    background: var(--content-grey);
+  }
+  .mat-autocomplete-panel::-webkit-scrollbar-thumb:hover {
+    background: #76828a;
   }
 }
 
@@ -216,9 +234,7 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
   .mat-toolbar {
     background-color: var(--dark-mode-elements);
   }
-  .mat-select {
-    background-color: var(--dark-mode-elements);
-  }
+
   .mat-option {
     background-color: var(--dark-mode-elements);
   }
@@ -231,20 +247,9 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
   .mat-autocomplete-trigger {
     color: var(--dark-mode-text);
   }
-
-  .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
-    background: var(--dark-mode-background);
-  }
-  .mat-select-panel:hover {
-    background: var(--dark-mode-background);
-  }
   .mat-option.mat-active {
     background-color: var(--dark-mode-elements);
   }
-  .mat-option .mat-selected:hover {
-    background-color: var(--dark-mode-background);
-  }
-
   .mat-autocomplete-panel:hover {
     background-color: var(--dark-mode-background);
   }
@@ -367,13 +372,7 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
     background-color: var(--dark-mode-elements);
     color: var(--dark-mode-text);
   }
-  .filter-select-container {
-    background-color: var(--dark-mode-elements);
-    box-shadow: var(--box-shadow-light);
-  }
-  .mat-select-value .mat-select-placeholder {
-    color: var(--placeholder-dark) !important;
-  }
+
   .card-style {
     background-color: var(--dark-mode-elements);
     box-shadow: 2px 2px 2px rgba(247, 245, 245, 0);
@@ -388,6 +387,35 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
   }
   .text-container {
     background-color: var(--dark-mode-elements);
+  }
+
+  .mat-autocomplete-panel::-webkit-scrollbar-track {
+    background: var(--dark-mode-background);
+  }
+  .mat-autocomplete-panel::-webkit-scrollbar-thumb {
+    background: #374958;
+  }
+  .mat-autocomplete-panel::-webkit-scrollbar-thumb:hover {
+    background: #4d677c;
+  }
+  .region-select-container {
+    background-color: var(--dark-mode-elements);
+    color: var(--dark-mode-text);
+    box-shadow: var(--box-shadow-light);
+  }
+
+  .region-select-option:hover,
+  .region-select-option.active {
+    background-color: var(--dark-mode-background);
+  }
+  .mat-option.mat-focus-indicator.mat-selected {
+    background-color: var(--dark-mode-background) !important;
+  }
+  .region-select-options-container {
+    box-shadow: var(--box-shadow-light);
+  }
+  .mat-option.mat-active.mat-selected {
+    background-color: var(--dark-mode-background) !important;
   }
 }
 
@@ -467,14 +495,9 @@ body {
   padding-left: 5.5rem;
   padding-right: 5.5rem;
 }
-#mat-select-0-panel {
-  min-width: calc(100% + 50px) !important;
-  right: -42px;
-  top: 44px;
-  position: absolute;
-}
 
 .mat-select-value {
+  border: 2px solid purple;
   font-family: var(--main-font);
   font-size: 0.9rem;
   max-width: none !important;
@@ -484,12 +507,12 @@ body {
   font-size: 1.2rem;
 }
 
-.mat-select-arrow-wrapper {
-  padding-left: 15px !important;
+.mat-autocomplete-panel::-webkit-scrollbar {
+  width: 10px;
 }
 
-.mat-autocomplete-panel {
-  overflow: hidden !important;
+.mat-autocomplete-panel::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 2px;
 }
 
 .mat-snack-bar-container {
@@ -506,12 +529,6 @@ body {
 @media (min-width: 1900px) {
   .material-icons {
     font-size: 2rem;
-  }
-  .mat-select-value .mat-select-placeholder {
-    font-size: 1.1rem;
-  }
-  .mat-select-arrow-wrapper {
-    padding-left: 10px !important;
   }
 }
 @media (max-width: 1024px) {

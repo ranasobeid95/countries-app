@@ -139,4 +139,32 @@
   .filter-search-input input {
     padding: 10px 50px 10px 10px;
   }
+
+  .region-select-container {
+    margin-right: 110px;
+  }
+
+  .region-filter-base {
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 300px) {
+  .filter-search-input {
+    box-sizing: border-box;
+  }
+  .filter-search-input input {
+    padding: 10px 0px 10px 0px;
+  }
+  .filter-search-icons {
+    padding: 10px 0px 10px 10px;
+  }
+
+  .region-filter-base {
+    justify-content: initial;
+  }
+
+  .region-select-container {
+    margin-right: 40px;
+  }
 }

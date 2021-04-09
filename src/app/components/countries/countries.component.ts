@@ -24,8 +24,8 @@ export class CountriesComponent implements OnInit {
   countries: Country[] = [];
   myControl = new FormControl();
   regionsControl = new FormControl();
-  options: string[] = [];
-  filteredOptions?: Observable<string[]>;
+  options: { countryName: string; region: string }[] = [];
+  filteredOptions?: Observable<{ countryName: string; region: string }[]>;
   countryName: string = '';
   selectedRegion: string = 'All';
   regions: string[] = REGIONS;
@@ -42,32 +42,49 @@ export class CountriesComponent implements OnInit {
 
   onSearch(event: any) {
     let searchText: string | undefined = event.target.value.trim();
-    this.userSearchUpdate.next(searchText);
+    if (searchText?.length !== 0) {
+      this.userSearchUpdate.next(searchText);
+    } else {
+      if (this.selectedRegion !== 'All') {
+        console.log(`2`, 2);
+        this.getCountryByNameAndRegion(this.selectedRegion);
+      } else {
+        return;
+      }
+    }
   }
   ngOnInit(): void {
     this.userSearchUpdate
       .pipe(debounceTime(1000), distinctUntilChanged())
       .subscribe((value) => {
-        if (value?.length > 3) {
-          this.getCountryByNameAndRegion(value);
-        } else {
-          this.getCountryByNameAndRegion(this.selectedRegion);
-        }
+        console.log(`value`, value);
+        this.getCountryByNameAndRegion(value);
       });
 
     this.getAllCountries();
+
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value))
     );
   }
 
-  _filter(value: string): string[] {
+  _filter(value: string): { countryName: string; region: string }[] {
     const filterValue = value.toLowerCase();
 
-    return this.options.filter(
-      (option) => option.toLowerCase().indexOf(filterValue) === 0
-    );
+    if (this.selectedRegion === 'All') {
+      return this.options.filter(
+        (option) =>
+          option.countryName.toLowerCase().indexOf(filterValue) === 0 &&
+          option.region !== this.selectedRegion
+      );
+    } else {
+      return this.options.filter(
+        (option) =>
+          option.countryName.toLowerCase().indexOf(filterValue) === 0 &&
+          option.region === this.selectedRegion
+      );
+    }
   }
 
   getAllCountries() {
@@ -75,7 +92,9 @@ export class CountriesComponent implements OnInit {
     this.countriesService.getAllCountries().subscribe(
       (response) => {
         this.countries = response;
-        this.options = response.map((ele) => ele.name);
+        this.options = response.map((ele) => {
+          return { countryName: ele.name, region: ele.region };
+        });
       },
       (err) => {
         this.isLoading = false;
@@ -96,11 +115,20 @@ export class CountriesComponent implements OnInit {
     isRegion.length !== 0
       ? (this.selectedRegion = event)
       : (this.countryName = event);
+
+    console.log(
+      `getCountryByNameAndRegion`,
+      this.selectedRegion,
+      ' this.countryName',
+      this.countryName.length === 0
+    );
     this.selectedRegion === 'All'
       ? this.countryName
         ? this.countriesService.getCountryByName(this.countryName).subscribe(
             (response) => {
-              this.countries = response;
+              Array.isArray(response)
+                ? (this.countries = response)
+                : this.countries.push(response);
             },
             (err) => {
               this.countries = [];

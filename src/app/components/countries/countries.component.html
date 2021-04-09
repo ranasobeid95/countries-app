@@ -5,7 +5,7 @@
       <span class="material-icons filter-search-icons"> search </span>
       <input
         type="text"
-        [(ngModel)]="countryName"
+        [ngModel]="countryName"
         placeholder="Search of a country..."
         aria-label="Country"
         (keyup)="onSearch($event)"
@@ -19,9 +19,9 @@
         <mat-option
           (click)="updateCountryName(inputField.value)"
           *ngFor="let option of filteredOptions | async"
-          [value]="option"
+          [value]="option.countryName"
         >
-          {{ option }}
+          {{ option.countryName }}
         </mat-option>
       </mat-autocomplete>
     </div>

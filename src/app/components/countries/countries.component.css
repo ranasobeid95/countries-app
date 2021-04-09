@@ -25,18 +25,66 @@
   font-size: 14px;
 }
 
-.filter-select-container {
+.region-select-container {
+  position: relative;
   border-radius: 4px;
-  padding-left: 25px;
-  padding-right: 25px;
 }
 
-.filter-select-container .mat-select {
-  padding-top: 10px;
-  outline: none;
+.region-select-container * {
+  color: inherit;
+}
+
+.region-filter-base {
+  cursor: pointer;
   display: flex;
-  justify-content: center;
+  height: 100%;
+}
+
+.region-filter-input-field {
+  flex: 1;
+  padding: 1rem 0.85rem;
+  background-color: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  max-width: 120px;
+}
+
+.region-filter-arrow {
+  width: 2.3rem;
+  padding: 0.85rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.opened-arrow {
+  transform: rotate(180deg);
+}
+
+.region-select-options-container {
+  height: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 110%;
+  overflow: hidden;
+  background-color: inherit;
+  border-radius: 4px;
+  transition: height 0.3s ease-in-out;
+  z-index: 9;
+}
+
+.region-select-option {
+  height: 2.2rem;
+  box-sizing: border-box;
+  padding: 0 13px;
+  display: flex;
   align-items: center;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.region-select-options-container.opened-select {
+  height: calc(6 * 2.2rem);
 }
 
 .err {

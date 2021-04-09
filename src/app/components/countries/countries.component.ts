@@ -29,6 +29,7 @@ export class CountriesComponent implements OnInit {
   countryName: string = '';
   selectedRegion: string = 'All';
   regions: string[] = REGIONS;
+  openedFilter: boolean = false;
   err?: string;
   isLoading: boolean = false;
   mode: ProgressSpinnerMode = 'indeterminate';
@@ -50,9 +51,7 @@ export class CountriesComponent implements OnInit {
         if (value?.length > 3) {
           this.getCountryByNameAndRegion(value);
         } else {
-          if (this.selectedRegion !== 'All') {
-            this.getCountryByNameAndRegion(this.selectedRegion);
-          }
+          this.getCountryByNameAndRegion(this.selectedRegion);
         }
       });
 
@@ -88,6 +87,9 @@ export class CountriesComponent implements OnInit {
   }
 
   getCountryByNameAndRegion(event: any) {
+    if (this.openedFilter) {
+      this.onToggleFilter();
+    }
     this.isLoading = true;
     let isRegion = this.regions.filter((ele) => ele === event);
     this.err = '';
@@ -150,5 +152,8 @@ export class CountriesComponent implements OnInit {
         this.isLoading = false;
       }
     );
+  }
+  onToggleFilter() {
+    this.openedFilter = !this.openedFilter;
   }
 }

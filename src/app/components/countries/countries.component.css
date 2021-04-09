@@ -110,13 +110,6 @@
   .filter-search-input span {
     padding: 15px 0px 15px 15px;
   }
-  .filter-select-container {
-    padding: 8px;
-    font-size: 1.2rem;
-  }
-  .filter-select-container .mat-select {
-    padding: 15px 0px 15px 15px;
-  }
 }
 
 @media (max-width: 1024px) {
@@ -131,24 +124,11 @@
   .filter-search-input input {
     padding: 10px 60px 10px 10px;
   }
-  .filter-select-container .mat-select {
-    padding: 8px;
-  }
-}
-
-@media (max-width: 770px) {
-  .countries-container-filter {
-    flex-direction: column;
-    padding-right: 135px;
-  }
-
-  .filter-search-input {
-    margin-bottom: 30px;
-  }
 }
 
 @media (max-width: 500px) {
   .countries-container-filter {
+    flex-direction: column;
     padding-right: 30px;
   }
 
@@ -157,6 +137,6 @@
   }
 
   .filter-search-input input {
-    padding: 0;
+    padding: 10px 50px 10px 10px;
   }
 }

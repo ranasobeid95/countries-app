@@ -56,57 +56,38 @@ describe('Country Details Component', () => {
     );
     fixture = TestBed.createComponent(CountryDetailsComponent);
     component = fixture.componentInstance;
+    sessionStorage.setItem(`${environment.sessionKey}`, '1');
     fixture.detectChanges();
   });
 
   afterAll(() => {
     component.country = [];
     component.isLoading = false;
+    sessionStorage.removeItem(`${environment.sessionKey}`);
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should not show data for invalid params', () => {
-    getCountrySpy.calls.reset();
-    activatedRoute.setParamMap({ name: '1' });
-    expect(getCountrySpy.calls.any()).toBe(false, 'getCountry called');
-  });
-
-  it('Navigate To "/page-not-found"', () => {
-    getCountrySpy.calls.reset();
-    activatedRoute.setParamMap({ name: 'None' });
-    component.ngOnInit();
-    expect(getCountrySpy.calls.any()).toBe(true, 'getCountry called once');
-  });
+  beforeEach(
+    waitForAsync(() => {
+      const expectedCountry = dummyCountries[0].name;
+      activatedRoute.setParamMap({ name: expectedCountry });
+    })
+  );
 
   it("should display country's by name", () => {
-    const expectedCountry = dummyCountries[0];
-    activatedRoute.setParamMap({ name: expectedCountry.name });
     let expectedParams: string;
     activatedRoute.paramMap.subscribe(
       (params: any) => {
         expectedParams = params.get('name');
-        component.getDetails(expectedParams);
         expect(expectedParams).toBe(dummyCountries[0].name);
-        expect(component.country).toEqual([dummyCountries[0]]);
+        expect(component.country[0].name).toEqual(dummyCountries[0].name);
       },
       (err) => {
         expect(component.isLoading).toBeFalse();
       }
     );
-  });
-
-  it("should display country's by alpha code", () => {
-    const expectedCountry = dummyCountries[0];
-    activatedRoute.setParamMap({ name: expectedCountry.alpha3Code });
-    let expectedParams: string;
-    activatedRoute.paramMap.subscribe((params: any) => {
-      expectedParams = params.get('name');
-      component.getDetails(expectedParams);
-      expect(expectedParams).toBe(dummyCountries[0].alpha3Code);
-      expect(component.country).toEqual([dummyCountries[0]]);
-    });
   });
 });

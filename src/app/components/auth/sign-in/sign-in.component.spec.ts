@@ -112,27 +112,25 @@ describe('SignInComponent', () => {
 
     const signInDe: DebugElement = fixture.debugElement;
     const signInEle: HTMLElement = signInDe.nativeElement;
-    const msg = signInEle.querySelector('.is-not-exist');
+    const msg = signInEle.querySelector('.invalid-data');
     expect(msg).toBeTruthy();
     expect(msg?.textContent?.trim()).toEqual(
       'The email you entered isn’t connected to an account'
     );
   });
 
-  it('Enter in correct password', async () => {
+  it('Enter incorrect password', async () => {
     component.signInForm.controls['email'].setValue(users[0].email);
     component.signInForm.controls['password'].setValue('123456789');
     expect(component.signInForm.valid).toBeTruthy();
-
     checkUser(component.signInForm.value);
     await component.submit();
-    expect(component.invalidPassword).toBeTruthy();
-
+    expect(component.invalidPassword).toBeTrue();
     fixture.detectChanges();
 
     const signInDe: DebugElement = fixture.debugElement;
     const signInEle: HTMLElement = signInDe.nativeElement;
-    const msg = signInEle.querySelector('.invalid-password');
+    const msg = signInEle.querySelector('.invalid-data');
     expect(msg).toBeTruthy();
     expect(msg?.textContent?.trim()).toEqual('Enter correct password');
   });

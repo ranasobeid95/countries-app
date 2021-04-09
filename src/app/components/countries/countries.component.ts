@@ -46,7 +46,6 @@ export class CountriesComponent implements OnInit {
       this.userSearchUpdate.next(searchText);
     } else {
       if (this.selectedRegion !== 'All') {
-        console.log(`2`, 2);
         this.getCountryByNameAndRegion(this.selectedRegion);
       } else {
         return;
@@ -57,7 +56,6 @@ export class CountriesComponent implements OnInit {
     this.userSearchUpdate
       .pipe(debounceTime(1000), distinctUntilChanged())
       .subscribe((value) => {
-        console.log(`value`, value);
         this.getCountryByNameAndRegion(value);
       });
 
@@ -116,12 +114,6 @@ export class CountriesComponent implements OnInit {
       ? (this.selectedRegion = event)
       : (this.countryName = event);
 
-    console.log(
-      `getCountryByNameAndRegion`,
-      this.selectedRegion,
-      ' this.countryName',
-      this.countryName.length === 0
-    );
     this.selectedRegion === 'All'
       ? this.countryName
         ? this.countriesService.getCountryByName(this.countryName).subscribe(

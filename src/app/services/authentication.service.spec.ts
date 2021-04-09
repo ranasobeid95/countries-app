@@ -195,12 +195,10 @@ describe('AuthenticationService', () => {
       password: 'invalidPassword',
     };
 
-    try {
-      mockSignInFunctions(newUser);
-      const newUserCredential = await service.signIn(newUser);
-    } catch (error) {
+    mockSignInFunctions(newUser);
+    service.signIn(newUser).catch((error) => {
       expect(error.message).toEqual('The password is invalid');
-    }
+    });
   });
 
   it('User logged out', async () => {

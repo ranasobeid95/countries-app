@@ -76,7 +76,6 @@ describe('Country Details Component', () => {
       activatedRoute.setParamMap({ name: expectedCountry });
     })
   );
-
   it("should display country's by name", () => {
     let expectedParams: string;
     activatedRoute.paramMap.subscribe(

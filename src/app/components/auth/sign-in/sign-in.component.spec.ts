@@ -16,8 +16,6 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { Routes } from '@angular/router';
-import { PageNotFoundComponent } from '../../shared/page-not-found/page-not-found.component';
 import { routes } from 'src/app/constants/route-test-config';
 
 describe('SignInComponent', () => {

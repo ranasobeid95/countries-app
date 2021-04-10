@@ -13,6 +13,7 @@ import { MaterialModule } from '../material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { User } from '../model/user';
 import { users } from '../constants/dummyData';
+import { routes } from '../constants/route-test-config';
 
 describe('AuthenticationService', () => {
   let service: AuthenticationService;
@@ -110,7 +111,7 @@ describe('AuthenticationService', () => {
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireAuthModule,
         AngularFirestoreModule,
-        RouterTestingModule,
+        RouterTestingModule.withRoutes(routes),
         BrowserAnimationsModule,
         MaterialModule,
       ],

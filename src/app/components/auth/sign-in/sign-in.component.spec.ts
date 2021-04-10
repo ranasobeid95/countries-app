@@ -18,42 +18,12 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Routes } from '@angular/router';
 import { PageNotFoundComponent } from '../../shared/page-not-found/page-not-found.component';
-import { NegateUserLoggedInGuard } from 'src/app/services/negate-user-logged-in.guard';
-import { SignUpComponent } from '../sign-up/sign-up.component';
-import { VerifyEmailComponent } from '../verify-email/verify-email.component';
-import { AuthGuard } from 'src/app/services/auth.guard';
+import { routes } from 'src/app/constants/route-test-config';
 
 describe('SignInComponent', () => {
   let component: SignInComponent;
   let fixture: ComponentFixture<SignInComponent>;
   let signInSpy: jasmine.Spy;
-  const routes: Routes = [
-    {
-      path: '',
-      redirectTo: '/auth/sign-in',
-      pathMatch: 'full',
-    },
-    {
-      path: 'sign-out',
-      redirectTo: '/auth/sign-in',
-      pathMatch: 'full',
-    },
-    {
-      path: 'sign-in',
-      component: SignInComponent,
-      canActivate: [NegateUserLoggedInGuard],
-    },
-    {
-      path: 'sign-up',
-      component: SignUpComponent,
-      canActivate: [NegateUserLoggedInGuard],
-    },
-    {
-      path: 'verify-email',
-      component: VerifyEmailComponent,
-      canActivate: [AuthGuard],
-    },
-  ];
 
   let result: User[] = users;
 

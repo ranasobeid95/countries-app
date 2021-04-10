@@ -5,7 +5,7 @@
 Build a project, and uses the REST Countries API to get country data and display it ,use the Angular 2+ TypeScript framework/library on the front-end
 
 ### Solution
-- [Live site](https://where-in-the-world-dee98.web.app/countries)
+- [Where In The World App](https://where-in-the-world-dee98.web.app/countries)
 
 
 ### User Stories

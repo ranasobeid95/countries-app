@@ -18,6 +18,9 @@ Build a project, and uses the REST Countries API to get country data and display
 - I can click on a country to see more detailed information
 - I can click through to the border countries on the detail page
 - I can toggle the color scheme between light and dark mode
+- I can create an account  and store my information
+- I can sign in by email and password
+- I can continue to sign in with google
 
 ### Set up a local version of the project
 
@@ -38,4 +41,5 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 - [Angular ](https://angular.io/)
 - [Angular Material](https://material.angular.io/)
+- [Firebase](https://firebase.google.com/)
 - CSS

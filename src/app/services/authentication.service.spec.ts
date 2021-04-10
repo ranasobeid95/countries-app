@@ -13,6 +13,7 @@ import { MaterialModule } from '../material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { User } from '../model/user';
 import { users } from '../constants/dummyData';
+import { routes } from '../constants/route-test-config';
 
 describe('AuthenticationService', () => {
   let service: AuthenticationService;
@@ -110,7 +111,7 @@ describe('AuthenticationService', () => {
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireAuthModule,
         AngularFirestoreModule,
-        RouterTestingModule,
+        RouterTestingModule.withRoutes(routes),
         BrowserAnimationsModule,
         MaterialModule,
       ],
@@ -195,12 +196,10 @@ describe('AuthenticationService', () => {
       password: 'invalidPassword',
     };
 
-    try {
-      mockSignInFunctions(newUser);
-      const newUserCredential = await service.signIn(newUser);
-    } catch (error) {
+    mockSignInFunctions(newUser);
+    service.signIn(newUser).catch((error) => {
       expect(error.message).toEqual('The password is invalid');
-    }
+    });
   });
 
   it('User logged out', async () => {

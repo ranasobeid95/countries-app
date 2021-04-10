@@ -16,6 +16,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { routes } from 'src/app/constants/route-test-config';
 
 describe('SignInComponent', () => {
   let component: SignInComponent;
@@ -57,7 +58,7 @@ describe('SignInComponent', () => {
         AngularFireAuthModule,
         AngularFirestoreModule,
         BrowserAnimationsModule,
-        RouterTestingModule,
+        RouterTestingModule.withRoutes(routes),
         HttpClientTestingModule,
         MaterialModule,
         FormsModule,
@@ -112,14 +113,14 @@ describe('SignInComponent', () => {
 
     const signInDe: DebugElement = fixture.debugElement;
     const signInEle: HTMLElement = signInDe.nativeElement;
-    const msg = signInEle.querySelector('.is-not-exist');
+    const msg = signInEle.querySelector('.invalid-data');
     expect(msg).toBeTruthy();
     expect(msg?.textContent?.trim()).toEqual(
       'The email you entered isn’t connected to an account'
     );
   });
 
-  it('Enter in correct password', async () => {
+  it('Enter incorrect password', async () => {
     component.signInForm.controls['email'].setValue(users[0].email);
     component.signInForm.controls['password'].setValue('123456789');
     expect(component.signInForm.valid).toBeTruthy();
@@ -132,7 +133,7 @@ describe('SignInComponent', () => {
 
     const signInDe: DebugElement = fixture.debugElement;
     const signInEle: HTMLElement = signInDe.nativeElement;
-    const msg = signInEle.querySelector('.invalid-password');
+    const msg = signInEle.querySelector('.invalid-data');
     expect(msg).toBeTruthy();
     expect(msg?.textContent?.trim()).toEqual('Enter correct password');
   });

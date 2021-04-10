@@ -7,7 +7,7 @@ export class AppPage {
 
   async getTitleText(): Promise<string> {
     return element(
-      by.css('app-root app-header header .navbar-title span')
+      by.css('app-root app-header header .main-header-logo p')
     ).getText();
   }
 }

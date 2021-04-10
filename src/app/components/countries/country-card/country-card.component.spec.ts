@@ -38,7 +38,7 @@ describe('CountryCardComponent', () => {
     const cardDe: DebugElement = fixture.debugElement;
     const cardEle: HTMLElement = cardDe.nativeElement;
 
-    const h2 = cardEle.querySelector('.card-country-name');
+    const h2 = cardEle.querySelector('.country-card-name');
     expect(h2?.textContent).toBe(component.country.name);
   });
 

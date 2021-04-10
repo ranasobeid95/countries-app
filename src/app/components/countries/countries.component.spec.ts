@@ -98,22 +98,9 @@ describe('Countries Component', () => {
     expect(component.countries).toEqual(dummyCountries);
   });
 
-  it('onSearch', () => {
-    component.selectedRegion = 'All';
-    let event = { target: { value: '' } };
-    component.onSearch(event);
-    expect(getAllCountriesSpy.calls.any()).toBe(true);
-    expect(component.countryName).toEqual('');
-
-    let event2 = { target: { value: dummyCountries[0].name }, key: 'Enter' };
-    component.onSearch(event2);
-    expect(getAllCountriesSpy.calls.any()).toBe(true);
-  });
-
   it('getCountryByNameAndRegion by Country name', () => {
     component.selectedRegion = 'All';
-    let event = { target: { value: dummyCountries[0].name } };
-    component.getCountryByNameAndRegion(event);
+    component.getCountryByNameAndRegion(dummyCountries[0].name);
     expect(getCountryByNameSpy.calls.any()).toBe(true);
     expect(component.countryName).toEqual(dummyCountries[0].name);
   });

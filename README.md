@@ -1,14 +1,12 @@
-# [Where in the World](https://where-in-the-world-dee98.web.app/countries)
+# Where in the World [![Build Status](https://travis-ci.com/ranasobeid95/countries-app.svg?branch=main)](https://travis-ci.com/ranasobeid95/countries-app) 
 
 ### Challenge
 
 Build a project, and uses the REST Countries API to get country data and display it ,use the Angular 2+ TypeScript framework/library on the front-end
 
 ### Solution
+- [Live site](https://where-in-the-world-dee98.web.app/countries)
 
-- Generated project with Angular version 11.2.1.
-
-- Use the [REST Countries API](https://restcountries.eu/) to get country data and display it
 
 ### User Stories
 

@@ -4,8 +4,6 @@
 
 export const environment = {
   production: false,
-  email: 'ranasobeid95@gmail.com',
-  password: '123456',
   sessionKey:
     'firebase:authUser:AIzaSyBwW77hknVDe5nHfX-Z8DfPxvpwd47zjiI:[DEFAULT]',
   firebase: {

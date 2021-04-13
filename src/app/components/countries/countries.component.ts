@@ -100,7 +100,12 @@ export class CountriesComponent implements OnInit {
       ? this.countryName
         ? this.countriesService.getCountryByName(this.countryName).subscribe(
             (response) => {
-              this.countries = response;
+              if (Array.isArray(response)) {
+                this.countries = response;
+              } else {
+                this.countries = [];
+                this.countries.push(response);
+              }
             },
             (err) => {
               this.countries = [];
@@ -122,10 +127,12 @@ export class CountriesComponent implements OnInit {
         (response) => {
           if (this.selectedRegion === 'All') {
             this.countries = response;
+            this.options = response.map((ele) => ele.name);
           } else {
             this.countries = response.filter((element) => {
               return element.region === this.selectedRegion;
             });
+            this.options = this.countries.map((ele) => ele.name);
           }
         },
         (err) => {
@@ -144,6 +151,7 @@ export class CountriesComponent implements OnInit {
     this.filterService.filterByNameAndRegion(countryName, region).subscribe(
       (response: Country[]) => {
         this.countries = response;
+        this.options = this.countries.map((ele) => ele.name);
       },
       (err) => {
         this.isLoading = false;

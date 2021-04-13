@@ -65,8 +65,8 @@ export class CountriesComponent implements OnInit {
   _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.options.filter(
-      (option) => option.toLowerCase().indexOf(filterValue) === 0
+    return this.options.filter((option) =>
+      option.toLowerCase().startsWith(filterValue)
     );
   }
 

@@ -11,7 +11,7 @@ import {
   MatSnackBarVerticalPosition,
   MatSnackBar,
 } from '@angular/material/snack-bar';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import { ROUTES } from '../constants/routes';
 
 @Injectable({

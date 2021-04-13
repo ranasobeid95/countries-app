@@ -108,7 +108,7 @@ export class AuthenticationService {
       .signOut()
       .then((res) => {
         this.authState = null;
-        this.router.navigate([`${ROUTES.AUTH}/${ROUTES.SIGN_IN}`]);
+        this.router.navigate([`/${ROUTES.COUNTRIES}`]);
       })
       .catch((error) => {
         throw Error(error.message);

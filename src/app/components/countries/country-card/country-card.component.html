@@ -3,14 +3,12 @@
     [routerLink]="['/', routes.COUNTRIES, country.name]"
     class="country-card-container card-style"
   >
-    <div class="country-card-head">
-      <img
-        mat-card-md-image
-        class="country-card-head__img"
-        [src]="country.flag"
-        [alt]="country.name"
-      />
-    </div>
+    <img
+      mat-card-md-image
+      class="country-card-head__img"
+      [src]="country.flag"
+      [alt]="country.name"
+    />
 
     <div class="country-card-body">
       <mat-card-content>

@@ -559,3 +559,10 @@ body {
     font-size: 1.1rem;
   }
 }
+
+@media (max-width: 355px) {
+  .padding-container {
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+  }
+}

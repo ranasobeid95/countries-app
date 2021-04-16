@@ -11,7 +11,7 @@ import {
   MatSnackBarVerticalPosition,
   MatSnackBar,
 } from '@angular/material/snack-bar';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import { ROUTES } from '../constants/routes';
 
 @Injectable({
@@ -91,8 +91,14 @@ export class AuthenticationService {
   }
 
   SignInWithGoogle() {
-    return this.afAuth
-      .signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    return firebase
+      .auth()
+      .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      .then(() => {
+        return this.afAuth.signInWithPopup(
+          new firebase.auth.GoogleAuthProvider()
+        );
+      })
       .then((userCredential) => {
         this.authState = userCredential.user;
         this.setUserData(userCredential.user);
@@ -108,7 +114,7 @@ export class AuthenticationService {
       .signOut()
       .then((res) => {
         this.authState = null;
-        this.router.navigate([`${ROUTES.AUTH}/${ROUTES.SIGN_IN}`]);
+        this.router.navigate([`/${ROUTES.COUNTRIES}`]);
       })
       .catch((error) => {
         throw Error(error.message);

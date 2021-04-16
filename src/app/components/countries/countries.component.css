@@ -10,19 +10,27 @@
 }
 .filter-search-input {
   display: flex;
-  align-items: center;
   border-radius: 4px;
+  flex: 4;
+  padding: 4px 12px;
 }
 
 .filter-search-icons {
-  padding: 10px 15px 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .filter-search-input input {
   outline: none;
   border: none;
-  padding: 10px 180px 10px 10px;
+  padding: 10px;
+  flex: 1;
   font-size: 14px;
+}
+
+.spacer {
+  flex: 8;
 }
 
 .region-select-container {
@@ -38,6 +46,7 @@
   cursor: pointer;
   display: flex;
   height: 100%;
+  justify-content: space-between;
 }
 
 .region-filter-input-field {
@@ -104,11 +113,20 @@
   }
 
   .filter-search-input input {
-    padding: 15px 180px 15px 15px;
     font-size: 1.2rem;
   }
   .filter-search-input span {
     padding: 15px 0px 15px 15px;
+  }
+
+  .region-filter-input-field {
+    padding: 0.8rem 1.6rem;
+    max-width: 200px;
+    font-size: 1.2rem;
+  }
+
+  .region-select-option {
+    font-size: 1.2rem;
   }
 }
 
@@ -121,22 +139,14 @@
   .filter-search-input {
     margin-bottom: 0;
   }
-  .filter-search-input input {
-    padding: 10px 60px 10px 10px;
-  }
 }
 
 @media (max-width: 500px) {
   .countries-container-filter {
     flex-direction: column;
-    padding-right: 30px;
   }
 
   .filter-search-input {
     margin-bottom: 30px;
-  }
-
-  .filter-search-input input {
-    padding: 10px 50px 10px 10px;
   }
 }

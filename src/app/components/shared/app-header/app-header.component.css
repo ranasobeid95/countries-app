@@ -111,3 +111,9 @@
     margin-right: 10px;
   }
 }
+
+@media (max-width: 355px) {
+  .main-header-logo p {
+    font-size: 0.7rem;
+  }
+}

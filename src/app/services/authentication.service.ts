@@ -91,8 +91,14 @@ export class AuthenticationService {
   }
 
   SignInWithGoogle() {
-    return this.afAuth
-      .signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    return firebase
+      .auth()
+      .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      .then(() => {
+        return this.afAuth.signInWithPopup(
+          new firebase.auth.GoogleAuthProvider()
+        );
+      })
       .then((userCredential) => {
         this.authState = userCredential.user;
         this.setUserData(userCredential.user);

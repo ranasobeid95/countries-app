@@ -60,8 +60,9 @@
 }
 
 .region-filter-arrow {
-  width: 2.3rem;
-  padding: 0.85rem;
+  font-size: 1.2rem;
+  height: auto;
+  padding-top: 0.85rem;
   transition: transform 0.3s ease-in-out;
 }
 

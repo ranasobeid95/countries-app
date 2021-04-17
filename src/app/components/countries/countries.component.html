@@ -35,11 +35,13 @@
           placeholder="Filter By Region"
           class="region-filter-input-field"
         />
-        <img
-          src="../../../assets/arrow-down-sign-to-navigate.svg"
+        <mat-icon
+          aria-hidden="false"
           class="region-filter-arrow"
           [ngClass]="{ 'opened-arrow': openedFilter === true }"
-        />
+        >
+          expand_more
+        </mat-icon>
       </div>
 
       <div
